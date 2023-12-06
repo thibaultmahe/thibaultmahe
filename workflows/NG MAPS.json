@@ -1,0 +1,195 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "NoOp",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cron": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-13T13:28:28.875Z",
+  "id": "yeh4g4ZlE2PwKbFr",
+  "meta": null,
+  "name": "NG MAPS",
+  "nodes": [
+    {
+      "parameters": {
+        "authentication": "digestAuth",
+        "url": "https://cngmaps.naturegaz.com/admin/dashboard",
+        "responseFormat": "string",
+        "options": {}
+      },
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        260
+      ],
+      "id": "8c4181d9-d8b4-46e3-8c44-a3c456b96fc8"
+    },
+    {
+      "parameters": {
+        "amount": 5,
+        "unit": "minutes"
+      },
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        260
+      ],
+      "webhookId": "e5f84b2f-2568-4f5b-a72b-ed54838c768b",
+      "id": "bced54cb-eaf9-4a9a-b738-856c19a5d13d"
+    },
+    {
+      "parameters": {
+        "url": "https://news.ycombinator.com/",
+        "responseFormat": "string",
+        "options": {}
+      },
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        260
+      ],
+      "id": "0ecf8050-7cee-4af4-8c4c-e22d9b1232e7"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$node[\"HTTP Request\"].json[\"data\"]}} {{$node[\"HTTP Request\"].json[\"data\"]}}",
+              "value2": "="
+            }
+          ]
+        }
+      },
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        0,
+        260
+      ],
+      "id": "a1f1a2e4-6d38-4d6e-bb9e-443fc696de33"
+    },
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "value": 5,
+              "unit": "minutes"
+            }
+          ]
+        }
+      },
+      "name": "Cron",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        -780,
+        260
+      ],
+      "id": "4407bbc9-c039-47e9-80d6-f8bed03fe0de"
+    },
+    {
+      "parameters": {
+        "chatId": "72070684",
+        "text": "Something got changed",
+        "additionalFields": {}
+      },
+      "name": "Telegram1",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        220,
+        340
+      ],
+      "id": "cb0f4496-af48-4a14-bd6e-770094aad5e0"
+    },
+    {
+      "parameters": {},
+      "name": "NoOp",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        220,
+        140
+      ],
+      "id": "9016cdf3-6eca-401e-88f3-7f66fc50f23c"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-11-13T13:28:58.025Z",
+  "versionId": "bc828972-c3de-43f6-b674-e33fd2fa360c"
+}
