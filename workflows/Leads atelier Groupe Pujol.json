@@ -1,0 +1,231 @@
+{
+  "active": true,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Tous les leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-13T13:13:27.526Z",
+  "id": "Ke5os2zvhy2Ah83s",
+  "meta": null,
+  "name": "Leads atelier Groupe Pujol",
+  "nodes": [
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Date",
+              "stringValue": "={{ $json[\"date\"].match(/(.*?)(?=T)/g)[0] }}"
+            },
+            {
+              "name": "Prenom",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Prénom : )(.*?)(?=\\nSociété)/g)[0] }}"
+            },
+            {
+              "name": "Nom",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Nom : )(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Atelier",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=\\)\\n)(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Email",
+              "stringValue": "={{ $json[\"text\"].match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)/g)[0] }}"
+            },
+            {
+              "name": "Optin",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=newsletter Groupe Pujol : )(.*?)(?=\\n)/g)[0] }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "ba3d474e-db6f-424e-b840-32c4b373d658",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        240,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "labelIds": [],
+          "q": "subject:Demande de RDV"
+        },
+        "options": {}
+      },
+      "id": "0dcf375f-d816-4db5-852f-1024b2943036",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        40,
+        540
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rAfdKJMN8l7vL9s2",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1vV8AiBGLkyQ7or3k_za1GbnfuCMozOXQbklbnZliyyg",
+          "mode": "list",
+          "cachedResultName": "Leads Atelier Pujol Auto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vV8AiBGLkyQ7or3k_za1GbnfuCMozOXQbklbnZliyyg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "TousLesLeads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vV8AiBGLkyQ7or3k_za1GbnfuCMozOXQbklbnZliyyg/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ $json.Date }}",
+            "Prénom": "={{ $json.Prenom }}",
+            "Nom": "={{ $json.Nom }}",
+            "Atelier": "={{ $json.Atelier }}",
+            "Email": "={{ $json.Email }}",
+            "Optin": "={{ $json.Optin }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Prénom",
+              "displayName": "Prénom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nom",
+              "displayName": "Nom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Atelier",
+              "displayName": "Atelier",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Optin",
+              "displayName": "Optin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8f2b587b-2f57-4bb6-a2b8-a58e5107d7e6",
+      "name": "Tous les leads",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Gmail Trigger": {
+      "lastTimeChecked": 1701798810,
+      "possibleDuplicates": [
+        "18c3b1d112f686f9"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-11-13T13:27:33.470Z",
+      "updatedAt": "2023-11-13T13:27:33.470Z",
+      "id": "VQC9ChvKf4t2FX7S",
+      "name": "Leads pujol Auto"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-06T21:45:09.487Z",
+  "versionId": "e0b87373-7796-4749-8859-b5984b89e2f7"
+}
