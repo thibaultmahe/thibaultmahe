@@ -1,0 +1,281 @@
+{
+  "active": true,
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2023-11-13T13:11:34.283Z",
+  "id": "RcNIyDDxDxDHZSbo",
+  "meta": null,
+  "name": "Resa Seavan N8N gestion Opt In",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "q": "subject:Nouvelle demande de devis"
+        },
+        "options": {}
+      },
+      "id": "74357ff2-5ee9-4bd7-a9d0-f0f6e0a1317b",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        600
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rAfdKJMN8l7vL9s2",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Date",
+              "stringValue": "={{ (new Date()).toLocaleDateString('fr-FR') }}"
+            },
+            {
+              "name": "Prenom",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Prénom : )(.*)(?= Nom : )/g)[0] }}"
+            },
+            {
+              "name": "Nom",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Nom : )(.*)(?= Tél )/g)[0] }}"
+            },
+            {
+              "name": "Tel",
+              "stringValue": "={{ $json[\"text\"].match(/(?<= Tél : )(.*)(?= E-mail :)/g)[0] }}"
+            },
+            {
+              "name": "Optin",
+              "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=la newsletter :<br\\/>)(.*)(?=<\\/p><p>--<br\\/>Attention les inscriptions)/g)[0] }}"
+            },
+            {
+              "name": "Email",
+              "stringValue": "={{ $json[\"textAsHtml\"].match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)/g)[0] }}"
+            },
+            {
+              "name": "Agence de depart",
+              "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=Agence de d&eacute;part :<br\\/>)(.*)(?=<\\/p><p>&gt;&gt; Dates de r&eacute;servation :)/g)[0] }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "51d9d2cc-a990-4110-9b80-e308e731d62d",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        140,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU",
+          "mode": "list",
+          "cachedResultName": "RESA-SEAVAN-N8N",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1710695943,
+          "mode": "list",
+          "cachedResultName": "Optin",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit#gid=1710695943"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "prenom": "={{ $json.Prenom }}",
+            "nom": "={{ $json.Nom }}",
+            "tel": "={{ $json.Tel }}",
+            "email": "={{ $json.Email }}",
+            "optin": "={{ $json.Optin }}",
+            "Agence de départ": "={{ $json['Agence de depart'] }}",
+            "received_at_date": "={{ $json.Date }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "prenom",
+              "displayName": "prenom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "nom",
+              "displayName": "nom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "tel",
+              "displayName": "tel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "optin",
+              "displayName": "optin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Agence de départ",
+              "displayName": "Agence de départ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "received_at_date",
+              "displayName": "received_at_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2eef789c-c270-4121-ac3a-8f79951cb210",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Optin }}",
+              "value2": "Oui"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "a508dead-8f5e-4813-a824-863c5b9563d5",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        340,
+        600
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Gmail Trigger": {
+      "lastTimeChecked": 1701899108,
+      "possibleDuplicates": [
+        "18c3faa1b1d8daff"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-11-13T13:28:04.972Z",
+      "updatedAt": "2023-11-13T13:28:04.972Z",
+      "id": "JD3fTrw1NMj06zE2",
+      "name": "Leads Seavan"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-06T21:45:08.872Z",
+  "versionId": "bbfeac85-f063-402d-bcde-3f7d87175577"
+}
