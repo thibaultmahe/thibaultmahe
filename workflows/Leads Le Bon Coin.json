@@ -1,0 +1,343 @@
+{
+  "active": true,
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Mail de remerciement",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Mail pour checker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-13T13:14:48.130Z",
+  "id": "cintCCPUHfXO4MUg",
+  "meta": null,
+  "name": "Leads Le Bon Coin",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "labelIds": [],
+          "q": "subject:*Nouveau message pour*",
+          "sender": "message@leboncoin.fr"
+        },
+        "options": {}
+      },
+      "id": "53e5cc09-d31e-4251-8bf4-54b196dd1344",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        -220,
+        580
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rAfdKJMN8l7vL9s2",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Date",
+              "stringValue": "={{ (new Date()).toLocaleDateString('fr-FR') }}"
+            },
+            {
+              "name": "Provenance",
+              "stringValue": "Le Bon Coin"
+            },
+            {
+              "name": "Marque",
+              "stringValue": "={{ $json[\"subject\"].match(/(?<=Nouveau message pour \")(.*?)(?= )/g)[0] }}"
+            },
+            {
+              "name": "Modele",
+              "stringValue": "={{ $json[\"subject\"].match(/(?<=Nouveau message pour \")(.*?)(?=\")/g)[0] }}"
+            },
+            {
+              "name": "Nom",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Nom : )(.*?)(?= )/g)[0] }}"
+            },
+            {
+              "name": "Prenom",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Prénom : )(.*?)(?= \\n)/g)[0] }}"
+            },
+            {
+              "name": "Tel",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Téléphone : )(.*?)(?= \\n)/g)[0] }}"
+            },
+            {
+              "name": "Email",
+              "stringValue": "={{ $json[\"text\"].match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)/g)[0] }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "f5766d73-5017-43e1-b704-e73271711247",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        -20,
+        580
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1UMKVSQqvK0e3opARPzksT_ZseAY3_W8X9pdGs7CxeNQ",
+          "mode": "list",
+          "cachedResultName": "Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UMKVSQqvK0e3opARPzksT_ZseAY3_W8X9pdGs7CxeNQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 726912902,
+          "mode": "list",
+          "cachedResultName": "Leads Le Bon Coin",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UMKVSQqvK0e3opARPzksT_ZseAY3_W8X9pdGs7CxeNQ/edit#gid=726912902"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "Date"
+          ],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Provenance",
+              "displayName": "Provenance",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Marque",
+              "displayName": "Marque",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Modele",
+              "displayName": "Modele",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nom",
+              "displayName": "Nom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Prenom",
+              "displayName": "Prenom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tel",
+              "displayName": "Tel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9489f361-4eb8-42ca-a8ad-1f29b45b7590",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        220,
+        580
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 48
+      },
+      "id": "ccf38e4a-b13f-43e8-b40a-13ba6602b82f",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        420,
+        740
+      ],
+      "webhookId": "c7564a23-3b58-48db-88f6-af27b5e4b681"
+    },
+    {
+      "parameters": {
+        "fromEmail": "Pujol Auto <ventes@groupepujol.com>",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "=Nous avons bien reçu votre demande au sujet de la {{ $json.Modele }}",
+        "emailFormat": "html",
+        "html": "=\n<!doctype html>\n<html lang=\"fr\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n\n<head>\n  <title>Nous avons bien reçu votre demande</title>\n  <!--[if !mso]><!-->\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <!--<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <style type=\"text/css\">\n    #outlook a {\n      padding: 0;\n    }\n\n    body {\n      margin: 0;\n      padding: 0;\n      -webkit-text-size-adjust: 100%;\n      -ms-text-size-adjust: 100%;\n    }\n\n    table,\n    td {\n      border-collapse: collapse;\n      mso-table-lspace: 0pt;\n      mso-table-rspace: 0pt;\n    }\n\n    img {\n      border: 0;\n      height: auto;\n      line-height: 100%;\n      outline: none;\n      text-decoration: none;\n      -ms-interpolation-mode: bicubic;\n    }\n\n    p {\n      display: block;\n      margin: 13px 0;\n    }\n  </style>\n  <!--[if mso]>\n        <noscript>\n        <xml>\n        <o:OfficeDocumentSettings>\n          <o:AllowPNG/>\n          <o:PixelsPerInch>96</o:PixelsPerInch>\n        </o:OfficeDocumentSettings>\n        </xml>\n        </noscript>\n        <![endif]-->\n  <!--[if lte mso 11]>\n        <style type=\"text/css\">\n          .mj-outlook-group-fix { width:100% !important; }\n        </style>\n        <![endif]-->\n  <!--[if !mso]><!-->\n  <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400\" rel=\"stylesheet\" type=\"text/css\">\n  <style type=\"text/css\">\n    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);\n  </style>\n  <!--<![endif]-->\n  <style type=\"text/css\">\n    @media only screen and (min-width:480px) {\n      .mj-column-per-100 {\n        width: 100% !important;\n        max-width: 100%;\n      }\n    }\n  </style>\n  <style media=\"screen and (min-width:480px)\">\n    .moz-text-html .mj-column-per-100 {\n      width: 100% !important;\n      max-width: 100%;\n    }\n  </style>\n  <style type=\"text/css\">\n    @media only screen and (max-width:480px) {\n      table.mj-full-width-mobile {\n        width: 100% !important;\n      }\n\n      td.mj-full-width-mobile {\n        width: auto !important;\n      }\n    }\n  </style>\n  <style type=\"text/css\">\n    @media (max-width:480px) {\n      .title p {\n        font-size: 12px !important\n      }\n    }\n  </style>\n  <!-- CSS-STYLE -->\n</head>\n\n<body style=\"word-spacing:normal;background-color:#FBFCFD;\">\n  <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\"> Merci pour votre demande </div>\n  <div class=\"title\" style=\"background-color:#FBFCFD;\">\n    <!-- LOGO HEADER -->\n    <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#020035\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#020035;background-color:#020035;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#020035;background-color:#020035;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:30px;padding-top:30px;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"column-outlook\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix column\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"center\" style=\"font-size:0px;padding:10px;word-break:break-word;\">\n                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;border-spacing:0px;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"width:150px;\">\n                                <a href=\"https://pujolauto.com\" target=\"_blank\" title=\"Pujol Auto\">\n                                  <img alt=\"Pujol Auto\" height=\"auto\" src=\"https://m.groupepujol.com/themes/pujolremerciementatelier/assets/Logo-Pujol-Auto.png?v7d8e4858\" style=\"border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;\" title=\"Pujol Auto\" width=\"150\">\n                                </a>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><![endif]-->\n    <!-- SECTION HERO //vide -->\n    <!-- SECTION TEXT -->\n    <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#ffffff\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#ffffff;background-color:#ffffff;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:30px;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n                        <div style=\"font-family:Open Sans, Helvetica, Arial;font-size:16px;font-weight:400;line-height:1.5;text-align:left;color:#000000;\">\n                          <p style=\"margin: 0; padding: 0;\">Madame, Monsieur</p>\n                          <p style=\"margin: 0; padding: 0;\"> </p><br>\n                          <p style=\"margin: 0; padding: 0;\">Nous avons bien reçu votre demande au sujet de la {{ $json.Modele }}.</p><br>\n                          <p style=\"margin: 0; padding: 0;\">Elle a été transmise à un(e) conseiller(e) commercial(e) qui y répondra dans les plus brefs délais. </p>\n                          <p style=\"margin: 0; padding: 0;\"></p><br>\n                          <p style=\"margin: 0; padding: 0;\">En attendant, n’hésitez pas à consulter la liste de nos véhicules disponibles sur notre <a href=\"https://pujolauto.com\">site internet</a>.</p><br>\n                        <p style=\"margin: 0; padding: 0;\">Au plaisir de vous rencontrer prochainement dans nos locaux.</p>\n                          <p style=\"margin: 0; padding: 0;\"> </p><br>\n                          <p style=\"margin: 0; padding: 0;\">Cordialement,</p>\n                          <p style=\"margin: 0; padding: 0;\"> </p>\n                          <p style=\"margin: 0; padding: 0;\">Ikrame Jounahi,</p>\n                          <p style=\"margin: 0; padding: 0;\">Responsable commerciale Pujol Auto</p>\n                          <p style=\"margin: 0; padding: 0;\"> </p><br>\n                          <p style=\"margin: 0; padding: 0;\"> </p>\n                          <p style=\"margin: 0; padding: 0;\">➤ <a href=\"https://pujolauto.com\" title=\"Consulter la liste de nos véhicules\">Consultez la liste de nos véhicules disponibles</a></p>\n                          <p style=\"margin: 0; padding: 0;\">➤ <a href=\"https://pujolauto.com/prendre-rdv-a-la-carrosserie-ou-a-l-atelier/\" title=\"Prendre RDV à l'atelier\">Prendre RDV à l'atelier ou à la carrosserie directement en ligne</a></p>\n                          <p style=\"margin: 0; padding: 0;\"> </p><br>\n                          <p style=\"margin: 0; padding: 0;\"> </p>\n                          <p style=\"margin: 0; padding: 0;\"> </p>\n                        </div>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#020035\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#020035;background-color:#020035;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#020035;background-color:#020035;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:15px;padding-top:15px;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n                        <div style=\"font-family:Open Sans, Helvetica, Arial;font-size:15px;font-weight:400;line-height:1.3;text-align:left;color:#ffffff;\">\n                          <h1 style=\"text-align: center;\">Pujol Auto</h1>\n                          <p style=\"margin: 0; padding: 0; text-align: center;\">Depuis 1993</p>\n                          <p style=\"margin: 0; padding: 0; text-align: center;\"><a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/specialiste-volkswagen-seat-skoda-agen-47/\">Agen</a> | <a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/concessionnaire-automobile-agen-alfa-romeo-fiat-jeep-volvo-csd-motors-47/\">Boé</a> | <a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/concessionnaire-automobile-villeneuve-sur-lot-suzuki-specialiste-volkswagen-seat-skoda-pva-47/\">Bias</a> | <a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/concessionnaire-voiture-occasion-marmande-fiat-automobile-pujol-47/\">Marmande</a>\n                          </p>\n                          <p style=\"margin: 0; padding: 0; text-align: center;\">Tél. <a style=\"color:white; text-decoration:none;\" href=\"tel:+33553686999\">+33(0)5 53 68 69 99</a></p>\n                          <br><br>\n                          <p style=\"margin: 0; padding: 0; text-align: center; font-size: 0.9em;\"><a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/mentions-legales-et-politique-de-confidentialite/\">Politique de confidentialité</a> | <a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/gagnez-150-euros-programme-de-parrainage-groupe-pujol/\">Programme de parrainage</a></p>\n                        </div>\n                      </td>\n                    </tr>\n                    <tr>\n                      <td align=\"center\" style=\"font-size:0px;padding:10px 25px;padding-top:20px;word-break:break-word;\">\n                        <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" ><tr><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#0077b5;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.linkedin.com/shareArticle?mini=true&url=https://www.linkedin.com/company/groupe-pujol/&title=&summary=&source=\" target=\"_blank\">\n                                          <img height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#EB3323;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.youtube.com/channel/UCiF1aS5lOVMiYVm44TCbk9A\" target=\"_blank\">\n                                          <img height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/youtube.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#3f729b;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.instagram.com/groupepujol/\" target=\"_blank\">\n                                          <img height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/instagram.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#3b5998;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/GroupePujol47/\" target=\"_blank\">\n                                          <img height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td></tr></table><![endif]-->\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"white\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    \n    <!--[if mso | IE]></td></tr></table><![endif]-->\n  </div>\n</body>\n\n</html>",
+        "options": {}
+      },
+      "id": "0ef6e6ec-8800-4347-ad81-5941fb408510",
+      "name": "Mail de remerciement",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        460,
+        460
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "jl6ioonyixzM4V8x",
+          "name": "SMTP groupepujol.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "Pujol Auto <ventes@groupepujol.com>",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "=Votre demande au sujet de la {{ $json.Modele }}",
+        "emailFormat": "html",
+        "html": "=\n<!doctype html>\n<html lang=\"fr\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n\n<head>\n  <title>Nous avons bien reçu votre demande</title>\n  <!--[if !mso]><!-->\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <!--<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <style type=\"text/css\">\n    #outlook a {\n      padding: 0;\n    }\n\n    body {\n      margin: 0;\n      padding: 0;\n      -webkit-text-size-adjust: 100%;\n      -ms-text-size-adjust: 100%;\n    }\n\n    table,\n    td {\n      border-collapse: collapse;\n      mso-table-lspace: 0pt;\n      mso-table-rspace: 0pt;\n    }\n\n    img {\n      border: 0;\n      height: auto;\n      line-height: 100%;\n      outline: none;\n      text-decoration: none;\n      -ms-interpolation-mode: bicubic;\n    }\n\n    p {\n      display: block;\n      margin: 13px 0;\n    }\n  </style>\n  <!--[if mso]>\n        <noscript>\n        <xml>\n        <o:OfficeDocumentSettings>\n          <o:AllowPNG/>\n          <o:PixelsPerInch>96</o:PixelsPerInch>\n        </o:OfficeDocumentSettings>\n        </xml>\n        </noscript>\n        <![endif]-->\n  <!--[if lte mso 11]>\n        <style type=\"text/css\">\n          .mj-outlook-group-fix { width:100% !important; }\n        </style>\n        <![endif]-->\n  <!--[if !mso]><!-->\n  <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400\" rel=\"stylesheet\" type=\"text/css\">\n  <style type=\"text/css\">\n    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);\n  </style>\n  <!--<![endif]-->\n  <style type=\"text/css\">\n    @media only screen and (min-width:480px) {\n      .mj-column-per-100 {\n        width: 100% !important;\n        max-width: 100%;\n      }\n    }\n  </style>\n  <style media=\"screen and (min-width:480px)\">\n    .moz-text-html .mj-column-per-100 {\n      width: 100% !important;\n      max-width: 100%;\n    }\n  </style>\n  <style type=\"text/css\">\n    @media only screen and (max-width:480px) {\n      table.mj-full-width-mobile {\n        width: 100% !important;\n      }\n\n      td.mj-full-width-mobile {\n        width: auto !important;\n      }\n    }\n  </style>\n  <style type=\"text/css\">\n    @media (max-width:480px) {\n      .title p {\n        font-size: 12px !important\n      }\n    }\n  </style>\n  <!-- CSS-STYLE -->\n</head>\n\n<body style=\"word-spacing:normal;background-color:#FBFCFD;\">\n  <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\"> Avez-vous été contacté ? </div>\n  <div class=\"title\" style=\"background-color:#FBFCFD;\">\n    <!-- LOGO HEADER -->\n    <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#020035\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#020035;background-color:#020035;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#020035;background-color:#020035;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:30px;padding-top:30px;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"column-outlook\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix column\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"center\" style=\"font-size:0px;padding:10px;word-break:break-word;\">\n                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;border-spacing:0px;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"width:150px;\">\n                                <a href=\"https://pujolauto.com\" target=\"_blank\" title=\"Pujol Auto\">\n                                  <img alt=\"Pujol Auto\" height=\"auto\" src=\"https://m.groupepujol.com/themes/pujolremerciementatelier/assets/Logo-Pujol-Auto.png?v7d8e4858\" style=\"border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;\" title=\"Pujol Auto\" width=\"150\">\n                                </a>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><![endif]-->\n    <!-- SECTION HERO //vide -->\n    <!-- SECTION TEXT -->\n    <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#ffffff\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#ffffff;background-color:#ffffff;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:30px;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n                        <div style=\"font-family:Open Sans, Helvetica, Arial;font-size:16px;font-weight:400;line-height:1.5;text-align:left;color:#000000;\">\n                          <p style=\"margin: 0; padding: 0;\">Madame, Monsieur,</p>\n                          <p style=\"margin: 0; padding: 0;\"> </p><br>\n                          <p style=\"margin: 0; padding: 0;\">Vous nous avez contacté au sujet d'une {{ $json.Modele }} il y a quelques jours.</p>\n                          <p style=\"margin: 0; padding: 0;\"></p><br>\n                          <p style=\"margin: 0; padding: 0;\">Dans un souci de qualité, nous souhaitons nous assurer que nos équipes commerciales ont bien pris contact avec vous.</p><br>\n                          <p style=\"margin: 0; padding: 0;\"> </p>\n                          <p style=\"margin: 0; padding: 0;\">Si tel est le cas, vous pouvez ignorer ce message.</p><br>\n                          <p style=\"margin: 0; padding: 0;\"> </p>\n                          <p style=\"margin: 0; padding: 0;\">En cas contraire, nous tenons à nous en excuser. </p><br>\n                          <p style=\"margin: 0; padding: 0;\"></p>Vous pouvez me joindre directement au 0775218833, m'envoyer un email à : ventes@groupepujol.com ou répondre tout simplement à ce message.</p>\n                          <br>\n                          <p style=\"margin: 0; padding: 0;\">Cordialement,</p><br>\n                          <p style=\"margin: 0; padding: 0;\">Ikrame Jounahi,</p>\n                          <p style=\"margin: 0; padding: 0;\">Responsable commerciale Pujol Auto</p>\n                          <p style=\"margin: 0; padding: 0;\"> </p><br>\n                          <p style=\"margin: 0; padding: 0;\"> </p>\n                          <p style=\"margin: 0; padding: 0;\">➤ <a href=\"https://pujolauto.com\" title=\"Consulter la liste de nos véhicules\">Consultez la liste de nos véhicules disponibles</a></p>\n                          <p style=\"margin: 0; padding: 0;\">➤ <a href=\"https://pujolauto.com/prendre-rdv-a-la-carrosserie-ou-a-l-atelier/\" title=\"Prendre RDV à l'atelier\">Prendre RDV à l'atelier ou à la carrosserie directement en ligne</a></p>\n                          <p style=\"margin: 0; padding: 0;\"> </p><br>\n                          <p style=\"margin: 0; padding: 0;\"> </p>\n                          <p style=\"margin: 0; padding: 0;\"> </p>\n                        </div>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#020035\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#020035;background-color:#020035;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#020035;background-color:#020035;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:15px;padding-top:15px;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n                        <div style=\"font-family:Open Sans, Helvetica, Arial;font-size:15px;font-weight:400;line-height:1.3;text-align:left;color:#ffffff;\">\n                          <h1 style=\"text-align: center;\">Pujol Auto</h1>\n                          <p style=\"margin: 0; padding: 0; text-align: center;\">Depuis 1993</p>\n                          <p style=\"margin: 0; padding: 0; text-align: center;\"><a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/specialiste-volkswagen-seat-skoda-agen-47/\">Agen</a> | <a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/concessionnaire-automobile-agen-alfa-romeo-fiat-jeep-volvo-csd-motors-47/\">Boé</a> | <a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/concessionnaire-automobile-villeneuve-sur-lot-suzuki-specialiste-volkswagen-seat-skoda-pva-47/\">Bias</a> | <a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/concessionnaire-voiture-occasion-marmande-fiat-automobile-pujol-47/\">Marmande</a>\n                          </p>\n                          <p style=\"margin: 0; padding: 0; text-align: center;\">Tél. <a style=\"color:white; text-decoration:none;\" href=\"tel:+33553686999\">+33(0)5 53 68 69 99</a></p>\n                          <br><br>\n                          <p style=\"margin: 0; padding: 0; text-align: center; font-size: 0.9em;\"><a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/mentions-legales-et-politique-de-confidentialite/\">Politique de confidentialité</a> | <a style=\"color:white; text-decoration:none;\" href=\"https://pujolauto.com/gagnez-150-euros-programme-de-parrainage-groupe-pujol/\">Programme de parrainage</a></p>\n                        </div>\n                      </td>\n                    </tr>\n                    <tr>\n                      <td align=\"center\" style=\"font-size:0px;padding:10px 25px;padding-top:20px;word-break:break-word;\">\n                        <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" ><tr><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#0077b5;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.linkedin.com/shareArticle?mini=true&url=https://www.linkedin.com/company/groupe-pujol/&title=&summary=&source=\" target=\"_blank\">\n                                          <img height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#EB3323;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.youtube.com/channel/UCiF1aS5lOVMiYVm44TCbk9A\" target=\"_blank\">\n                                          <img height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/youtube.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#3f729b;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.instagram.com/groupepujol/\" target=\"_blank\">\n                                          <img height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/instagram.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#3b5998;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/GroupePujol47/\" target=\"_blank\">\n                                          <img height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td></tr></table><![endif]-->\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"white\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    \n    <!--[if mso | IE]></td></tr></table><![endif]-->\n  </div>\n</body>\n\n</html>",
+        "options": {}
+      },
+      "id": "186cc500-2756-4372-88a6-e2f958bc7884",
+      "name": "Mail pour checker",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        660,
+        640
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "jl6ioonyixzM4V8x",
+          "name": "SMTP groupepujol.com"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Gmail Trigger": {
+      "lastTimeChecked": 1701808898,
+      "possibleDuplicates": [
+        "18c3bb6ff1217a4b"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-11-13T13:27:33.470Z",
+      "updatedAt": "2023-11-13T13:27:33.470Z",
+      "id": "VQC9ChvKf4t2FX7S",
+      "name": "Leads pujol Auto"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-06T21:45:10.713Z",
+  "versionId": "10f6f57d-7f9e-4670-aed6-566560a3e313"
+}
