@@ -1,0 +1,185 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-30T17:29:35.275Z",
+  "id": "Yjg5OlFElE7lb2ws",
+  "meta": null,
+  "name": "Stations GNV Espagne",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "661f84a6-86a9-4960-a746-66c2169b2558",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        220,
+        -20
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProducto/18",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "1ec94aee-b505-4cb8-9b42-fab489393b56",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        480,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "ListaEESSPrecio",
+        "include": "=noOtherFields",
+        "options": {}
+      },
+      "id": "5c222c00-8a87-440c-b28a-cdf18a8989b4",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3.1,
+      "position": [
+        700,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Code Postal",
+              "stringValue": "={{ $json['C.P.'] }}"
+            },
+            {
+              "name": "Adresse",
+              "stringValue": "={{ $json.Dirección }}"
+            },
+            {
+              "name": "Horaire d'ouverture",
+              "stringValue": "={{ $json.Horario }}"
+            },
+            {
+              "name": "Latittude",
+              "stringValue": "={{ $json.Latitud }}"
+            },
+            {
+              "name": "Longitude",
+              "stringValue": "={{ $json['Longitud (WGS84)'] }}"
+            },
+            {
+              "name": "Prix",
+              "stringValue": "={{ $json.PrecioProducto }}"
+            },
+            {
+              "name": "Exploitant",
+              "stringValue": "={{ $json.Rótulo }}"
+            },
+            {
+              "name": "statut",
+              "stringValue": "ouverte"
+            },
+            {
+              "name": "carburant",
+              "stringValue": "gnv"
+            },
+            {
+              "name": "fonctionnement",
+              "stringValue": "ras"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "752284f3-debc-43fa-80bb-3bce71788587",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        860,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "path": "f86fa526-2be4-4760-a024-f1497be40f19",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "id": "58a04c7a-d20f-440f-9bec-8544520bdb11",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        200,
+        180
+      ],
+      "webhookId": "f86fa526-2be4-4760-a024-f1497be40f19"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-06T21:49:06.097Z",
+  "versionId": "7eac10b6-258a-45b1-a059-ff486c528c44"
+}
