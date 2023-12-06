@@ -1,0 +1,331 @@
+{
+  "active": true,
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Brevo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets1": {
+      "main": [
+        [
+          {
+            "node": "Brevo1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger2": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets2": {
+      "main": [
+        [
+          {
+            "node": "Brevo2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-14T08:48:09.517Z",
+  "id": "48AZS9UL5pEVdPmK",
+  "meta": null,
+  "name": "Envoi automatique MRA",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "months",
+              "triggerAtDayOfMonth": 14,
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "id": "8cae8a4e-ee23-4f27-afde-3b1e37e0122b",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        180,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "sendTemplate",
+        "templateId": 46,
+        "receipients": "={{ $json.EMAIL }}",
+        "additionalFields": {}
+      },
+      "id": "12d0f2dd-badf-47e2-b797-d265a62c7fd0",
+      "name": "Brevo",
+      "type": "n8n-nodes-base.sendInBlue",
+      "typeVersion": 1,
+      "position": [
+        720,
+        200
+      ],
+      "credentials": {
+        "sendInBlueApi": {
+          "id": "cux0EKXAQZuC19vP",
+          "name": "Brevo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IMWDc2_nq8oH8jYaRaZ0wOMp_6WM0SE-gidzxNUwEbk",
+          "mode": "list",
+          "cachedResultName": "Mailing MRA",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IMWDc2_nq8oH8jYaRaZ0wOMp_6WM0SE-gidzxNUwEbk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Feuille 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IMWDc2_nq8oH8jYaRaZ0wOMp_6WM0SE-gidzxNUwEbk/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "36acf483-a48e-4c60-96a6-e626c310298e",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        200
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "months",
+              "triggerAtDayOfMonth": 15,
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "id": "2b026847-f866-4048-8240-c69dc326ad75",
+      "name": "Schedule Trigger1",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        180,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "months",
+              "triggerAtDayOfMonth": 16,
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "id": "28816785-595f-4ece-a129-0e567412fa2c",
+      "name": "Schedule Trigger2",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        180,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IMWDc2_nq8oH8jYaRaZ0wOMp_6WM0SE-gidzxNUwEbk",
+          "mode": "list",
+          "cachedResultName": "Mailing MRA",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IMWDc2_nq8oH8jYaRaZ0wOMp_6WM0SE-gidzxNUwEbk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1263967390,
+          "mode": "list",
+          "cachedResultName": "Feuille 2",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IMWDc2_nq8oH8jYaRaZ0wOMp_6WM0SE-gidzxNUwEbk/edit#gid=1263967390"
+        },
+        "options": {}
+      },
+      "id": "7f5760de-8db5-4dcb-b3c2-37c5018b36b6",
+      "name": "Google Sheets1",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        340
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendTemplate",
+        "templateId": 46,
+        "receipients": "={{ $json.EMAIL }}",
+        "additionalFields": {}
+      },
+      "id": "dc37efe2-578d-4314-8785-899ece7fc091",
+      "name": "Brevo1",
+      "type": "n8n-nodes-base.sendInBlue",
+      "typeVersion": 1,
+      "position": [
+        720,
+        340
+      ],
+      "credentials": {
+        "sendInBlueApi": {
+          "id": "cux0EKXAQZuC19vP",
+          "name": "Brevo account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1IMWDc2_nq8oH8jYaRaZ0wOMp_6WM0SE-gidzxNUwEbk",
+          "mode": "list",
+          "cachedResultName": "Mailing MRA",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IMWDc2_nq8oH8jYaRaZ0wOMp_6WM0SE-gidzxNUwEbk/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1731226989,
+          "mode": "list",
+          "cachedResultName": "Feuille 3",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1IMWDc2_nq8oH8jYaRaZ0wOMp_6WM0SE-gidzxNUwEbk/edit#gid=1731226989"
+        },
+        "options": {}
+      },
+      "id": "a2b6d747-c9cf-4b0b-af73-108c345d0f3f",
+      "name": "Google Sheets2",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        480
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "sendTemplate",
+        "templateId": 46,
+        "receipients": "={{ $json.EMAIL }}",
+        "additionalFields": {}
+      },
+      "id": "839189b8-5e7c-4526-996e-8b3115eb3769",
+      "name": "Brevo2",
+      "type": "n8n-nodes-base.sendInBlue",
+      "typeVersion": 1,
+      "position": [
+        720,
+        480
+      ],
+      "credentials": {
+        "sendInBlueApi": {
+          "id": "cux0EKXAQZuC19vP",
+          "name": "Brevo account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    },
+    "node:Schedule Trigger1": {
+      "recurrencyRules": []
+    },
+    "node:Schedule Trigger2": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-11-14T09:48:08.078Z",
+      "updatedAt": "2023-11-14T09:48:08.078Z",
+      "id": "o4X1v3zdeYuHzbUa",
+      "name": "Pujol Parts"
+    }
+  ],
+  "triggerCount": 3,
+  "updatedAt": "2023-12-02T15:40:14.824Z",
+  "versionId": "d8195837-dd40-4260-ad9b-5f230a71f7b1"
+}
