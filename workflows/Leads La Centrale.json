@@ -1,0 +1,343 @@
+{
+  "active": true,
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Email de remerciement",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Email de vérification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-13T13:25:05.784Z",
+  "id": "lNgkfLSz809wgV2j",
+  "meta": null,
+  "name": "Leads La Centrale",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "q": "subject:*votre annonce*",
+          "sender": "no_reply@lacentrale.fr"
+        },
+        "options": {}
+      },
+      "id": "2482c1a8-5ecc-4399-baca-dbeadb7763b9",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        20,
+        300
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rAfdKJMN8l7vL9s2",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Provenance",
+              "stringValue": "La Centrale"
+            },
+            {
+              "name": "Date",
+              "stringValue": "={{ (new Date()).toLocaleDateString('fr-FR') }}"
+            },
+            {
+              "name": "Marque",
+              "stringValue": "={{ $json[\"html\"].match(/(?<=Marque : )(.*?)(?=<\\/td>)/g)[0] }}"
+            },
+            {
+              "name": "Modele",
+              "stringValue": "={{ $json[\"html\"].match(/(?<=Modèle : )(.*?)(?=<\\/td>)/g)[0] }}"
+            },
+            {
+              "name": "Nom",
+              "stringValue": "={{ $json[\"html\"].match(/(?<=>Message de )(.*)(?= <img src=\"https)/g)[0] }}"
+            },
+            {
+              "name": "Tel",
+              "stringValue": "={{ $json[\"html\"].match(/(?<=Tél : )(.*?)(?=<\\/?td>)/g)[0] }}"
+            },
+            {
+              "name": "Email",
+              "stringValue": "={{ $json[\"html\"].match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)/g)[1] }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "e9a9b38e-2ab8-4b59-9034-55124d99cda1",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1UMKVSQqvK0e3opARPzksT_ZseAY3_W8X9pdGs7CxeNQ",
+          "mode": "list",
+          "cachedResultName": "Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UMKVSQqvK0e3opARPzksT_ZseAY3_W8X9pdGs7CxeNQ/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 489551866,
+          "mode": "list",
+          "cachedResultName": "Leads La Centrale",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1UMKVSQqvK0e3opARPzksT_ZseAY3_W8X9pdGs7CxeNQ/edit#gid=489551866"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Provenance": "={{ $json.Provenance }}",
+            "Date": "={{ $json.Date }}",
+            "Marque": "={{ $json.Marque }}",
+            "Modele": "={{ $json.Modele }}",
+            "Nom": "={{ $json.Nom }}",
+            "Tel": "={{ $json.Tel }}",
+            "Email": "={{ $json.Email }}"
+          },
+          "matchingColumns": [
+            "Provenance"
+          ],
+          "schema": [
+            {
+              "id": "Provenance",
+              "displayName": "Provenance",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Marque",
+              "displayName": "Marque",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Modele",
+              "displayName": "Modele",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nom",
+              "displayName": "Nom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Tel",
+              "displayName": "Tel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a4bd666f-cb0a-4ee4-87cf-e46029f2421d",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        400,
+        300
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 48
+      },
+      "id": "4c1dca02-d901-42c2-a5fa-2676b251e802",
+      "name": "Wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [
+        720,
+        340
+      ],
+      "webhookId": "cb1f4a60-04d9-4471-b1fa-7660d48ff082"
+    },
+    {
+      "parameters": {
+        "fromEmail": "ventes@groupepujol.com",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "=Votre demande au sujet de la {{ $json.Marque }} {{ $json.Modele }}",
+        "text": "=Madame, Monsieur, \nNous avons bien reçu votre demande au sujet de la {{ $json.Marque }} {{ $json.Modele }}. Elle a été transmise à un(e) conseiller(e) commercial(e) qui y répondra dans les plus brefs délais. \nEn attendant, n’hésitez pas à consulter la liste de nos véhicules disponibles sur notre site internet pujolauto.com\n\nAu plaisir de vous rencontrer prochainement dans nos locaux.\n\nTrès cordialement,\nIkrame Jounahi,\nResponsable commerciale Pujol Auto",
+        "options": {
+          "bccEmail": ""
+        }
+      },
+      "id": "0d558099-5e70-4a78-b447-5903090b740d",
+      "name": "Email de remerciement",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        700,
+        140
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "jl6ioonyixzM4V8x",
+          "name": "SMTP groupepujol.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "ventes@groupepujol.com",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "=Votre demande au sujet de la {{ $json.Marque }} {{ $json.Modele }}",
+        "text": "=Madame, Monsieur,\nVous nous avez contacté au sujet d'une {{ $json.Marque }} {{ $json.Modele }} il y a quelques jours.\nDans un souci de qualité, nous souhaitons nous assurer que nos équipes commerciales ont bien pris contact avec vous.\nSi tel est le cas, vous pouvez ignorer ce message.\nEn cas contraire nous tenons à nous en excuser. Vous pouvez me joindre directement au 0775218833, m'envoyer un email à :\nventes@groupepujol.com ou bien simplement répondre à cet e-mail.\n\nTrès cordialement,\nIkrame Jounahi\nResponsable commerciale Pujol Auto",
+        "options": {}
+      },
+      "id": "073f4bd7-6872-4e51-8970-2b79104aed1a",
+      "name": "Email de vérification",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [
+        940,
+        300
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "jl6ioonyixzM4V8x",
+          "name": "SMTP groupepujol.com"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Gmail Trigger": {
+      "lastTimeChecked": 1701897751,
+      "possibleDuplicates": [
+        "18c4102c8b9e7fea"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-11-13T13:27:33.470Z",
+      "updatedAt": "2023-11-13T13:27:33.470Z",
+      "id": "VQC9ChvKf4t2FX7S",
+      "name": "Leads pujol Auto"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-06T21:45:11.544Z",
+  "versionId": "8dd698ed-4995-4827-8c50-8fa0edc07fa0"
+}
