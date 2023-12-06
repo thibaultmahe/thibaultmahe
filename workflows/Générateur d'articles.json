@@ -1,0 +1,1427 @@
+{
+  "active": false,
+  "connections": {
+    "titre": {
+      "main": [
+        [
+          {
+            "node": "SuppGuillemetTitre",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "RegroupeIdeeTitre",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Partie": {
+      "main": [
+        [
+          {
+            "node": "FormateParties",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Incrementation": {
+      "main": [
+        [
+          {
+            "node": "Parties",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Boucle": {
+      "main": [
+        [
+          {
+            "node": "Incrementation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "RecupPartie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Contenu Parties",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Introduction": {
+      "main": [
+        [
+          {
+            "node": "Conclusion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conclusion": {
+      "main": [
+        [
+          {
+            "node": "FAQ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FAQ": {
+      "main": [
+        [
+          {
+            "node": "Article",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contenu Parties": {
+      "main": [
+        [
+          {
+            "node": "JoinPartie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JoinPartie": {
+      "main": [
+        [
+          {
+            "node": "Introduction",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MotsCles": {
+      "main": [
+        [
+          {
+            "node": "ScrapGoogle",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parties": {
+      "main": [
+        [
+          {
+            "node": "EcrirePartie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Article": {
+      "main": [
+        [
+          {
+            "node": "CompteNbCaractere",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SuppGuillemetTitre": {
+      "main": [
+        [
+          {
+            "node": "Partie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CompteNbCaractere": {
+      "main": [
+        [
+          {
+            "node": "SuppPartie",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SuppPartie": {
+      "main": [
+        [
+          {
+            "node": "EcrireArticle",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RecupPartie": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EcrirePartie": {
+      "main": [
+        [
+          {
+            "node": "FIN",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RegroupeIdeeTitre": {
+      "main": [
+        [
+          {
+            "node": "titre",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FormateParties": {
+      "main": [
+        [
+          {
+            "node": "FormateParties1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FormateParties1": {
+      "main": [
+        [
+          {
+            "node": "FormateParties2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "ArticleCourt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ArticleMoyen",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "ArticleLong",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ArticleCourt": {
+      "main": [
+        [
+          {
+            "node": "Longueur",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ArticleMoyen": {
+      "main": [
+        [
+          {
+            "node": "Longueur",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ArticleLong": {
+      "main": [
+        [
+          {
+            "node": "Longueur",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Longueur": {
+      "main": [
+        [
+          {
+            "node": "MotsCles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ListeArticleACreer": {
+      "main": [
+        [
+          {
+            "node": "BoucleSheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "BoucleSheet": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FIN": {
+      "main": [
+        [
+          {
+            "node": "RecupPartie",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Boucle",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "ListeArticleACreer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FormateParties2": {
+      "main": [
+        [
+          {
+            "node": "Boucle",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EcrireArticle": {
+      "main": [
+        [
+          {
+            "node": "BoucleSheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ScrapGoogle": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-11-13T13:26:33.270Z",
+  "id": "h23sKNlcmFL8vAAl",
+  "meta": null,
+  "name": "Générateur d'articles",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "chat",
+        "prompt": {
+          "messages": [
+            {
+              "role": "assistant",
+              "content": "Je veux que vous agissiez comme un rédacteur de contenu très compétent en référencement qui parle et écrit couramment le français. Trouve moi un titre d'article. Je veux que l'article : 1. Que tu identifies les meilleurs articles en rapport avec le sujet 2. Que tu travailles le titre en prenant en compte les bonnes pratiques seo"
+            },
+            {
+              "content": "=Trouve moi un titre d'article sur ce sujet : {{ $node[\"BoucleSheet\"].json[\"mots_cles\"] }} et inspire toi de ces titres si ils te font penser à des titre d'article de blog : {{ $json[\"exemple site\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bb57cd5e-130f-4f3b-84a4-f9e30873d7fd",
+      "name": "titre",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        1732,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Titre 1",
+              "value": "={{ $json.items[0].title }}"
+            },
+            {
+              "name": "Titre 2",
+              "value": "={{ $json.items[1].title }}"
+            },
+            {
+              "name": "Titre 3",
+              "value": "={{ $json.items[2].title }}"
+            },
+            {
+              "name": "Titre 4",
+              "value": "={{ $json.items[3].title }}"
+            },
+            {
+              "name": "Titre 5",
+              "value": "={{ $json.items[4].title }}"
+            },
+            {
+              "name": "Titre 6",
+              "value": "={{ $json.items[5].title }}"
+            },
+            {
+              "name": "Titre 7",
+              "value": "={{ $json.items[6].title }}"
+            },
+            {
+              "name": "Titre 8",
+              "value": "={{ $json.items[8].title }}"
+            },
+            {
+              "name": "Titre 9",
+              "value": "={{ $json.items[8].title }}"
+            },
+            {
+              "name": "Titre 10",
+              "value": "={{ $json.items[9].title }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a537a387-65b8-4c6c-8d96-a3bbde6bb591",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2152,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-3.5-turbo-instruct",
+        "prompt": {
+          "messages": [
+            {
+              "role": "assistant",
+              "content": "Avant de commencer à recevoir les instructions, voici un rappel des termes, que nous allons utiliser :  *Titre de l'article : C'est le sujet de l'article *Article : C'est le contenu en complet *Partie :  Ce sont les différentes parties de l'article *Introduction : C'est l'introduction de l'article *Partie 1 à X : C'est les différents partie de l'article. Le corps de l'article *Titre de partie : C'est le titre de la partie qui te sera fourni sous la forme de \"Partie X\" *Contenu de la partie : C'est le contenu de la partie en rapport avec le titre de la partie *Titre de la sous partie : Qui sera le titre de la sous partie *Contenu de la sous partie : Qui sera le contenu de la sous partie en rapport avec le titre de la sous partie *FAQ : C'est la partie qui va lister les questions/réponses *Question : C'est la question complémentaire au sujet qui demande une réponse claire et rapide *Réponse : C'est la réponse à la question Conclusion : C'est la partie qui conclu l'article *Titre de la conclusion : Ce sera le nom \"conclusion\" qu'il faudra écrire *Contenu de la conclusion sera le résumé de l'article *Sous partie c'est du contenu structuré de la même façon que les parties mais se trouvant dans la partie Voici à quoi ressemble la structure si on devait l'avoir en json (bien entendu, tu ne me fournira pas un json mais bien un article en html en respectant le balisage HTML founi dans le json) {     \"Titre de l'article\": \"<h1>Votre titre d'article ici.</h1>\",     \"Article\": [         {             \"Partie\": {                 \"Introduction\": \"<p>Votre texte d'introduction ici.</p>\",                                  \"Partie 1\": {                     \"Titre de partie\": \"<h2>Titre de la partie</h2>\",                     \"Contenu de la partie\": [                         {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"},                         {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"}                     ]                 },                                  \"Partie 2\": {                     \"Titre de partie\": \"<h2>Titre de la partie</h2>\",                     \"Contenu de la partie\": [                         {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"},                         {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"}                     ]                 },                 \"Partie 3\": {                     \"Titre de partie\": \"<h2>Titre de la partie</h2>\",                     \"Contenu de la partie\": [                         {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"},                         {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"}                     ]                 },                                  \"FAQ\": [                     {                         \"Question\": \"<h4>Votre question ici.</h4>\",                         \"Reponse\": \"<p>Votre réponse ici.</p>\"                     },                     {                         \"Question\": \"<h4>Votre question ici.</h4>\",                         \"Reponse\": \"<p>Votre réponse ici.</p>\"                     }                 ],                                  \"Conclusion\": {                     \"Titre de la conclusion\": \"<h2>Votre titre de conclusion ici.</h2>\",                     \"Contenu de la conclusion\": \"<p>Votre texte de conclusion ici.</p>\"                 }             }         }     ] }  Je veux que vous agissiez comme un rédacteur de contenu très compétent en référencement qui parle et écrit couramment le français. Trouve moi des idées de partie en rapport avec le titre que je te fourni. Pour t'aider, voici des directives :   1. Je veux que tu me fournisses des parties avec un maximum de 30 mots  3. Chaque idée sera encadré par la balise html h2. Par exemple : <h2>Première idée</h2>, <h2>deuxième idée</h2>...  4. Inspire toi des meilleurs articles SEO que tu as en possession  5. Liste moi uniquement les sous partie des articles dans ta réponse  6. Ne prends pas en compte l'introduction, ni la conclusion  7. Je veux que les parties soient corréhent par rapport au titre que je vais te fournir. Par exemple, si dans le titre, nous avons 7 astuces pour... Pour finir, ne me répondez pas, ne me rappelez pas ce que je vous ai demandé. Ne vous excusez pas. Utilisez maintenant des phrases de remplissage génériques. Je ne veux pas que tu commences ta réponse par : voici les 10 idées de parties... ou quelques chose qui ressemble à ça. Va directement à la réponse essentielle"
+            },
+            {
+              "content": "=Trouve moi des idées de parties sur ce titre d'article : {{ $json.message.content }}. {{ $node[\"Longueur\"].json['Longueur'] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "459c3410-4879-468c-bc0c-c7528095ad3d",
+      "name": "Partie",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        2152,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "i",
+              "value": "={{$node[\"Boucle\"].context[\"currentRunIndex\"];}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "43bf2d06-90ee-4ba8-a363-812557e6d6e0",
+      "name": "Incrementation",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1932,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {
+          "reset": "={{$node[\"Boucle\"].context[\"noItemsLeft\"]}}"
+        }
+      },
+      "id": "eae3fee1-6ef6-40fe-a415-b6af0a482d16",
+      "name": "Boucle",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        1732,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "parties",
+              "value": "={{ $json.Partie }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "01ae833f-81f6-42b3-99b0-a8ab600d6899",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2132,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Partie }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "b8508189-b3bd-4665-8b9e-3be3de9639f7",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1932,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "prompt": {
+          "messages": [
+            {
+              "role": "assistant",
+              "content": "=Je veux que vous agissiez comme un rédacteur de contenu très compétent en référencement qui parle et écrit couramment le français. Garde en tête le *Titre de l'article {{ $node[\"titre\"].json[\"message\"][\"content\"] }} et les *Parties l'*Article : {{ $node[\"FormateParties1\"].json[\"Parties\"] }}. Je veux que tu me crées ta meilleur introduction pour l'#Article. \nPour t'aider, voici des instructions : \n1. L'introduction doit faire 100 mots minimum\n2. Elle sera entouré de la balise <p>\n3. Ne met pas \"Intrducion\" avant le contenu\n4. L'objectif est de donné envie au lecteur de lire la suite de l'*Article\nPour finir, ne me répondez pas, ne me rappelez pas ce que je vous ai demandé. Ne vous excusez pas. Utilisez maintenant des phrases de remplissage génériques. Je ne veux pas que tu commences ta réponse par : Voici la *Partie correspondante :... ou quelques chose qui ressemble à ça. Va directement à la réponse essentielle"
+            },
+            {
+              "content": "=Crée moi l'introduction"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "70e8fec0-0e5c-457c-b0ac-08b745ec5547",
+      "name": "Introduction",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        1752,
+        2120
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "prompt": {
+          "messages": [
+            {
+              "role": "assistant",
+              "content": "=Je veux que vous agissiez comme un rédacteur de contenu très compétent en référencement qui parle et écrit couramment le français. Garde en tête le *Titre de l'article {{ $node[\"titre\"].json[\"message\"][\"content\"] }} et les *Parties l'*Article : {{ $node[\"FormateParties1\"].json[\"Parties\"] }}. Je veux que tu me crées ta meilleur conclusion pour l'#Article. \nPour t'aider, voici des instructions : \n1. La conclusion doit faire 100 mots minimum\n2. Elle sera entouré de la balise <p>\n3. Il faudra commencer le contenu par <h2>Conclusion</h2>\n4. L'objectif est de reprendre et résumé le contenu des parties\nPour finir, ne me répondez pas, ne me rappelez pas ce que je vous ai demandé. Ne vous excusez pas. Utilisez maintenant des phrases de remplissage génériques. Je ne veux pas que tu commences ta réponse par : Voici la *Partie correspondante :... ou quelques chose qui ressemble à ça. Va directement à la réponse essentielle"
+            },
+            {
+              "content": "=Crée moi la #Conclusion"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "625d7cc0-6806-41ea-88ac-f90e431cec1e",
+      "name": "Conclusion",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        2092,
+        2120
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "prompt": {
+          "messages": [
+            {
+              "role": "assistant",
+              "content": "=Je veux que vous agissiez comme un rédacteur de contenu très compétent en référencement qui parle et écrit couramment le français. Garde en tête le *Titre de l'article {{ $node[\"titre\"].json[\"message\"][\"content\"] }} et les *Parties l'*Article : {{ $node[\"FormateParties2\"].json[\"Parties\"] }}. \nJe veux que tu me crées une FAQ en lien avec le #Titre de l'article et le contenu des #parties\nPour t'aider, voici des instructions : \n1. La question sera entourée de la balise <h4>\n2. La réponse sera entourée de la balise <p>\n3. Fait autant de questions que tu as besoin. Au minimum, il en faudrait 5\n4. Je veux que les sujets des question ne répète pas les #Titre des parties\n5. Le contenu doit commencé par <h2>FAQ</h2>\n6. Je ne veux pas de conclusion\n7. Je veux que la sortie soit formaté. Voici à quoi ça doit ressembler : <h3>FAQ</h3>[accordeons]\n    [accordeon]\n        [accordeon-titre]<h4>Votre question ici.</h4>[/accordeon-titre]\n        [accordeon-contenu]<p>Votre réponse ici.</p>[/accordeon-contenu]\n    [/accordeon]\n    [accordeon]\n        [accordeon-titre]<h4>Votre question ici.</h4>[/accordeon-titre]\n        [accordeon-contenu]<p>Votre réponse ici.</p>[/accordeon-contenu]\n    [/accordeon]\n    [accordeon]\n        [accordeon-titre]<h4>Votre question ici.</h4>[/accordeon-titre]\n        [accordeon-contenu]<p>Votre réponse ici.</p>[/accordeon-contenu]\n    [/accordeon]\n[/accordeons]\nPour finir, ne me répondez pas, ne me rappelez pas ce que je vous ai demandé. Ne vous excusez pas. Utilisez maintenant des phrases de remplissage génériques. Je ne veux pas que tu commences ta réponse par : Bien sûr, voici les FAQ correspondantes :... ou quelques chose qui ressemble à ça. Va directement à la réponse essentielle"
+            },
+            {
+              "content": "=Crée moi les #FAQ "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "56c37487-3689-4d5f-9e6b-776cc6721186",
+      "name": "FAQ",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        2432,
+        2120
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "concatenateItems",
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "parties"
+            }
+          ]
+        },
+        "options": {
+          "mergeLists": true
+        }
+      },
+      "id": "2b399355-aab8-40d0-b84e-89a1bfc374af",
+      "name": "Contenu Parties",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3,
+      "position": [
+        2332,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "parties",
+              "value": "={{$json[\"parties\"].join('')}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5c09860b-eab8-4940-bf95-7b9348ddb539",
+      "name": "JoinPartie",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2532,
+        1780
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Mots clés",
+              "value": "={{ $node[\"BoucleSheet\"].json.mots_cles.replaceAll(' ','+') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5b4bd1a3-89a8-476e-8f0e-60de11b54e32",
+      "name": "MotsCles",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1772,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "prompt": {
+          "messages": [
+            {
+              "role": "assistant",
+              "content": "=Avant de commencer à recevoir les instructions, voici un rappel des termes, que nous allons utiliser : \n*Titre de l'article : C'est le sujet de l'article/*Article : C'est le contenu en complet/*Parties :  Ce sont les différentes parties de l'article/*Introduction : C'est l'introduction de l'article/*Partie 1 à X : C'est les différents partie de l'article. Le corps de l'article/*Titre de partie : C'est le titre de la partie qui te sera fourni sous la forme de \"Partie X\"/*Contenu de la partie : C'est le contenu de la partie en rapport avec le titre de la partie/*Titre de la sous partie : Qui sera le titre de la sous partie/*Contenu de la sous partie : Qui sera le contenu de la sous partie en rapport avec le titre de la sous partie/*FAQ : C'est la partie qui va lister les questions/réponses/*Question : C'est la question complémentaire au sujet qui demande une réponse claire et rapide/*Réponse : C'est la réponse à la question/*Conclusion : C'est la partie qui conclu l'article/*Titre de la conclusion : Ce sera le nom \"conclusion\" qu'il faudra écrire/*Contenu de la conclusion sera le résumé de l'article/*Sous partie c'est du contenu structuré de la même façon que les parties mais se trouvant dans la partie. Voici à quoi ressemble la structure si on devait l'avoir en json (bien entendu, tu ne me fournira pas un json mais bien un article en html en respectant le balisage HTML founi dans le json)\n{ \"Titre de l'article\": \"<h1>Votre titre d'article ici.</h1>\", \"Article\": [ { \"Parties\": { \"Introduction\": \"<p>Votre texte d'introduction ici.</p>\", \"Partie 1\": { \"Titre de partie\": \"<h2>Titre de la partie</h2>\", \"Contenu de la partie\": [ {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"}, {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"} ] }, \"Partie 2\": { \"Titre de partie\": \"<h2>Titre de la partie</h2>\", \"Contenu de la partie\": [ {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"}, {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"} ] }, \"Partie 3\": { \"Titre de partie\": \"<h2>Titre de la partie</h2>\", \"Contenu de la partie\": [ {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"}, {\"Titre de la sous partie\": \"<h3>Titre de la sous partie <h3>\", \"Contenu de la sous partie\": \"<p>Contenu de la partie</p>\"} ] }, \"FAQ\": [ { \"Question\": \"<h4>Votre question ici.</h4>\", \"Reponse\": \"<p>Votre réponse ici.</p>\" }, { \"Question\": \"<h4>Votre question ici.</h4>\", \"Reponse\": \"<p>Votre réponse ici.</p>\" } ], \"Conclusion\": { \"Titre de la conclusion\": \"<h2>Votre titre de conclusion ici.</h2>\", \"Contenu de la conclusion\": \"<p>Votre texte de conclusion ici.</p>\" } } } ] }\nJe veux que vous agissiez comme un rédacteur de contenu très compétent en référencement qui parle et écrit couramment le français. Garde en tête le *Titre de l'article {{ $node[\"titre\"].json[\"message\"][\"content\"] }} et les *Parties l'*Article : {{ $node[\"FormateParties2\"].json[\"Parties\"] }}. Pour t'aider, voici des instructions : \n1. Tu peux avoir autant de *Titre de la sous partie et de **Contenu de la sous partie qui tu veux afin de traiter parfaitement la *Partie\n2. Il faut que le *Contenu de la sous partie fasse au minimum 200 mots et entouré de la balise <p>\n3. Avant de fournir le contenu, je veux que tu rappelle le *Titre de la partie\n4. Je ne veux pas d'introduction ou de conclusion dans la *Partie\n5. Au niveau de la ponctuation, nous sommes français, il faut donc mettre un espace entre le texte et les points suivant : \"?\" et \"!\". Par exemple, \"Bonjour !\" ou \"Vous allez bien ?\"\nPour finir, ne me répondez pas, ne me rappelez pas ce que je vous ai demandé. Ne vous excusez pas. Utilisez maintenant des phrases de remplissage génériques. Je ne veux pas que tu commences ta réponse par : Voici la *Partie correspondante :... ou quelques chose qui ressemble à ça. Va directement à la réponse essentielle"
+            },
+            {
+              "content": "=Ecris moi la *Partie dont le *Titre de la partie est :{{$node[\"Boucle\"].json[\"Partie\"]}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "49c4aacc-5205-4802-8f2d-51224a48c3b7",
+      "name": "Parties",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        2132,
+        1440
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const introduction = $node[\"Introduction\"].json[\"message\"][\"content\"]\nconst parties = $node[\"JoinPartie\"].json[\"parties\"]\nconst faq = $node[\"FAQ\"].json[\"message\"][\"content\"]\nconst conclusion = $node[\"Conclusion\"].json[\"message\"][\"content\"]\n\nconst Article = introduction + parties + faq + conclusion\n\nreturn [{ json: {Article} }]\n"
+      },
+      "id": "b56ac487-877c-4f63-a5e2-12a40b9897bc",
+      "name": "Article",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1752,
+        2460
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const itemsToModify = items;\n\nfor (const item of itemsToModify) {\n    item.json.message.content = item.json.message.content.replace(/^\"|\"$/g, '');\n}\n\nreturn itemsToModify;\n"
+      },
+      "id": "b9050405-4a2f-46bf-b6b5-6b633169ce6e",
+      "name": "SuppGuillemetTitre",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1932,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Récupération de l'élément \"content\" du premier objet dans le tableau JSON\nconst content = items[0].json.Article;\n\n// Suppression des balises HTML dans le texte\nconst contentWithoutHtml = content.replace(/(<([^>]+)>)/gi, '');\n\n// Division du texte en mots et calcul du nombre de mots\nconst count = contentWithoutHtml.split(/[\\s,.!?;:-]+/).length;\n\n// Retourne le nombre de mots\nreturn {count};"
+      },
+      "id": "9d7d4916-a68d-474f-a9ee-d89b644398ee",
+      "name": "CompteNbCaractere",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1972,
+        2460
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "clear",
+        "documentId": {
+          "__rl": true,
+          "value": "=https://docs.google.com/spreadsheets/d/1Zl9d0_njflKbQ-ockaUa4uAianDylAZhG0ZZ85KayFs/edit#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Zl9d0_njflKbQ-ockaUa4uAianDylAZhG0ZZ85KayFs/edit#gid=0"
+        }
+      },
+      "id": "e2c2c73a-61dd-43e1-835e-2a69f3b523ef",
+      "name": "SuppPartie",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2212,
+        2460
+      ],
+      "notesInFlow": true,
+      "notes": "Sheet à modifier"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1T1npveNQvohJ0LUfVZr98Vnnw8Bz7Gl2na9zIawcYH4",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Feuille 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1T1npveNQvohJ0LUfVZr98Vnnw8Bz7Gl2na9zIawcYH4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "19db6020-4c74-4c3e-a81e-b73334cd04ec",
+      "name": "RecupPartie",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        1732,
+        1780
+      ],
+      "notesInFlow": true,
+      "notes": "Sheet à modifier"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/19w3t3qJMj4m6KDorcgfVXhDo5Q7spV18FIkx64RPoZQ/edit#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Partie",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19w3t3qJMj4m6KDorcgfVXhDo5Q7spV18FIkx64RPoZQ/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre partie": "={{ $node[\"Incrementation\"].json[\"i\"] }}",
+            "Partie": "={{ $json.message.content }}"
+          },
+          "matchingColumns": [
+            "Nombre partie"
+          ],
+          "schema": [
+            {
+              "id": "Nombre partie",
+              "displayName": "Nombre partie",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Partie",
+              "displayName": "Partie",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4fe1effd-3057-402e-a025-cc7eae0f5d95",
+      "name": "EcrirePartie",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2292,
+        1440
+      ],
+      "notesInFlow": true,
+      "notes": "Sheet à modifier"
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputData = items[0].json; // Supposons que cela extrait votre objet d'entrée\n\nconst transformedData = {\"exemple site\": Object.values(inputData)};\n\nreturn [{ json: transformedData }];"
+      },
+      "id": "df754df3-1c3b-4327-854e-785b6256464f",
+      "name": "RegroupeIdeeTitre",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2332,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const html = $node[\"Partie\"].json[\"message\"][\"content\"];\n\n// Utilisation d'une expression régulière pour capturer toutes les balises <h2>\nconst matches = html.match(/<h2>.*?<\\/h2>/g);\n\n// Vérifier si des correspondances ont été trouvées\nif (matches !== null) {\n    const result = matches.reduce((acc, h2, index) => {\n        acc[`Partie ${index + 1}`] = h2;\n        return acc;\n    }, {});\n\n    return {Parties: result};\n} else {\n    // Gérer le cas où aucune balise <h2> n'est trouvée ou retourner une structure de données appropriée\n    return {Parties: 'Aucune balise <h2> trouvée'};\n}"
+      },
+      "id": "04487bce-2338-4dd9-b6c5-a8d88fe82cc6",
+      "name": "FormateParties",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2352,
+        940
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputData = items[0].json;  // obtenir la donnée du nœud précédent\nconst transformedData = {\n    Parties: Object.values(inputData.Parties)  // extraire toutes les valeurs\n};\n\nreturn [{json: transformedData}];"
+      },
+      "id": "b35eba11-170d-41cf-945b-b051c7ee82ee",
+      "name": "FormateParties1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1912,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const inputData = $node[\"FormateParties\"].json;  // Accéder aux données du nœud \"Google Sheets\"\nconst output = [];\n\nfor (const key in inputData.Parties) {\n    const title = inputData.Parties[key];\n    output.push({json: {\"Partie\": title}});\n}\n\nreturn output;\n\nreturn output;"
+      },
+      "id": "51155096-d7bf-4d5d-9437-3671062105aa",
+      "name": "FormateParties2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2152,
+        1140
+      ]
+    },
+    {
+      "parameters": {
+        "dataType": "string",
+        "value1": "={{ $node[\"BoucleSheet\"].json['longueur'] }}",
+        "rules": {
+          "rules": [
+            {
+              "value2": "Court"
+            },
+            {
+              "value2": "Moyen",
+              "output": 1
+            },
+            {
+              "value2": "Long",
+              "output": 2
+            }
+          ]
+        }
+      },
+      "id": "193c3983-a0b0-4abc-a078-4b714b0ef48d",
+      "name": "Switch",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 1,
+      "position": [
+        992,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Longueur",
+              "value": "Je veux que tu me trouves au maximum 3 *Parties"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d2f5cfc-6b01-420e-949a-b09c8b919570",
+      "name": "ArticleCourt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1292,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Longueur",
+              "value": "Je veux que tu me trouves au maximum 6 *Parties"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "773952ee-5c2e-46b5-8169-d6690d1ef858",
+      "name": "ArticleMoyen",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1292,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Longueur",
+              "value": "Je veux que tu me trouves au minomum 9 *Parties"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "701c067a-d4df-441e-b320-ca7e25d875b9",
+      "name": "ArticleLong",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1292,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "Longueur",
+              "value": "={{ $json.Longueur }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "e68e2c87-578f-4e20-9f55-c714fb42578e",
+      "name": "Longueur",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1552,
+        660
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Zl9d0_njflKbQ-ockaUa4uAianDylAZhG0ZZ85KayFs/edit#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Zl9d0_njflKbQ-ockaUa4uAianDylAZhG0ZZ85KayFs/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "d5e1b95a-de16-4821-8813-6f93830ce1ef",
+      "name": "ListeArticleACreer",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        492,
+        620
+      ],
+      "notesInFlow": true,
+      "notes": "Sheet à modifier"
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "3fb02795-b79b-4762-974b-7c80eb55ac5f",
+      "name": "BoucleSheet",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 2,
+      "position": [
+        772,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": true,
+              "value2": "={{$node[\"Boucle\"].context[\"noItemsLeft\"]}}"
+            }
+          ]
+        }
+      },
+      "name": "FIN",
+      "type": "n8n-nodes-base.if",
+      "position": [
+        2472,
+        1440
+      ],
+      "typeVersion": 1,
+      "id": "1b85ec61-ef5d-4ec7-a049-61ee481bd413"
+    },
+    {
+      "parameters": {},
+      "id": "512768a9-5f48-4cf0-9d0a-06152b699061",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        292,
+        620
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1Zl9d0_njflKbQ-ockaUa4uAianDylAZhG0ZZ85KayFs/edit#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vXAaZZ5UNezthXNM6gkWGD_g5Gkrs2ZQ6OzUsFmIjJo/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "0": "={{ $node[\"Incrementation\"].json[\"i\"] }}",
+            "Nombre partie": "={{ $node[\"Incrementation\"].json[\"i\"] }}",
+            "Partie": "={{ $json.message.content }}",
+            "mots_cles": "={{ $node[\"BoucleSheet\"].json[\"mots_cles\"] }}",
+            "titre": "={{ $node[\"titre\"].json['message']['content'] }}",
+            "contenu": "={{ $node[\"Article\"].json[\"Article\"] }}"
+          },
+          "matchingColumns": [
+            "mots_cles"
+          ],
+          "schema": [
+            {
+              "id": "mots_cles",
+              "displayName": "mots_cles",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "longueur",
+              "displayName": "longueur",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "titre",
+              "displayName": "titre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "contenu",
+              "displayName": "contenu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "d0d7d643-6fd0-46ab-8b9b-1d008cda71d0",
+      "name": "EcrireArticle",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        2432,
+        2460
+      ],
+      "notesInFlow": true,
+      "notes": "Sheet à modifier"
+    },
+    {
+      "parameters": {
+        "content": "## Google Sheet\nDupliquer et ajouter votre google sheet :\nhttps://docs.google.com/spreadsheets/d/1vXAaZZ5UNezthXNM6gkWGD_g5Gkrs2ZQ6OzUsFmIjJo/edit#gid=0",
+        "height": 349.2424849699398,
+        "width": 174.49298597194377
+      },
+      "id": "ee4fda58-d98a-4e88-ba45-09adf700fb70",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        460,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://www.googleapis.com/customsearch/v1",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json['Mots clés'] }}"
+            },
+            {
+              "name": "key",
+              "value": "AIzaSyD61blDXWLifnzh7-PGQakXc81OigKaipc"
+            },
+            {
+              "name": "cx",
+              "value": "c6a422444183a4def"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "08ecefb5-31d6-4c1d-b5c9-429fe2eb609a",
+      "name": "ScrapGoogle",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1952,
+        660
+      ],
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "content": "## SCRAP GOOGLE\nPour récupérer les 10 premiers articles sur le mot cle",
+        "height": 234.60521042084162,
+        "width": 935.1022044088177
+      },
+      "id": "60ab401b-f65c-4326-b79c-01ce775504d8",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        587.3587174348697
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## CREE LE TITRE + LES PARTIES\nOn crée le titre en inspirant des titres scrapés + on définit les parties de l'article en fonction du type d'article (court, moyen, long)",
+        "height": 460.2404809619237,
+        "width": 940.5611222444888
+      },
+      "id": "85b97f71-b694-4825-b21c-ab20d37d950e",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## CREE LE CONTENU DES ARTICLES\nOn fait une boucle sur les titres des parties pour créer le contenu des parties",
+        "height": 341.9639278557112,
+        "width": 947.8396793587174
+      },
+      "id": "b3213faf-123b-4f49-a060-35d8c6def8b5",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        1320
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## STRUCTURE LES CONTENUS\nOn regroupe les différentes parties ensemble",
+        "height": 311.03006012024025,
+        "width": 947.8396793587174
+      },
+      "id": "a223adc6-3ece-48aa-9dcc-68c6634c279d",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        1680
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## CREATION INTRO / CONCLUSION / FAQ\n",
+        "height": 341.9639278557112,
+        "width": 947.8396793587174
+      },
+      "id": "85a3d936-698b-44d8-bfcd-811e124b4d34",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        2020
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## TOUT REGROUPER ET ECRIRE DANS LE SHEET\n",
+        "height": 341.9639278557112,
+        "width": 947.8396793587174
+      },
+      "id": "ed591c47-4f81-44c4-97f9-02c48567b32c",
+      "name": "Sticky Note6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        2380
+      ]
+    }
+  ],
+  "pinData": {
+    "titre": [
+      {
+        "json": {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "\"Comment prendre soin de sa flore intime : les meilleures pratiques pour une santé vaginale optimale\""
+          },
+          "finish_reason": "stop"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-11-13T13:26:49.432Z",
+      "updatedAt": "2023-11-13T13:26:49.432Z",
+      "id": "1W7MKBNtJ4g3VxAp",
+      "name": "Ressources"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2023-11-13T13:26:53.980Z",
+  "versionId": "2bd7678e-813e-45ea-83ba-3118022c17ec"
+}
