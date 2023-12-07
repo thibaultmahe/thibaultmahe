@@ -27,7 +27,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "Filter",
             "type": "main",
             "index": 0
           }
@@ -41,6 +41,68 @@
             "node": "HTTP Request",
             "type": "main",
             "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
           }
         ]
       ]
@@ -58,8 +120,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        220,
-        -20
+        -80,
+        -80
       ]
     },
     {
@@ -78,8 +140,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
       "position": [
-        480,
-        120
+        120,
+        20
       ]
     },
     {
@@ -93,8 +155,8 @@
       "type": "n8n-nodes-base.itemLists",
       "typeVersion": 3.1,
       "position": [
-        700,
-        120
+        300,
+        20
       ]
     },
     {
@@ -102,27 +164,23 @@
         "fields": {
           "values": [
             {
-              "name": "Code Postal",
-              "stringValue": "={{ $json['C.P.'] }}"
+              "name": "adress",
+              "stringValue": "={{ $json.Dirección }} {{ $json['C.P.'] }} {{ $json.Municipio }}"
             },
             {
-              "name": "Adresse",
-              "stringValue": "={{ $json.Dirección }}"
-            },
-            {
-              "name": "Horaire d'ouverture",
+              "name": "horairesouverture",
               "stringValue": "={{ $json.Horario }}"
             },
             {
-              "name": "Latittude",
+              "name": "latitude",
               "stringValue": "={{ $json.Latitud }}"
             },
             {
-              "name": "Longitude",
+              "name": "longitude",
               "stringValue": "={{ $json['Longitud (WGS84)'] }}"
             },
             {
-              "name": "Prix",
+              "name": "prixgnc",
               "stringValue": "={{ $json.PrecioProducto }}"
             },
             {
@@ -151,8 +209,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.2,
       "position": [
-        860,
-        120
+        660,
+        20
       ]
     },
     {
@@ -167,10 +225,102 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 1,
       "position": [
-        200,
-        180
+        -80,
+        120
       ],
       "webhookId": "f86fa526-2be4-4760-a024-f1497be40f19"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json['Tipo Venta'] }}",
+              "value2": "P"
+            }
+          ]
+        }
+      },
+      "id": "401379f2-b07f-4885-ac19-6ba424b014d2",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        480,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.horairesouverture }}",
+              "value2": "L-D: 24H"
+            }
+          ]
+        }
+      },
+      "id": "37590fc2-57bd-4da1-b3b0-5a246bca3fb8",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        820,
+        20
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "2e2e2758-7094-4a1b-b96f-3a583cad9859",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1160,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture",
+              "stringValue": "Oui"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c7a8ca7e-1856-4031-ad2d-d081068ae64a",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f89ebc0a-6539-4e24-ac1a-84e7efd5c532",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        120
+      ]
     }
   ],
   "pinData": {},
@@ -180,6 +330,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-12-06T21:49:06.097Z",
-  "versionId": "7eac10b6-258a-45b1-a059-ff486c528c44"
+  "updatedAt": "2023-12-07T09:57:24.442Z",
+  "versionId": "be850103-9418-41b4-9db9-a8312294acdc"
 }
