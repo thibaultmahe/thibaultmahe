@@ -27,7 +27,7 @@
       "main": [
         [
           {
-            "node": "Filter",
+            "node": "Filtre les stations publiques (enleve R)",
             "type": "main",
             "index": 0
           }
@@ -39,17 +39,6 @@
         [
           {
             "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Filter": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields",
             "type": "main",
             "index": 0
           }
@@ -74,17 +63,6 @@
         ]
       ]
     },
-    "Edit Fields": {
-      "main": [
-        [
-          {
-            "node": "IF",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Edit Fields1": {
       "main": [
         [
@@ -103,6 +81,28 @@
             "node": "Merge",
             "type": "main",
             "index": 1
+          }
+        ]
+      ]
+    },
+    "Filtre les stations publiques (enleve R)": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -161,60 +161,6 @@
     },
     {
       "parameters": {
-        "fields": {
-          "values": [
-            {
-              "name": "adress",
-              "stringValue": "={{ $json.Dirección }} {{ $json['C.P.'] }} {{ $json.Municipio }}"
-            },
-            {
-              "name": "horairesouverture",
-              "stringValue": "={{ $json.Horario }}"
-            },
-            {
-              "name": "latitude",
-              "stringValue": "={{ $json.Latitud }}"
-            },
-            {
-              "name": "longitude",
-              "stringValue": "={{ $json['Longitud (WGS84)'] }}"
-            },
-            {
-              "name": "prixgnc",
-              "stringValue": "={{ $json.PrecioProducto }}"
-            },
-            {
-              "name": "Exploitant",
-              "stringValue": "={{ $json.Rótulo }}"
-            },
-            {
-              "name": "statut",
-              "stringValue": "ouverte"
-            },
-            {
-              "name": "carburant",
-              "stringValue": "gnv"
-            },
-            {
-              "name": "fonctionnement",
-              "stringValue": "ras"
-            }
-          ]
-        },
-        "include": "none",
-        "options": {}
-      },
-      "id": "752284f3-debc-43fa-80bb-3bce71788587",
-      "name": "Edit Fields",
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.2,
-      "position": [
-        660,
-        20
-      ]
-    },
-    {
-      "parameters": {
         "path": "f86fa526-2be4-4760-a024-f1497be40f19",
         "responseMode": "lastNode",
         "responseData": "allEntries",
@@ -229,26 +175,6 @@
         120
       ],
       "webhookId": "f86fa526-2be4-4760-a024-f1497be40f19"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "string": [
-            {
-              "value1": "={{ $json['Tipo Venta'] }}",
-              "value2": "P"
-            }
-          ]
-        }
-      },
-      "id": "401379f2-b07f-4885-ac19-6ba424b014d2",
-      "name": "Filter",
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 1,
-      "position": [
-        480,
-        20
-      ]
     },
     {
       "parameters": {
@@ -321,6 +247,82 @@
         1000,
         120
       ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json['Tipo Venta'] }}",
+              "value2": "P"
+            }
+          ]
+        }
+      },
+      "id": "401379f2-b07f-4885-ac19-6ba424b014d2",
+      "name": "Filtre les stations publiques (enleve R)",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        480,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "adress",
+              "stringValue": "={{ $json.Dirección }} {{ $json['C.P.'] }} {{ $json.Municipio }}"
+            },
+            {
+              "name": "horairesouverture",
+              "stringValue": "={{ $json.Horario }}"
+            },
+            {
+              "name": "latitude",
+              "type": "numberValue",
+              "numberValue": "={{ $json.Latitud }}"
+            },
+            {
+              "name": "longitude",
+              "type": "numberValue",
+              "numberValue": "={{ $json['Longitud (WGS84)'] }}"
+            },
+            {
+              "name": "prixgnc",
+              "stringValue": "={{ $json.PrecioProducto }}"
+            },
+            {
+              "name": "Titre de la fiche",
+              "stringValue": "={{ $json.Rótulo }}"
+            },
+            {
+              "name": "statut",
+              "stringValue": "ouverte"
+            },
+            {
+              "name": "carburant",
+              "stringValue": "gnv"
+            },
+            {
+              "name": "fonctionnement",
+              "stringValue": "ras"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "752284f3-debc-43fa-80bb-3bce71788587",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        660,
+        20
+      ]
     }
   ],
   "pinData": {},
@@ -330,6 +332,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-12-07T09:57:24.442Z",
-  "versionId": "be850103-9418-41b4-9db9-a8312294acdc"
+  "updatedAt": "2023-12-08T09:04:32.301Z",
+  "versionId": "f5ff59f4-90e4-47f0-be45-a3c4444100d7"
 }
