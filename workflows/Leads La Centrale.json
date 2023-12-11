@@ -67,6 +67,9 @@
         },
         "simple": false,
         "filters": {
+          "labelIds": [
+            "Label_21"
+          ],
           "q": "subject:*votre annonce*",
           "sender": "no_reply@lacentrale.fr"
         },
@@ -323,9 +326,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1702113693,
+      "lastTimeChecked": 1702234651,
       "possibleDuplicates": [
-        "18c4de1cde60c417"
+        "18c551778cb9c55a"
       ]
     }
   },
@@ -338,6 +341,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-09T10:00:26.125Z",
-  "versionId": "8dd698ed-4995-4827-8c50-8fa0edc07fa0"
+  "updatedAt": "2023-12-10T22:29:02.186Z",
+  "versionId": "181374f3-e5bf-49e9-bdc2-d5b7ba1af29a"
 }
