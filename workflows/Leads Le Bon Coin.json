@@ -61,7 +61,9 @@
         "pollTimes": {
           "item": [
             {
-              "mode": "everyMinute"
+              "mode": "everyX",
+              "value": 10,
+              "unit": "minutes"
             }
           ]
         },
@@ -323,9 +325,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1702023991,
+      "lastTimeChecked": 1702189887,
       "possibleDuplicates": [
-        "18c48890ec82fdf2"
+        "18c526c6fa14aac6"
       ]
     }
   },
@@ -338,6 +340,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-08T09:43:41.790Z",
-  "versionId": "10f6f57d-7f9e-4670-aed6-566560a3e313"
+  "updatedAt": "2023-12-10T22:29:02.950Z",
+  "versionId": "1917407b-010b-40af-bab8-a7921457c158"
 }
