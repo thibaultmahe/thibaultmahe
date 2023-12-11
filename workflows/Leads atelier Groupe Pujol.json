@@ -82,7 +82,9 @@
         },
         "simple": false,
         "filters": {
-          "labelIds": [],
+          "labelIds": [
+            "Label_21"
+          ],
           "q": "subject:Demande de RDV"
         },
         "options": {}
@@ -211,7 +213,7 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1702137604,
+      "lastTimeChecked": 1702247343,
       "possibleDuplicates": [
         "18c4f4ea655e564f"
       ]
@@ -226,6 +228,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-09T17:00:42.086Z",
-  "versionId": "e0b87373-7796-4749-8859-b5984b89e2f7"
+  "updatedAt": "2023-12-10T22:29:04.149Z",
+  "versionId": "b951f716-ae7a-4cbd-bb14-34b346def734"
 }
