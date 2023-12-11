@@ -1,0 +1,70 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-11T13:11:59.484Z",
+  "id": "ur9uvHxf82lMBYWS",
+  "meta": null,
+  "name": "Erreurs dans les workflows",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "position": [
+        320,
+        180
+      ],
+      "typeVersion": 1,
+      "id": "454da554-71fe-4bfa-8692-b95f88d1e1c7"
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "subject": "=Erreur dans un workflow n8n :  {{$json[\"workflow\"][\"name\"]}}",
+        "message": "=Workflow: {{$json[\"workflow\"][\"name\"]}}\nError: {{$json[\"execution\"][\"error\"][\"message\"]}}\nLast node executed: {{$json[\"execution\"][\"lastNodeExecuted\"]}}\nExecution URL: {{$json[\"execution\"][\"url\"]}}\nStacktrace:\n{{$json[\"execution\"][\"error\"][\"stack\"]}}",
+        "toList": [
+          "mahe.thibault@gmail.com"
+        ],
+        "additionalFields": {}
+      },
+      "name": "Gmail",
+      "type": "n8n-nodes-base.gmail",
+      "position": [
+        520,
+        180
+      ],
+      "typeVersion": 1,
+      "id": "90ea1837-922d-46a2-8241-1ea4a74e63d8",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rAfdKJMN8l7vL9s2",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-11T13:30:16.377Z",
+  "versionId": "ce43055b-5ee6-4eaa-9660-da2b5d294a8e"
+}
