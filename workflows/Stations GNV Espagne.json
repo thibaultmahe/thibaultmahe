@@ -327,7 +327,11 @@
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
   },
   "staticData": null,
   "tags": [
@@ -339,6 +343,6 @@
     }
   ],
   "triggerCount": 0,
-  "updatedAt": "2023-12-11T09:06:49.953Z",
-  "versionId": "0782f8e8-cac7-45e1-bc47-286567fbaece"
+  "updatedAt": "2023-12-11T13:31:40.873Z",
+  "versionId": "58970aa3-4720-4e8e-ba28-dd398943054b"
 }
