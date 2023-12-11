@@ -245,7 +245,8 @@
     "executionOrder": "v1",
     "timezone": "Europe/Paris",
     "saveManualExecutions": true,
-    "callerPolicy": "workflowsFromSameOwner"
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
   },
   "staticData": {
     "node:Google Sheets Trigger": {
@@ -266,6 +267,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-11T09:05:48.135Z",
-  "versionId": "e9cafa98-f601-46b4-aca8-446f3267d6c7"
+  "updatedAt": "2023-12-11T13:31:56.541Z",
+  "versionId": "1061374b-15b1-4a1e-a482-bdbe23bd798d"
 }
