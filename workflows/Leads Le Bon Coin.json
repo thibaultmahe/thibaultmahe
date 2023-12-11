@@ -321,13 +321,17 @@
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1702189887,
+      "lastTimeChecked": 1702295724,
       "possibleDuplicates": [
-        "18c526c6fa14aac6"
+        "18c58bb5fcf6a3b0"
       ]
     }
   },
@@ -340,6 +344,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-10T22:29:02.950Z",
-  "versionId": "1917407b-010b-40af-bab8-a7921457c158"
+  "updatedAt": "2023-12-11T13:30:52.385Z",
+  "versionId": "f96163c2-e55d-4656-8465-703724099199"
 }
