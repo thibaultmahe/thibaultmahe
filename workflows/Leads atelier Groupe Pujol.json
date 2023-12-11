@@ -5,7 +5,7 @@
       "main": [
         [
           {
-            "node": "Tous les leads",
+            "node": "Date & Time",
             "type": "main",
             "index": 0
           }
@@ -17,6 +17,28 @@
         [
           {
             "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        [
+          {
+            "node": "Tous les leads",
             "type": "main",
             "index": 0
           }
@@ -35,7 +57,7 @@
           "values": [
             {
               "name": "Date",
-              "stringValue": "={{ $json[\"date\"].match(/(.*?)(?=T)/g)[0] }}"
+              "stringValue": "={{ $json.date }}"
             },
             {
               "name": "Prenom",
@@ -67,8 +89,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3,
       "position": [
-        240,
-        520
+        -40,
+        500
       ]
     },
     {
@@ -76,7 +98,9 @@
         "pollTimes": {
           "item": [
             {
-              "mode": "everyHour"
+              "mode": "everyX",
+              "value": 15,
+              "unit": "minutes"
             }
           ]
         },
@@ -85,7 +109,8 @@
           "labelIds": [
             "Label_21"
           ],
-          "q": "subject:Demande de RDV"
+          "q": "subject:Demande de RDV",
+          "sender": "anne-valerie@groupepujol.com"
         },
         "options": {}
       },
@@ -94,8 +119,8 @@
       "type": "n8n-nodes-base.gmailTrigger",
       "typeVersion": 1,
       "position": [
-        40,
-        540
+        -220,
+        500
       ],
       "credentials": {
         "gmailOAuth2": {
@@ -196,8 +221,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        460,
-        460
+        440,
+        500
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -205,17 +230,57 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "outputFieldName": "Date-de-la-demande",
+        "options": {
+          "includeInputFields": true
+        }
+      },
+      "id": "4a379a42-c402-4ad4-ad11-c9cb1a898010",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        120,
+        500
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json['Date-de-la-demande'] }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "outputFieldName": "Date",
+        "options": {
+          "includeInputFields": true
+        }
+      },
+      "id": "ad8dc3ae-09ac-46a1-acbf-0a34f925c600",
+      "name": "Date & Time1",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        280,
+        500
+      ]
     }
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1702247343,
+      "lastTimeChecked": 1702286526,
       "possibleDuplicates": [
-        "18c4f4ea655e564f"
+        "18c582f0b355ef93"
       ]
     }
   },
@@ -228,6 +293,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-10T22:29:04.149Z",
-  "versionId": "b951f716-ae7a-4cbd-bb14-34b346def734"
+  "updatedAt": "2023-12-11T13:30:32.973Z",
+  "versionId": "72fcc88e-957a-4dd5-a6d3-cc3ea45d71ec"
 }
