@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "When clicking \"Execute Workflow\"": {
       "main": [
@@ -106,6 +106,17 @@
           }
         ]
       ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2023-11-30T17:29:35.275Z",
@@ -120,8 +131,8 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -80,
-        -80
+        -220,
+        -20
       ]
     },
     {
@@ -161,7 +172,7 @@
     },
     {
       "parameters": {
-        "path": "f86fa526-2be4-4760-a024-f1497be40f19",
+        "path": "stations-espagnoles",
         "responseMode": "lastNode",
         "responseData": "allEntries",
         "options": {}
@@ -283,12 +294,12 @@
             {
               "name": "latitude",
               "type": "numberValue",
-              "numberValue": "={{ $json.Latitud }}"
+              "numberValue": "={{ $json[\"Latitud\"].replace(\",\", \".\") }}"
             },
             {
               "name": "longitude",
               "type": "numberValue",
-              "numberValue": "={{ $json['Longitud (WGS84)'] }}"
+              "numberValue": "={{ $json['Longitud (WGS84)'].replace(\",\", \".\") }}"
             },
             {
               "name": "prixgnc",
@@ -323,6 +334,26 @@
         660,
         20
       ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 3
+            }
+          ]
+        }
+      },
+      "id": "c02051db-a2c7-49c2-b4bb-9f24fb7e256a",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        -140
+      ]
     }
   ],
   "pinData": {},
@@ -333,7 +364,11 @@
     "callerPolicy": "workflowsFromSameOwner",
     "errorWorkflow": "ur9uvHxf82lMBYWS"
   },
-  "staticData": null,
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
   "tags": [
     {
       "createdAt": "2023-12-11T09:06:36.362Z",
@@ -342,7 +377,7 @@
       "name": "NG Maps"
     }
   ],
-  "triggerCount": 0,
-  "updatedAt": "2023-12-11T13:31:40.873Z",
-  "versionId": "58970aa3-4720-4e8e-ba28-dd398943054b"
+  "triggerCount": 2,
+  "updatedAt": "2023-12-12T16:18:53.780Z",
+  "versionId": "a1078000-9c83-420c-ad90-c54af4c02153"
 }
