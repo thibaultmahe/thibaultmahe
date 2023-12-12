@@ -1,0 +1,319 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Filtre les stations publiques (enleve R)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Filtre les stations publiques (enleve R)": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-12T14:50:49.092Z",
+  "id": "YuVWPAX6r0GpfLQP",
+  "meta": null,
+  "name": "Stations GNV Espagne copy",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "040b48ff-96fb-4ef1-9ce1-a0f600393098",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProducto/18",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "7a4bbba3-ce5c-4e3b-90f0-bdee5e864698",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        120,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "ListaEESSPrecio",
+        "include": "=noOtherFields",
+        "options": {}
+      },
+      "id": "9852d720-79e0-4d20-bbd4-b1f990f1afab",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3.1,
+      "position": [
+        300,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.horairesouverture }}",
+              "value2": "L-D: 24H"
+            }
+          ]
+        }
+      },
+      "id": "c1f1b9af-e9e0-4b14-9145-f349c01d372a",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        820,
+        20
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3fd73a52-6e27-41b8-bcdb-2d4fefa54aed",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1160,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture",
+              "stringValue": "Oui"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c9792d00-112b-4a14-b648-28561a30a62a",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5b5d7a7d-1221-432d-bc0c-7225e75b15a9",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json['Tipo Venta'] }}",
+              "value2": "P"
+            }
+          ]
+        }
+      },
+      "id": "e4646a18-cd33-4e99-b26d-168cbfdc1cef",
+      "name": "Filtre les stations publiques (enleve R)",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        480,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "adress",
+              "stringValue": "={{ $json.Dirección }} {{ $json['C.P.'] }} {{ $json.Municipio }}"
+            },
+            {
+              "name": "horairesouverture",
+              "stringValue": "={{ $json.Horario }}"
+            },
+            {
+              "name": "latitude",
+              "type": "numberValue",
+              "numberValue": "={{ $json[\"Latitud\"].replace(\",\", \".\") }}"
+            },
+            {
+              "name": "longitude",
+              "stringValue": "={{ $json['Longitud (WGS84)'].replace(\",\", \".\") }}"
+            },
+            {
+              "name": "prixgnc",
+              "stringValue": "={{ $json.PrecioProducto }}"
+            },
+            {
+              "name": "Titre de la fiche",
+              "stringValue": "={{ $json.Rótulo }}"
+            },
+            {
+              "name": "statut",
+              "stringValue": "ouverte"
+            },
+            {
+              "name": "carburant",
+              "stringValue": "gnv"
+            },
+            {
+              "name": "fonctionnement",
+              "stringValue": "ras"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "b80a4e17-cc2f-4419-8ed0-e5a0be45002e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        660,
+        20
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-12-11T09:06:36.362Z",
+      "updatedAt": "2023-12-11T09:06:36.362Z",
+      "id": "pu1HKJmBOsnvJ7E5",
+      "name": "NG Maps"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-12T16:01:14.955Z",
+  "versionId": "c9297fce-da26-4a9c-8b9d-1db8735800aa"
+}
