@@ -1,0 +1,235 @@
+{
+  "active": false,
+  "connections": {
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2023-12-14T16:49:20.304Z",
+  "id": "boXgjDRemIt8KygC",
+  "meta": null,
+  "name": "Relance à 10 jours Seavan",
+  "nodes": [
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU",
+          "mode": "list",
+          "cachedResultName": "RESA-SEAVAN-N8N",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Touteslesdemandes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "5bef7df7-c43a-4f5c-a051-db2962063e7b",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.1,
+      "position": [
+        400,
+        160
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.Date_de_rappel }}",
+              "value2": "={{ $json.Date_du_jour }}"
+            }
+          ]
+        },
+        "combineConditions": "OR"
+      },
+      "id": "56983404-eab7-46da-aa98-f8ecfd1b5f03",
+      "name": "Filter",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "id": "f04ad979-19cc-4fe1-af0d-d913ccff3d35",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        180,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Date_relance-devis",
+              "stringValue": "={{ DateTime.fromFormat($json.received_at_date, \"dd/MM/yyyy\").plus(10, \"days\") }}"
+            }
+          ]
+        },
+        "include": "except",
+        "excludeFields": "col_9, col_10",
+        "options": {}
+      },
+      "id": "481cb59e-4939-4361-8d86-828a8e4f0ea5",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        600,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Date_du_jour",
+              "stringValue": "={{ (new Date()).toLocaleDateString('fr-FR') }}"
+            }
+          ]
+        },
+        "include": "except",
+        "excludeFields": "Date_rappel",
+        "options": {}
+      },
+      "id": "5e1afb85-b830-4ad5-ab99-ede66bc54d6e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "Seavan Locations <charline@sea-van.com>",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "=Déjà un an...",
+        "html": "=\n<!doctype html>\n<html lang=\"fr\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n\n<head>\n  <title> Déjà un an... </title>\n  <!--[if !mso]><!-->\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n  <!--<![endif]-->\n  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <style type=\"text/css\">\n    #outlook a {\n      padding: 0;\n    }\n\n    body {\n      margin: 0;\n      padding: 0;\n      -webkit-text-size-adjust: 100%;\n      -ms-text-size-adjust: 100%;\n    }\n\n    table,\n    td {\n      border-collapse: collapse;\n      mso-table-lspace: 0pt;\n      mso-table-rspace: 0pt;\n    }\n\n    img {\n      border: 0;\n      height: auto;\n      line-height: 100%;\n      outline: none;\n      text-decoration: none;\n      -ms-interpolation-mode: bicubic;\n    }\n\n    p {\n      display: block;\n      margin: 13px 0;\n    }\n  </style>\n  <!--[if mso]>\n        <noscript>\n        <xml>\n        <o:OfficeDocumentSettings>\n          <o:AllowPNG/>\n          <o:PixelsPerInch>96</o:PixelsPerInch>\n        </o:OfficeDocumentSettings>\n        </xml>\n        </noscript>\n        <![endif]-->\n  <!--[if lte mso 11]>\n        <style type=\"text/css\">\n          .mj-outlook-group-fix { width:100% !important; }\n        </style>\n        <![endif]-->\n  <!--[if !mso]><!-->\n  <link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400\" rel=\"stylesheet\" type=\"text/css\">\n  <style type=\"text/css\">\n    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);\n  </style>\n  <!--<![endif]-->\n  <style type=\"text/css\">\n    @media only screen and (min-width:480px) {\n      .mj-column-per-100 {\n        width: 100% !important;\n        max-width: 100%;\n      }\n    }\n  </style>\n  <style media=\"screen and (min-width:480px)\">\n    .moz-text-html .mj-column-per-100 {\n      width: 100% !important;\n      max-width: 100%;\n    }\n  </style>\n  <style type=\"text/css\">\n    @media only screen and (max-width:480px) {\n      table.mj-full-width-mobile {\n        width: 100% !important;\n      }\n\n      td.mj-full-width-mobile {\n        width: auto !important;\n      }\n    }\n  </style>\n  <style type=\"text/css\">\n    @media (max-width:480px) {\n      .title p {\n        font-size: 14px !important\n      }\n\n      .title li {\n        font-size: 14px !important\n      }\n\n      .title h3 {\n        font-size: 14px !important\n      }\n    }\n  </style>\n  <!-- CSS-STYLE -->\n</head>\n\n<body style=\"word-spacing:normal;background-color:#FBFCFD;\">\n  <div style=\"display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;\">🚐🌴☀️ </div>\n  <div class=\"title\" style=\"background-color:#FBFCFD;\">\n    <!-- LOGO HEADER -->\n    <!-- SECTION HERO //vide -->\n    <!-- SECTION TEXT -->\n    <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#FFFFFF\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#FFFFFF;background-color:#FFFFFF;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#020035\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#020035;background-color:#020035;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#020035;background-color:#020035;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:20px;padding-top:20px;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"center\" style=\"font-size:0px;padding:10px;word-break:break-word;\">\n                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;border-spacing:0px;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"width:150px;\">\n                                <a href=\"https://sea-van.com\" target=\"_blank\" title=\"Seavan, votre location de vans premium\">\n                                  <img alt=\"Seavan Location Aventures\" height=\"auto\" src=\"https://mail.stack.sea-van.com/themes/seavan/assets/Logo-Seavan.png?v7200228e\" style=\"border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;\" title=\"Seavan, votre location de vans premium\" width=\"150\">\n                                </a>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><![endif]-->\n    <!-- SECTION HERO //vide -->\n    <!-- SECTION TEXT -->\n    <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#ffffff\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#ffffff;background-color:#ffffff;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#ffffff;background-color:#ffffff;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:30px;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n                        <div style=\"font-family:Open Sans, Helvetica, Arial;font-size:16px;font-weight:400;line-height:160%;text-align:left;color:#2f2e2e;\">\n                          <p style=\"margin: 0; padding: 0;\">{{ $json[\"Prenom\"] }},</p>\n                          <p style=\"margin: 0; padding: 0;\">&nbsp;</p>\n                          <p style=\"margin: 0; padding: 0;\"><span style=\"color:#222222\"><span style=\"background-color:#ffffff\">Il y a un an, vous nous aviez sollicités&nbsp;pour votre projet-road trip.&nbsp;</span></span> <span style=\"color:#222222\"><span style=\"background-color:#ffffff\">Une expérience unique que vous avez peut-être concrétisée&nbsp;à bord d’un van ou d’un fourgon.</span></span></p>\n                          <p style=\"margin: 0; padding: 0;\">&nbsp;</p>\n                          <p style=\"margin: 0; padding: 0;\"><span style=\"color:#222222\"><span style=\"background-color:#ffffff\">Et cette année, quel est votre programme&nbsp;?&nbsp;</span></span></p>\n                        </div>\n                      </td>\n                    </tr>\n                    <tr>\n                      <td align=\"center\" style=\"font-size:0px;padding:10px 25px;padding-top:30px;padding-bottom:40px;word-break:break-word;\">\n                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"border-collapse:collapse;border-spacing:0px;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"width:550px;\">\n                                <a href=\"https://sea-van.com\" target=\"_blank\">\n                                  <img height=\"auto\" src=\"https://mail.stack.sea-van.com/media/images/vanlife.gif\" style=\"border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;\" width=\"550\">\n                                </a>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                      </td>\n                    </tr>\n                    <tr>\n                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n                        <div style=\"font-family:Open Sans, Helvetica, Arial;font-size:16px;font-weight:400;line-height:160%;text-align:left;color:#2f2e2e;\">\n                          <p style=\"margin: 0; padding: 0;\">Que ce soit pour explorer des contr&eacute;es lointaines, vivre des exp&eacute;riences uniques ou simplement pour retrouver cette sensation de libert&eacute; sur la route, notre &eacute;quipe reste &agrave; l&rsquo;&eacute;coute de tous vos projets d&rsquo;&eacute;vasion.</p>\n<br />\n                          <p style=\"margin: 0; padding: 0;\">N&#39;h&eacute;sitez pas &agrave; nous contacter pour en discuter et organiser votre prochaine escapade.</p>\n                        </div>\n                      </td>\n                    </tr>\n                    <tr>\n                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;padding-bottom:30px;word-break:break-word;\">\n                        <div style=\"font-family:Open Sans, Helvetica, Arial;font-size:16px;font-weight:400;line-height:160%;text-align:left;color:#2f2e2e;\">\n                          <p style=\"margin: 0; padding: 0;\">Cordialement,</p>\n                          <p style=\"margin: 0; padding: 0;\">L&#39;&eacute;quipe de Seavan</p>\n                          <p style=\"margin: 0; padding: 0;\">&nbsp;</p>\n                        </div>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"#020035\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:#020035;background-color:#020035;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#020035;background-color:#020035;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:20px;padding-top:30px;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;\">\n                        <div style=\"font-family:Open Sans, Helvetica, Arial;font-size:16px;font-weight:400;line-height:160%;text-align:left;color:#ffffff;\">\n                          <h1 style=\"text-align: center;\">\n                            <a style=\"font-size: 1em; color:white; text-decoration:none; letter-spacing:0.1em;\" href=\"https://sea-van.com/\" target=\"_blank\" rel=\"noopener\">SEAVAN</a>\n                          </h1>\n                          <p style=\"margin: 0; padding: 0; text-align: center;\">Location aventures 🚐🌴☀️ </p>\n                          <h3 style=\"text-align: center;\">\n                            <a style=\"color:white; text-decoration:none;\" href=\"tel:+33553684441\" title=\"Contactez-nous\">05 53 68 44 41</a>\n                          </h3>\n                          <p style=\"margin: 0; padding: 0; font-size: 0.9em; color: white; text-align: center;\"> Nos agences en France : </p>\n                          <p style=\"margin: 0; padding: 0; font-size: 0.9em; color: white; text-align: center;\">\n                            <a style=\"font-size: 0.9em; color:white; \" href=\"https://sea-van.com/agences-de-location-de-van-amenages/#Agen\" target=\"_blank\" rel=\"noopener\">Agen</a> | <a style=\"font-size: 0.9em; color:white; \" href=\"https://sea-van.com/agences-de-location-de-van-amenages/#Avignon\" target=\"_blank\" rel=\"noopener\">Avignon</a> | <a style=\"font-size: 0.9em; color:white; \" href=\"https://sea-van.com/agences-de-location-de-van-amenages/#Bergerac\" target=\"_blank\" rel=\"noopener\">Bergerac</a> | <a style=\"font-size: 0.9em; color:white; \" href=\"https://sea-van.com/agences-de-location-de-van-amenages/#Bordeaux\" target=\"_blank\" rel=\"noopener\">Bordeaux</a>&nbsp;| <a style=\"font-size: 0.9em; color:white;\" href=\"https://sea-van.com/agences-de-location-de-van-amenages/#Nemours\" target=\"_blank\" rel=\"noopener\">Nemours</a> | <a style=\"font-size: 0.9em; color:white;\" href=\"https://sea-van.com/agences-de-location-de-van-amenages/#Toulouse\" target=\"_blank\" rel=\"noopener\">Toulouse</a>\n                          </p>\n                        </div>\n                      </td>\n                    </tr>\n                    <tr>\n                      <td align=\"center\" style=\"font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;\">\n                        <!--[if mso | IE]><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" ><tr><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#3b5998;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/SeaVan.Location/?locale=fr_FR\" target=\"_blank\">\n                                          <img title=\"Retrouvez-nous sur Facebook\" height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#3f729b;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.instagram.com/seavan_location/\" target=\"_blank\">\n                                          <img title=\"Retrouvez-nous sur Instagram\" height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/instagram.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#EB3323;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.youtube.com/@seavan9648\" target=\"_blank\">\n                                          <img title=\"Retrouvez-nous sur Youtube\" height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/youtube.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td><td><![endif]-->\n                        <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"float:none;display:inline-table;\">\n                          <tbody>\n                            <tr>\n                              <td style=\"padding:4px;vertical-align:middle;\">\n                                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:#0077b5;border-radius:3px;width:20px;\">\n                                  <tbody>\n                                    <tr>\n                                      <td style=\"font-size:0;height:20px;vertical-align:middle;width:20px;\">\n                                        <a href=\"https://www.linkedin.com/shareArticle?mini=true&url=https://www.linkedin.com/company/seavan-location/&title=&summary=&source=\" target=\"_blank\">\n                                          <img title=\"Retrouvez-nous sur Linkedin\" height=\"20\" src=\"https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png\" style=\"border-radius:3px;display:block;\" width=\"20\">\n                                        </a>\n                                      </td>\n                                    </tr>\n                                  </tbody>\n                                </table>\n                              </td>\n                            </tr>\n                          </tbody>\n                        </table>\n                        <!--[if mso | IE]></td></tr></table><![endif]-->\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"\" role=\"presentation\" style=\"width:600px;\" width=\"600\" bgcolor=\"white\" ><tr><td style=\"line-height:0px;font-size:0px;mso-line-height-rule:exactly;\"><![endif]-->\n    <div style=\"background:white;background-color:white;margin:0px auto;max-width:600px;\">\n      <table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"background:white;background-color:white;width:100%;\">\n        <tbody>\n          <tr>\n            <td style=\"direction:ltr;font-size:0px;padding:20px 0;text-align:center;\">\n              <!--[if mso | IE]><table role=\"presentation\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td class=\"\" style=\"vertical-align:top;width:600px;\" ><![endif]-->\n              <div class=\"mj-column-per-100 mj-outlook-group-fix\" style=\"font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;\">\n                <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" role=\"presentation\" style=\"vertical-align:top;\" width=\"100%\">\n                  <tbody>\n                    <tr>\n                      <td align=\"left\" style=\"font-size:0px;padding:10px 25px;word-break:break-word;\">\n                        <div style=\"font-family:Open Sans, Orienta, Helvetica, Arial;font-size:10px;line-height:1;text-align:left;color:#020035;\">\n                          <p style=\"margin: 0; padding: 0; text-align: center;\"><a href=\"https://mail.stack.sea-van.com/email/unsubscribe/xxxxxxxxxxxxxx\">Se désinscrire</a> | <a href=\"https://mail.stack.sea-van.com/email/preview/5\">Voir ce message dans votre navigateur</a> | <a href=\"https://sea-van.com/politique-de-confidentialite/\">Politique de confidentialité</a>\n                          </p>\n                        </div>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <!--[if mso | IE]></td></tr></table><![endif]-->\n            </td>\n          </tr>\n        </tbody>\n      </table>\n    </div>\n    <!--[if mso | IE]></td></tr></table><![endif]-->\n  </div>\n</body>\n\n</html>",
+        "options": {
+          "appendAttribution": false,
+          "bccEmail": "",
+          "replyTo": "charline@sea-van.com"
+        }
+      },
+      "id": "96efd9d9-3fc4-44d9-b5de-1465180eec60",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1260,
+        260
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "3hH7au2xSqqRQuAo",
+          "name": "SMTP charline"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
+  },
+  "staticData": {
+    "node:Google Sheets Trigger": {
+      "documentId": "1tUz1Z-G66V2U1x6VktpFOT-H76A1ukIU8bNowaB-GvA",
+      "sheetId": "0",
+      "lastIndexChecked": 3
+    },
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-11-13T13:28:04.972Z",
+      "updatedAt": "2023-11-13T13:28:04.972Z",
+      "id": "JD3fTrw1NMj06zE2",
+      "name": "Leads Seavan"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-14T16:53:34.436Z",
+  "versionId": "b482553e-edf9-477b-ae12-5d74ec408dea"
+}
