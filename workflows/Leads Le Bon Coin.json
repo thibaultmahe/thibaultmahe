@@ -69,7 +69,9 @@
         },
         "simple": false,
         "filters": {
-          "labelIds": [],
+          "labelIds": [
+            "Label_12"
+          ],
           "q": "subject:*Nouveau message pour*",
           "sender": "message@leboncoin.fr"
         },
@@ -329,9 +331,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1702572197,
+      "lastTimeChecked": 1702593536,
       "possibleDuplicates": [
-        "18c63f6b0e1f7593"
+        "18c6a7ba1ee8343b"
       ]
     }
   },
@@ -344,6 +346,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-14T16:43:18.172Z",
-  "versionId": "f96163c2-e55d-4656-8465-703724099199"
+  "updatedAt": "2023-12-15T00:01:31.689Z",
+  "versionId": "e6591900-5384-4a7a-acf2-be021fce40a5"
 }
