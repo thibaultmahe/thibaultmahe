@@ -1,17 +1,6 @@
 {
   "active": true,
   "connections": {
-    "When clicking \"Execute Workflow\"": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "HTTP Request": {
       "main": [
         [
@@ -124,17 +113,6 @@
   "meta": null,
   "name": "Stations GNV Espagne",
   "nodes": [
-    {
-      "parameters": {},
-      "id": "661f84a6-86a9-4960-a746-66c2169b2558",
-      "name": "When clicking \"Execute Workflow\"",
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        -220,
-        -20
-      ]
-    },
     {
       "parameters": {
         "url": "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProducto/18",
@@ -340,8 +318,8 @@
         "rule": {
           "interval": [
             {
-              "field": "hours",
-              "hoursInterval": 3
+              "field": "minutes",
+              "minutesInterval": 120
             }
           ]
         }
@@ -367,7 +345,7 @@
   "staticData": {
     "node:Schedule Trigger": {
       "recurrencyRules": [
-        18
+        0
       ]
     }
   },
@@ -380,6 +358,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2023-12-14T17:00:00.031Z",
-  "versionId": "a1078000-9c83-420c-ad90-c54af4c02153"
+  "updatedAt": "2023-12-14T23:43:46.518Z",
+  "versionId": "4e0b3b46-bf25-4ad7-b3cd-3df3579b3170"
 }
