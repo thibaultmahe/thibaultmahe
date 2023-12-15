@@ -1,0 +1,130 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "TextManipulation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-14T23:55:13.983Z",
+  "id": "hjQQc2m3jTc9XBxu",
+  "meta": null,
+  "name": "Capitalisation des noms",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "390b95d9-53a2-4c7f-bd3f-32d71a099bc2",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        700,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1v2bfAESyrUyKOMKqA9x4Qw2APXw8NFOSkOt4sc7iTtU",
+          "mode": "list",
+          "cachedResultName": "SEAVAN",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1v2bfAESyrUyKOMKqA9x4Qw2APXw8NFOSkOt4sc7iTtU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Feuille 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1v2bfAESyrUyKOMKqA9x4Qw2APXw8NFOSkOt4sc7iTtU/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "aed6ceed-26b1-4268-aa64-843b45aa8bb0",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "textsWithManipulations": {
+          "textsWithManipulationsValues": [
+            {
+              "dataSources": {
+                "dataSource": [
+                  {
+                    "text": "={{ $json.NOM }}",
+                    "destinationKey": "NOM"
+                  },
+                  {
+                    "text": "={{ $json.PRENOM }}",
+                    "destinationKey": "PRENOM"
+                  }
+                ]
+              },
+              "manipulations": {
+                "manipulation": [
+                  {
+                    "caseType": "titlecase"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "id": "62fb1fb3-9d4f-4eb7-bc08-609e0775fc09",
+      "name": "TextManipulation",
+      "type": "n8n-nodes-text-manipulation.textManipulation",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-12-14T23:54:33.173Z",
+      "updatedAt": "2023-12-14T23:54:33.173Z",
+      "id": "VsFdHCR75zszLNoH",
+      "name": "Formatage des donnees"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-14T23:57:01.842Z",
+  "versionId": "6f59fe9f-a2a7-4200-b057-3b7cc0f5cbed"
+}
