@@ -16,6 +16,17 @@
       "main": [
         [
           {
+            "node": "TextManipulation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TextManipulation": {
+      "main": [
+        [
+          {
             "node": "Google Sheets",
             "type": "main",
             "index": 0
@@ -131,7 +142,8 @@
             "email": "={{ $json.Email }}",
             "optin": "={{ $json.Optin }}",
             "Agence de départ": "={{ $json['Agence de depart'] }}",
-            "received_at_date": "={{ $json.Date }}"
+            "received_at_date": "={{ $json.Date }}",
+            "Reservation": "x"
           },
           "matchingColumns": [],
           "schema": [
@@ -197,6 +209,16 @@
               "display": true,
               "type": "string",
               "canBeUsedToMatch": true
+            },
+            {
+              "id": "Reservation",
+              "displayName": "Reservation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
             }
           ]
         },
@@ -207,8 +229,8 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
       "position": [
-        640,
-        140
+        880,
+        220
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -216,6 +238,43 @@
           "name": "Google Sheets account"
         }
       }
+    },
+    {
+      "parameters": {
+        "textsWithManipulations": {
+          "textsWithManipulationsValues": [
+            {
+              "dataSources": {
+                "dataSource": [
+                  {
+                    "text": "={{ $json.Prenom }}",
+                    "destinationKey": "Prenom"
+                  },
+                  {
+                    "text": "={{ $json.Nom }}",
+                    "destinationKey": "Nom"
+                  }
+                ]
+              },
+              "manipulations": {
+                "manipulation": [
+                  {
+                    "caseType": "titlecase"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "id": "026053d2-d9a5-44dd-8615-5c20725880ee",
+      "name": "TextManipulation",
+      "type": "n8n-nodes-text-manipulation.textManipulation",
+      "typeVersion": 1,
+      "position": [
+        700,
+        220
+      ]
     }
   ],
   "pinData": {},
@@ -228,7 +287,7 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1702572198,
+      "lastTimeChecked": 1702596488,
       "possibleDuplicates": [
         "18c68dd229f8f64b"
       ]
@@ -243,6 +302,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-14T16:43:18.414Z",
-  "versionId": "8b5e9283-c4cb-4229-8b71-a4026e0a8319"
+  "updatedAt": "2023-12-14T23:28:08.766Z",
+  "versionId": "6a8080b0-db82-42da-8a25-6a804f8a24ea"
 }
