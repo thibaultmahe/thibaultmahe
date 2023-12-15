@@ -1,0 +1,108 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Phone Number Parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-14T23:50:41.730Z",
+  "id": "Nd1VOfdzW8X0uSNd",
+  "meta": null,
+  "name": "Telephone au format SMS",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "4347e1ca-8a4a-4b90-b9ec-dbdbf1ce2e0e",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        700,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1v2bfAESyrUyKOMKqA9x4Qw2APXw8NFOSkOt4sc7iTtU",
+          "mode": "list",
+          "cachedResultName": "SEAVAN",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1v2bfAESyrUyKOMKqA9x4Qw2APXw8NFOSkOt4sc7iTtU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Feuille 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1v2bfAESyrUyKOMKqA9x4Qw2APXw8NFOSkOt4sc7iTtU/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "19f8b031-773e-4525-bd54-f2e8fd7b6821",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        260
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "defaultCountry": "FR",
+        "phonenumber": "={{ $json.MOBILE }}"
+      },
+      "id": "eedbda75-6ea9-4295-9876-08fc0feb8cd4",
+      "name": "Phone Number Parser",
+      "type": "@splainez/n8n-nodes-phonenumber-parser.phoneNumberParser",
+      "typeVersion": 1,
+      "position": [
+        1140,
+        260
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2023-12-14T23:54:33.173Z",
+      "updatedAt": "2023-12-14T23:54:33.173Z",
+      "id": "VsFdHCR75zszLNoH",
+      "name": "Formatage des donnees"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2023-12-14T23:57:27.329Z",
+  "versionId": "6c6d7d01-6f14-4600-8336-a958a7636991"
+}
