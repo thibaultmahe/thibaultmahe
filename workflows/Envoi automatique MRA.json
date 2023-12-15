@@ -228,7 +228,7 @@
       "parameters": {
         "operation": "sendTemplate",
         "templateId": 46,
-        "receipients": "={{ $json.EMAIL }}",
+        "receipients": "=\n {{ $json.Email }}",
         "additionalFields": {}
       },
       "id": "dc37efe2-578d-4314-8785-899ece7fc091",
@@ -283,7 +283,7 @@
       "parameters": {
         "operation": "sendTemplate",
         "templateId": 46,
-        "receipients": "={{ $json.EMAIL }}",
+        "receipients": "={{ $json.Email }}",
         "additionalFields": {}
       },
       "id": "839189b8-5e7c-4526-996e-8b3115eb3769",
@@ -330,6 +330,6 @@
     }
   ],
   "triggerCount": 3,
-  "updatedAt": "2023-12-11T13:32:50.772Z",
-  "versionId": "8b82e834-43cb-40ad-96fc-16d8096783e4"
+  "updatedAt": "2023-12-15T08:30:38.394Z",
+  "versionId": "74c6ce1c-2041-4996-abce-74d843f05fe3"
 }
