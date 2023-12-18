@@ -319,7 +319,7 @@
           "interval": [
             {
               "field": "minutes",
-              "minutesInterval": 120
+              "minutesInterval": 30
             }
           ]
         }
@@ -358,6 +358,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2023-12-14T23:43:46.518Z",
-  "versionId": "4e0b3b46-bf25-4ad7-b3cd-3df3579b3170"
+  "updatedAt": "2023-12-18T14:36:21.366Z",
+  "versionId": "c5fdefdb-a18e-4339-8784-cb734ca22a52"
 }
