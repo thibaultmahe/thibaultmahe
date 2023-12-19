@@ -163,7 +163,7 @@
             },
             {
               "name": "Optin",
-              "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=la newsletter :<br\\/>)(.*)(?=<\\/p><p>--<br\\/>Attention les inscriptions)/g)[0] }}"
+              "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=la newsletter :<br\\/>)(.*)(?=<\\/p><p>--<br\\/>Tous les contacts)/g)[0] }}"
             },
             {
               "name": "Email",
@@ -600,9 +600,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1702932367,
+      "lastTimeChecked": 1702982331,
       "possibleDuplicates": [
-        "18c7eadcb4edbe72"
+        "18c81a82d7165c51"
       ]
     }
   },
@@ -615,6 +615,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-18T20:46:22.102Z",
-  "versionId": "04249032-94c8-4f1d-906c-bc44efa8e137"
+  "updatedAt": "2023-12-19T10:39:08.127Z",
+  "versionId": "f2ec5093-3732-491d-a83d-f9eaf5ebf816"
 }
