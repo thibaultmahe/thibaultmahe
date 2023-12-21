@@ -1,0 +1,363 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Filtre les stations publiques (enleve R)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Filtre les stations publiques (enleve R)": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-21T14:12:30.366Z",
+  "id": "XMGav27EnXBmxmvO",
+  "meta": null,
+  "name": "Stations GNL Espagne",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProducto/19",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "75e1b6b3-2494-40af-a0e7-d69e1c9f8a55",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        120,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "ListaEESSPrecio",
+        "include": "=noOtherFields",
+        "options": {}
+      },
+      "id": "0eaa7e3c-7424-43a1-a9fb-69f731383f4e",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3.1,
+      "position": [
+        300,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "path": "stations-GNL-espagnoles",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "id": "6b4fec79-b6f3-4a96-b1db-e3534644fe3d",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        120
+      ],
+      "webhookId": "d0b08551-d258-478a-95e0-174c32e68d05"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.horairesouverture }}",
+              "value2": "L-D: 24H"
+            }
+          ]
+        }
+      },
+      "id": "993bf7ef-12b0-4dba-91ad-e7758dd283be",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        820,
+        20
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "125fe4ff-a658-468e-b044-57d4189b3572",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1160,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture",
+              "stringValue": "Oui"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fce93a79-0a4f-4ffe-bfc8-e4bc255dc281",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        -80
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "139dbf44-c3ef-4e6b-800f-dc3aab601dd5",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1000,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json['Tipo Venta'] }}",
+              "value2": "P"
+            }
+          ]
+        }
+      },
+      "id": "6349e732-0eda-4d5f-b4e3-158b2be627bd",
+      "name": "Filtre les stations publiques (enleve R)",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        480,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "adress",
+              "stringValue": "={{ $json.Dirección }} {{ $json['C.P.'] }} {{ $json.Municipio }}"
+            },
+            {
+              "name": "horairesouverture",
+              "stringValue": "={{ $json.Horario }}"
+            },
+            {
+              "name": "latitude",
+              "type": "numberValue",
+              "numberValue": "={{ $json[\"Latitud\"].replace(\",\", \".\") }}"
+            },
+            {
+              "name": "longitude",
+              "type": "numberValue",
+              "numberValue": "={{ $json['Longitud (WGS84)'].replace(\",\", \".\") }}"
+            },
+            {
+              "name": "prixgnl",
+              "stringValue": "={{ $json.PrecioProducto }}"
+            },
+            {
+              "name": "Titre de la fiche",
+              "stringValue": "={{ $json.Rótulo }}"
+            },
+            {
+              "name": "statut",
+              "stringValue": "ouverte"
+            },
+            {
+              "name": "carburant",
+              "stringValue": "gnl"
+            },
+            {
+              "name": "fonctionnement",
+              "stringValue": "ras"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "57daa30a-1ccd-4d36-af7b-a63b12840b30",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        660,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "id": "a5e48ffb-538c-4991-b3ef-92f0c634a25d",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -100,
+        -140
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": [
+        0
+      ]
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-12-11T09:06:36.362Z",
+      "updatedAt": "2023-12-11T09:06:36.362Z",
+      "id": "pu1HKJmBOsnvJ7E5",
+      "name": "NG Maps"
+    }
+  ],
+  "triggerCount": 2,
+  "updatedAt": "2023-12-21T14:30:14.955Z",
+  "versionId": "1308fb8a-699e-4e11-8e6c-1d6e7a88ab84"
+}
