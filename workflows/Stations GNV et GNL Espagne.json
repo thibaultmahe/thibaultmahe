@@ -1,0 +1,865 @@
+{
+  "active": true,
+  "connections": {
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Item Lists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists": {
+      "main": [
+        [
+          {
+            "node": "Filtre les stations publiques (enleve R)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Filtre les stations publiques (enleve R)": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "IF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Item Lists3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Item Lists3": {
+      "main": [
+        [
+          {
+            "node": "Filtre les stations publiques (enleve R)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filtre les stations publiques (enleve R)1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "IF1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "IF2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "IF3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2023-12-12T14:50:49.092Z",
+  "id": "YuVWPAX6r0GpfLQP",
+  "meta": null,
+  "name": "Stations GNV et GNL Espagne",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProducto/18",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "7a4bbba3-ce5c-4e3b-90f0-bdee5e864698",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -260,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "ListaEESSPrecio",
+        "include": "=noOtherFields",
+        "options": {}
+      },
+      "id": "9852d720-79e0-4d20-bbd4-b1f990f1afab",
+      "name": "Item Lists",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3.1,
+      "position": [
+        -120,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.horairesouverture }}",
+              "value2": "L-D: 24H"
+            }
+          ]
+        }
+      },
+      "id": "c1f1b9af-e9e0-4b14-9145-f349c01d372a",
+      "name": "IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        360,
+        -440
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "3fd73a52-6e27-41b8-bcdb-2d4fefa54aed",
+      "name": "Merge",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        700,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture",
+              "stringValue": "Oui"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c9792d00-112b-4a14-b648-28561a30a62a",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        520,
+        -500
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5b5d7a7d-1221-432d-bc0c-7225e75b15a9",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        520,
+        -360
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json['Tipo Venta'] }}",
+              "value2": "P"
+            }
+          ]
+        }
+      },
+      "id": "e4646a18-cd33-4e99-b26d-168cbfdc1cef",
+      "name": "Filtre les stations publiques (enleve R)",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        40,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "adress",
+              "stringValue": "={{ $json.Dirección }} {{ $json['C.P.'] }} {{ $json.Municipio }}"
+            },
+            {
+              "name": "horairesouverture",
+              "stringValue": "={{ $json.Horario }}"
+            },
+            {
+              "name": "latitude",
+              "type": "numberValue",
+              "numberValue": "={{ $json[\"Latitud\"].replace(\",\", \".\") }}"
+            },
+            {
+              "name": "longitude",
+              "stringValue": "={{ $json['Longitud (WGS84)'].replace(\",\", \".\") }}"
+            },
+            {
+              "name": "prixgnc",
+              "stringValue": "={{ $json.PrecioProducto }}"
+            },
+            {
+              "name": "Titre de la fiche",
+              "stringValue": "={{ $json.Rótulo }}"
+            },
+            {
+              "name": "statut",
+              "stringValue": "ouverte"
+            },
+            {
+              "name": "carburant",
+              "stringValue": "gnv"
+            },
+            {
+              "name": "fonctionnement",
+              "stringValue": "ras"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "b80a4e17-cc2f-4419-8ed0-e5a0be45002e",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        200,
+        -440
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroProducto/19",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "df47ad41-34b8-4dc6-ba8e-b5631d384ed4",
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        -280,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "ListaEESSPrecio",
+        "include": "=noOtherFields",
+        "options": {}
+      },
+      "id": "2eb7b72b-3841-47e8-893b-61f14cdf6367",
+      "name": "Item Lists3",
+      "type": "n8n-nodes-base.itemLists",
+      "typeVersion": 3.1,
+      "position": [
+        -120,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json['Tipo Venta'] }}",
+              "value2": "P"
+            }
+          ]
+        }
+      },
+      "id": "8c996843-ca78-4b4a-a6d9-dff51f0a52ad",
+      "name": "Filtre les stations publiques (enleve R)1",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 1,
+      "position": [
+        40,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "adress",
+              "stringValue": "={{ $json.Dirección }} {{ $json['C.P.'] }} {{ $json.Municipio }}"
+            },
+            {
+              "name": "horairesouverture",
+              "stringValue": "={{ $json.Horario }}"
+            },
+            {
+              "name": "latitude",
+              "type": "numberValue",
+              "numberValue": "={{ $json[\"Latitud\"].replace(\",\", \".\") }}"
+            },
+            {
+              "name": "longitude",
+              "stringValue": "={{ $json['Longitud (WGS84)'].replace(\",\", \".\") }}"
+            },
+            {
+              "name": "prixgnl",
+              "stringValue": "={{ $json.PrecioProducto }}"
+            },
+            {
+              "name": "Titre de la fiche",
+              "stringValue": "={{ $json.Rótulo }}"
+            },
+            {
+              "name": "statut",
+              "stringValue": "ouverte"
+            },
+            {
+              "name": "carburant",
+              "stringValue": "gnl"
+            },
+            {
+              "name": "fonctionnement",
+              "stringValue": "ras"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "90f7f458-938b-4c9d-92ce-0a0299334e06",
+      "name": "Edit Fields3",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        200,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.horairesouverture }}",
+              "value2": "L-D: 24H"
+            }
+          ]
+        }
+      },
+      "id": "fcbb9142-a7fa-4ea0-9e71-e98bc39aefb7",
+      "name": "IF1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        340,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture",
+              "stringValue": "Oui"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "716aa23a-d9c6-4093-a4b5-3c2a2767217d",
+      "name": "Edit Fields4",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        500,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "horairesouverture"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "285120c1-b455-4f0e-a424-24cfaa4a29ba",
+      "name": "Edit Fields5",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        500,
+        100
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "e042c1aa-9844-4118-aa68-2409cebe5e03",
+      "name": "Merge1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        680,
+        20
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "longitude",
+              "field2": "longitude"
+            }
+          ]
+        },
+        "joinMode": "keepEverything",
+        "options": {}
+      },
+      "id": "13ffb297-2765-4cf8-969d-9796690570bd",
+      "name": "Merge2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        840,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.prixgnc }}",
+              "operation": "isNotEmpty"
+            },
+            {
+              "value1": "={{ $json.prixgnl }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "8965eff8-fee4-410b-a0e7-9ad7e6415908",
+      "name": "IF2",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        -200
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "carburant",
+              "stringValue": "gnv,gnl"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "00452f86-cb9e-4338-9393-025f23d1fc79",
+      "name": "Edit Fields6",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1120,
+        -380
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.prixgnc }}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      },
+      "id": "f26b2840-8748-4443-a9c9-720da3124f0a",
+      "name": "IF3",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "carburant",
+              "stringValue": "gnv"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b2e8c737-e9f9-42f5-954d-fee72d74f8be",
+      "name": "Edit Fields7",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1200,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "carburant",
+              "stringValue": "gnl"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ac864284-c029-43d8-b748-ea064f70028d",
+      "name": "Edit Fields8",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1200,
+        200
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "814ba7ac-4182-438a-9083-c7ae8e167621",
+      "name": "Merge3",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1340,
+        20
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "c54bbbb7-8559-4f55-b519-57a62091fdac",
+      "name": "Merge4",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        1500,
+        -180
+      ]
+    },
+    {
+      "parameters": {
+        "path": "stations-gnv-gnl-espagne",
+        "responseMode": "lastNode",
+        "responseData": "allEntries",
+        "options": {}
+      },
+      "id": "6c0a1d08-bbf7-4889-a7ec-dd9f4b65e0c8",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        -220
+      ],
+      "webhookId": "50e2e501-f60e-4008-b033-0864b5a9e896"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
+  },
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrencyRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-12-11T09:06:36.362Z",
+      "updatedAt": "2023-12-11T09:06:36.362Z",
+      "id": "pu1HKJmBOsnvJ7E5",
+      "name": "NG Maps"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2023-12-27T16:48:12.909Z",
+  "versionId": "c969a798-2725-4533-943a-c351e53108a8"
+}
