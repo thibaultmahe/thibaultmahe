@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "HTTP Request": {
       "main": [
@@ -17,17 +17,6 @@
         [
           {
             "node": "Filtre les stations publiques (enleve R)",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Webhook": {
-      "main": [
-        [
-          {
-            "node": "HTTP Request",
             "type": "main",
             "index": 0
           }
@@ -147,23 +136,6 @@
         300,
         20
       ]
-    },
-    {
-      "parameters": {
-        "path": "stations-espagnoles",
-        "responseMode": "lastNode",
-        "responseData": "allEntries",
-        "options": {}
-      },
-      "id": "58a04c7a-d20f-440f-9bec-8544520bdb11",
-      "name": "Webhook",
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 1,
-      "position": [
-        -80,
-        120
-      ],
-      "webhookId": "f86fa526-2be4-4760-a024-f1497be40f19"
     },
     {
       "parameters": {
@@ -358,6 +330,6 @@
     }
   ],
   "triggerCount": 2,
-  "updatedAt": "2023-12-18T14:36:21.366Z",
-  "versionId": "c5fdefdb-a18e-4339-8784-cb734ca22a52"
+  "updatedAt": "2023-12-27T16:49:50.346Z",
+  "versionId": "6a44af2f-1182-4703-ba06-42f0c2c219be"
 }
