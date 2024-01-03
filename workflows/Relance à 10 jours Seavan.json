@@ -12,17 +12,6 @@
         ]
       ]
     },
-    "Tous les jours à 8h": {
-      "main": [
-        [
-          {
-            "node": "Lis la page des demandes de devis",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Lis la page des demandes de devis": {
       "main": [
         [
@@ -86,6 +75,24 @@
             "type": "main",
             "index": 0
           }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tous les jours à 15h": {
+      "main": [
+        [
+          {
+            "node": "Lis la page des demandes de devis",
+            "type": "main",
+            "index": 0
+          }
         ]
       ]
     }
@@ -108,25 +115,6 @@
       "typeVersion": 2,
       "position": [
         120,
-        60
-      ]
-    },
-    {
-      "parameters": {
-        "rule": {
-          "interval": [
-            {
-              "triggerAtHour": 8
-            }
-          ]
-        }
-      },
-      "id": "1a94aa81-317d-446c-9510-67a4c7795002",
-      "name": "Tous les jours à 8h",
-      "type": "n8n-nodes-base.scheduleTrigger",
-      "typeVersion": 1.1,
-      "position": [
-        -140,
         60
       ]
     },
@@ -279,8 +267,8 @@
       "type": "n8n-nodes-base.emailSend",
       "typeVersion": 2.1,
       "position": [
-        880,
-        60
+        940,
+        -200
       ],
       "credentials": {
         "smtp": {
@@ -288,6 +276,37 @@
           "name": "SMTP charline"
         }
       }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 15,
+              "triggerAtMinute": 8
+            }
+          ]
+        }
+      },
+      "id": "1a94aa81-317d-446c-9510-67a4c7795002",
+      "name": "Tous les jours à 15h",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -140,
+        60
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "1925ca84-30e3-4c94-a836-81ac03c61c11",
+      "name": "No Operation, do nothing",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        880,
+        60
+      ]
     }
   ],
   "pinData": {},
@@ -309,6 +328,9 @@
     },
     "node:Tous les jours à 8h": {
       "recurrencyRules": []
+    },
+    "node:Tous les jours à 15h": {
+      "recurrencyRules": []
     }
   },
   "tags": [
@@ -320,6 +342,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-02T13:40:06.938Z",
-  "versionId": "5e4d6ef8-df76-4b95-bae4-49aae713c5ea"
+  "updatedAt": "2024-01-03T14:49:37.314Z",
+  "versionId": "72573517-b7e3-4f91-9d75-d6769d49423b"
 }
