@@ -132,7 +132,7 @@
         "rule": {
           "interval": [
             {
-              "triggerAtHour": 7
+              "triggerAtHour": 20
             }
           ]
         }
@@ -267,6 +267,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2023-12-14T16:55:27.185Z",
-  "versionId": "1061374b-15b1-4a1e-a482-bdbe23bd798d"
+  "updatedAt": "2024-01-03T14:46:59.955Z",
+  "versionId": "b1dfbc4c-47af-45d3-9c5b-e6bc34f78ba9"
 }
