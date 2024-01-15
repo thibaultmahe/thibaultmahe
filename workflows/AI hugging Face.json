@@ -42,20 +42,7 @@
     },
     {
       "parameters": {
-        "prompt": "=Tu es un assistant français. Merci de répondre gentiment.\nQ: {{ $json.input }}\nA: "
-      },
-      "id": "1d821193-7e17-4706-a8bc-71ee9dda1ef4",
-      "name": "Basic LLM Chain",
-      "type": "@n8n/n8n-nodes-langchain.chainLlm",
-      "position": [
-        960,
-        800
-      ],
-      "typeVersion": 1
-    },
-    {
-      "parameters": {
-        "model": "bigscience/bloom",
+        "model": "mistralai/Mixtral-8x7B-Instruct-v0.1",
         "options": {
           "frequencyPenalty": 2,
           "maxTokens": 512,
@@ -87,8 +74,21 @@
       "name": "Sticky Note",
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        460,
-        460
+        500,
+        440
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "prompt": "=Tu es un assistant français. Tu ne réponds que en Français. Si tu ne sais pas la réponse, tu n'inventes pas, tu dis que tu ne sais pas. Tu dois utiliser des emojis dans ta réponse.\nQ: {{ $json.input }}\nA: "
+      },
+      "id": "1d821193-7e17-4706-a8bc-71ee9dda1ef4",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "position": [
+        960,
+        800
       ],
       "typeVersion": 1
     }
@@ -100,6 +100,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-12-30T13:02:42.039Z",
-  "versionId": "3447f023-af51-4c82-a0a4-c1fd6ed6fff7"
+  "updatedAt": "2024-01-15T14:07:15.876Z",
+  "versionId": "14fe23e7-9bd9-41c4-8d4d-e7c7548bc449"
 }
