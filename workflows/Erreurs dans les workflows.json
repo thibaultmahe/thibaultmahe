@@ -8,8 +8,18 @@
             "node": "Gmail",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
           }
         ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        []
       ]
     }
   },
@@ -53,6 +63,30 @@
           "name": "Gmail account"
         }
       }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://smsapi.free-mobile.fr/sendmsg?user=44034514&pass=Nh13AEJkFSgXzd",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "msg",
+              "value": "=Erreur dans l'execution du workflow n8n : {{ $json.workflow.name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "731229cc-1a77-4e8e-bf45-01715856b725",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        340
+      ]
     }
   ],
   "pinData": {},
@@ -65,6 +99,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2023-12-11T13:30:16.377Z",
-  "versionId": "ce43055b-5ee6-4eaa-9660-da2b5d294a8e"
+  "updatedAt": "2024-01-15T13:25:42.869Z",
+  "versionId": "6bab2caf-1e9f-4741-89ac-bddb47dabbf9"
 }
