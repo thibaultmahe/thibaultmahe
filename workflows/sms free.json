@@ -1,0 +1,66 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-15T13:18:21.878Z",
+  "id": "sfGuWVInQZFxZJMj",
+  "meta": null,
+  "name": "sms free",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "9acd1b31-f8ae-448c-9385-658f78863e9d",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        500,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://smsapi.free-mobile.fr/sendmsg?user=44034514&pass=Nh13AEJkFSgXzd",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "msg",
+              "value": "coucou"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "73b8b87d-3abe-44d0-8990-78bf56a22f00",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        720,
+        200
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-15T13:22:21.620Z",
+  "versionId": "4d44e565-1b49-48f3-913f-cdee2cfabe88"
+}
