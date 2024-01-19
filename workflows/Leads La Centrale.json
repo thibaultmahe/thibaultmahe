@@ -53,7 +53,9 @@
   },
   "createdAt": "2023-11-13T13:25:05.784Z",
   "id": "lNgkfLSz809wgV2j",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Leads La Centrale",
   "nodes": [
     {
@@ -276,7 +278,7 @@
         "fromEmail": "ventes@groupepujol.com",
         "toEmail": "={{ $json.Email }}",
         "subject": "=Votre demande au sujet de la {{ $json.Marque }} {{ $json.Modele }}",
-        "text": "=Madame, Monsieur, \nNous avons bien reçu votre demande au sujet de la {{ $json.Marque }} {{ $json.Modele }}. Elle a été transmise à un(e) conseiller(e) commercial(e) qui y répondra dans les plus brefs délais. \nEn attendant, n’hésitez pas à consulter la liste de nos véhicules disponibles sur notre site internet pujolauto.com\n\nAu plaisir de vous rencontrer prochainement dans nos locaux.\n\nTrès cordialement,\nFarid Sarghini,\nResponsable commercial Pujol Auto",
+        "text": "=Madame, Monsieur,\n\nNous avons pris connaissance de votre demande concernant la {{ $json.Marque }} {{ $json.Modele }}.\n\nSachez que tous nos véhicules peuvent être visibles sur nos 4 sites lot-et-garonnais :\n\n- Agen \n- Boé \n- Bias (Villeneuve-sur-Lot) \n- ou Marmande \n\nAfin de faciliter et d'organiser au mieux votre visite, pourriez-vous nous indiquer le site qui vous conviendrait le mieux ?\n\nEn attendant, nous vous invitons à parcourir la liste de nos véhicules disponibles sur notre site internet : pujolauto.com.\n\nAu plaisir de vous rencontrer prochainement dans nos locaux.\n\nTrès cordialement,\n\n\nPS : en cas d'urgence, vous pouvez me joindre directement au 0775218833, m'envoyer un email à :\nventes@groupepujol.com ou bien simplement répondre à cet e-mail.\n\n\nIkrame Jounahi, \nResponsable Commerciale Pujol Auto",
         "options": {
           "bccEmail": ""
         }
@@ -326,7 +328,7 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1705578153,
+      "lastTimeChecked": 1705658082,
       "possibleDuplicates": [
         "18d1c614543b5a6a"
       ]
@@ -341,6 +343,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-18T12:00:37.813Z",
-  "versionId": "7f57b0ba-86a1-496e-b7c7-648d78346311"
+  "updatedAt": "2024-01-19T09:54:42.965Z",
+  "versionId": "07736fc5-fd8e-42ba-9e04-62948496c571"
 }
