@@ -108,7 +108,9 @@
   },
   "createdAt": "2023-11-13T13:06:35.586Z",
   "id": "XLm8ftKbss2JfzVY",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Résa Seavan --> GS --> Mautic",
   "nodes": [
     {
@@ -163,7 +165,7 @@
             },
             {
               "name": "Optin",
-              "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=la newsletter :<br\\/>)(.*)(?=<\\/p><p>--<br\\/>Tous les contacts)/g)[0] }}"
+              "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=la newsletter :<br\\/>)(.*)(?=<\\/p><p>--)/g)[0] }}"
             },
             {
               "name": "Email",
@@ -600,9 +602,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1705878184,
+      "lastTimeChecked": 1705935010,
       "possibleDuplicates": [
-        "18d2e4366900ec83"
+        "18d31a67f928c8ac"
       ]
     }
   },
@@ -615,6 +617,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-21T23:03:55.943Z",
-  "versionId": "f2ec5093-3732-491d-a83d-f9eaf5ebf816"
+  "updatedAt": "2024-01-22T14:50:35.240Z",
+  "versionId": "5a882cee-e5a2-412e-9a8a-03da3ad4d7c5"
 }
