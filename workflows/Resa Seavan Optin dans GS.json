@@ -37,7 +37,9 @@
   },
   "createdAt": "2023-11-13T13:11:34.283Z",
   "id": "RcNIyDDxDxDHZSbo",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Resa Seavan Optin dans GS",
   "nodes": [
     {
@@ -45,7 +47,9 @@
         "pollTimes": {
           "item": [
             {
-              "mode": "everyMinute"
+              "mode": "everyX",
+              "value": 30,
+              "unit": "minutes"
             }
           ]
         },
@@ -92,7 +96,7 @@
             },
             {
               "name": "Optin",
-              "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=la newsletter :<br\\/>)(.*)(?=<\\/p><p>--<br\\/>Tous les)/g)[0] }}"
+              "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=la newsletter :<br\\/>)(.*)(?=<\\/p><p>--)/g)[0] }}"
             },
             {
               "name": "Email",
@@ -260,9 +264,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1705948480,
+      "lastTimeChecked": 1706097580,
       "possibleDuplicates": [
-        "18d3274056073814"
+        "18d3b571a3da6647"
       ]
     }
   },
@@ -275,6 +279,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-22T18:35:02.456Z",
-  "versionId": "ee10965e-2eb3-4120-bc89-2f5db72ee979"
+  "updatedAt": "2024-01-24T12:22:57.108Z",
+  "versionId": "f9a18a5d-cca3-4641-8b48-c6dd16126e78"
 }
