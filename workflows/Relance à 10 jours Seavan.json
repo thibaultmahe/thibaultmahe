@@ -74,11 +74,6 @@
             "node": "Envoie un mail",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Send Email",
-            "type": "main",
-            "index": 0
           }
         ],
         [
@@ -104,7 +99,9 @@
   },
   "createdAt": "2023-12-14T17:13:41.043Z",
   "id": "jtryJlYviNi1PmnB",
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "Relance à 10 jours Seavan",
   "nodes": [
     {
@@ -312,29 +309,6 @@
         880,
         60
       ]
-    },
-    {
-      "parameters": {
-        "fromEmail": "charline@sea-van.com",
-        "toEmail": "charline@sea-van.com",
-        "subject": "Liste des personnes recontactees",
-        "html": "={{ $json.prenom }} {{ $json.nom }} {{ $json.tel }} {{ $json.email }} {{ $json['Agence de départ'] }}",
-        "options": {}
-      },
-      "id": "48bd1136-ac8c-4e22-8603-247719baa5b9",
-      "name": "Send Email",
-      "type": "n8n-nodes-base.emailSend",
-      "typeVersion": 2.1,
-      "position": [
-        920,
-        -60
-      ],
-      "credentials": {
-        "smtp": {
-          "id": "3hH7au2xSqqRQuAo",
-          "name": "SMTP charline"
-        }
-      }
     }
   ],
   "pinData": {},
@@ -370,6 +344,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-12T10:26:02.701Z",
-  "versionId": "f49a0c18-0ad3-40f8-902f-8c71c8f28752"
+  "updatedAt": "2024-01-24T17:35:24.398Z",
+  "versionId": "b2654e2e-e898-4d29-a30b-3979393747a4"
 }
