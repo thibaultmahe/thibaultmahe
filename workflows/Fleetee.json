@@ -1,0 +1,201 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-01-26T15:05:27.147Z",
+  "id": "VOjPXaT7ZHd3vWHn",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Fleetee",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "c92885d7-633c-4bc0-8ec9-80a10f756024",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        320,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.fleetee.io/bookings?status=confirm&min_end_date=2023-01-01%2000%3A00",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "XFp6lZqmNG3QBRrtBoCf46s7AAQEpuWU1YtoOw1X"
+            },
+            {
+              "name": "secret-key",
+              "value": "sk_DLsDjN6V4DaIgk1BFQvWwETJTkmhPpcJLD5tZ7Oqc438pI2ZFYqvMFt3FcXJv"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "2a120ed4-a060-40ba-a8a1-11872507741e",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        460,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "list",
+        "options": {}
+      },
+      "id": "dd472c81-21e8-4bc5-adb8-51fd4600c432",
+      "name": "Split Out",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        580,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "include": "selected",
+        "includeFields": "end_date, customer",
+        "options": {}
+      },
+      "id": "4ea2d843-eeef-4a73-9e0b-e856b973df7f",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        720,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "email",
+              "stringValue": "={{ $json.customer.email }}"
+            },
+            {
+              "name": "Nom",
+              "stringValue": "={{ $json.customer.last_name }}"
+            },
+            {
+              "name": "Prenom",
+              "stringValue": "={{ $json.customer.first_name }}"
+            },
+            {
+              "name": "Fin",
+              "stringValue": "={{ $json.end_date }}"
+            }
+          ]
+        },
+        "include": "none",
+        "options": {}
+      },
+      "id": "36c89a9c-bc97-42ee-864b-b8062264905a",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        860,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Fin",
+              "stringValue": "={{ $json[\"Fin\"].match(/(?<=)(.*)(?=\\s)/g)[0] }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "includeFields": "Nom, Prenom, email",
+        "options": {}
+      },
+      "id": "fae3ddcd-01a3-4b1f-845b-1679fe57d182",
+      "name": "Edit Fields2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [
+        1020,
+        240
+      ]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-01-26T16:24:57.934Z",
+  "versionId": "62b6fb10-c994-42f9-9baa-cd18a638e468"
+}
