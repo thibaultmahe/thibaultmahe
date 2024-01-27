@@ -305,7 +305,7 @@
         "fromEmail": "ventes@groupepujol.com",
         "toEmail": "={{ $json.Email }}",
         "subject": "=Votre demande au sujet de la {{ $json.Marque }} {{ $json.Modele }}",
-        "text": "=Madame, Monsieur,\nVous nous avez contacté au sujet d'une {{ $json.Marque }} {{ $json.Modele }} il y a quelques jours.\nDans un souci de qualité, nous souhaitons nous assurer que nos équipes commerciales ont bien pris contact avec vous.\nSi tel est le cas, vous pouvez ignorer ce message.\nEn cas contraire nous tenons à nous en excuser. Vous pouvez me joindre directement au 0768016454, m'envoyer un email à :\nventes@groupepujol.com ou bien simplement répondre à cet e-mail.\n\nTrès cordialement,\nFarid Sarghini\nResponsable commerciale Pujol Auto",
+        "text": "=Madame, Monsieur,\nVous nous avez contacté au sujet d'une {{ $json.Marque }} {{ $json.Modele }} il y a quelques jours.\nDans un souci de qualité, nous souhaitons nous assurer que nos équipes commerciales ont bien pris contact avec vous.\nSi tel est le cas, vous pouvez ignorer ce message.\nEn cas contraire nous tenons à nous en excuser. Vous pouvez me joindre directement au 0768016454, m'envoyer un email à :\nventes@groupepujol.com ou bien simplement répondre à cet e-mail.\n\nTrès cordialement,\nIkrame Jounahi\nResponsable commerciale Pujol Auto",
         "options": {}
       },
       "id": "073f4bd7-6872-4e51-8970-2b79104aed1a",
@@ -330,9 +330,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1706168972,
+      "lastTimeChecked": 1706369011,
       "possibleDuplicates": [
-        "18d3f9872cfc6775"
+        "18d4b84cc8bf9cb3"
       ]
     }
   },
@@ -345,6 +345,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-25T08:15:15.326Z",
-  "versionId": "b11968ec-1ec0-4d7d-8880-eba5d88daefb"
+  "updatedAt": "2024-01-27T15:35:30.371Z",
+  "versionId": "c9c52eec-9196-468d-b75d-1fd7ef4d494d"
 }
