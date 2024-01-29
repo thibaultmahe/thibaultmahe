@@ -264,9 +264,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1706461051,
+      "lastTimeChecked": 1706480261,
       "possibleDuplicates": [
-        "18d51013da4259a5"
+        "18d52265d51967ec"
       ]
     }
   },
@@ -279,6 +279,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-01-28T17:00:12.759Z",
+  "updatedAt": "2024-01-28T22:30:12.014Z",
   "versionId": "f9a18a5d-cca3-4641-8b48-c6dd16126e78"
 }
