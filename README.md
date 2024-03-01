@@ -1,5 +1,5 @@
-- 👋 Salut je suis @thibaultmahe
-- 👀 Je suis intéressé par GNU/Linux, HTML, CSS, Python et Javascript, j'aime bien BASH et regex
+- 👋 Hello
+- 👀 intéressé par GNU/Linux, HTML, CSS, Python et Javascript, j'aime bien BASH, regex et je me forme aussi à la cyber sécurité
 - 🌱 j'ai terminé ma formation HTML et CSS sur FreeCodeCamp, je suis utilisateur de Linux depuis très longtemps (première installation Mandrake en 1999...)
 - 🗺️ Administrateur de la carte [NG MAPS](https://cngmaps.naturegaz.com/ma) (projet libre sur gitlab : https://gitlab.com/Seballot/gogocarto )
 - Créateur de pas mal de petits sites sous Wordpress
