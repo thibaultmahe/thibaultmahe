@@ -1,0 +1,423 @@
+{
+  "active": true,
+  "connections": {
+    "Gmail Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "TextManipulation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TextManipulation": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Mautic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mautic": {
+      "main": [
+        [
+          {
+            "node": "Mautic2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mautic3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mautic6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-03-04T16:00:29.894Z",
+  "id": "BfGMFBWMMjJAXHrs",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Salon Seavan --> GS --> Mautic",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyX",
+              "value": 15,
+              "unit": "minutes"
+            }
+          ]
+        },
+        "simple": false,
+        "filters": {
+          "q": "subject:Inscription à l'Offre Spéciale Salon"
+        },
+        "options": {}
+      },
+      "id": "5ee22466-96c2-4618-90e7-d6e84a210fea",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        220
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "rAfdKJMN8l7vL9s2",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Date",
+              "stringValue": "={{ (new Date()).toLocaleDateString('fr-FR') }}"
+            },
+            {
+              "name": "Prenom",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Prénom : )(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Nom",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Nom : )(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Tel",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Téléphone : )(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Email",
+              "stringValue": "={{ $json[\"textAsHtml\"].match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)/g)[0] }}"
+            },
+            {
+              "name": "optin",
+              "type": "booleanValue"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "ff758a97-0784-4092-a1a1-0a327aac22a2",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        360,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU",
+          "mode": "list",
+          "cachedResultName": "RESA-SEAVAN-N8N",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 118952460,
+          "mode": "list",
+          "cachedResultName": "InscriptionsSalon",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit#gid=118952460"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ $json.Date }}",
+            "Prenom": "={{ $json.Prenom }}",
+            "Nom": "={{ $json.Nom }}",
+            "Email": "={{ $json.Email }}",
+            "Tel": "={{ $json.Tel }}",
+            "Optin": "={{ $json.optin }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nom",
+              "displayName": "Nom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Prenom",
+              "displayName": "Prenom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Tel",
+              "displayName": "Tel",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Optin",
+              "displayName": "Optin",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "78f2d975-4d41-47b8-8c9d-387c70fb07e5",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        640,
+        220
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "textsWithManipulations": {
+          "textsWithManipulationsValues": [
+            {
+              "dataSources": {
+                "dataSource": [
+                  {
+                    "text": "={{ $json.Prenom }}",
+                    "destinationKey": "Prenom"
+                  },
+                  {
+                    "text": "={{ $json.Nom }}",
+                    "destinationKey": "Nom"
+                  }
+                ]
+              },
+              "manipulations": {
+                "manipulation": [
+                  {
+                    "caseType": "titlecase"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "id": "7ec0730a-3187-4566-9c8e-14eb14e2dea5",
+      "name": "TextManipulation",
+      "type": "n8n-nodes-text-manipulation.textManipulation",
+      "typeVersion": 1,
+      "position": [
+        500,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "email": "={{ $json.Email }}",
+        "firstName": "={{ $json.Prenom }}",
+        "lastName": "={{ $json.Nom }}",
+        "company": "Particuliers",
+        "additionalFields": {
+          "mobile": "={{ $json.Tel }}"
+        },
+        "options": {}
+      },
+      "id": "79cddd76-2559-4210-af5c-d842fe0bd6a6",
+      "name": "Mautic",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        800,
+        220
+      ],
+      "credentials": {
+        "mauticOAuth2Api": {
+          "id": "9tLxJKyzjSjuR5Hn",
+          "name": "Mautic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "resource": "contactSegment",
+        "contactId": "={{ $json.id }}",
+        "segmentId": 3
+      },
+      "id": "8153d30d-c98b-4cbc-a3cc-494ebb8ff075",
+      "name": "Mautic2",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        940,
+        520
+      ],
+      "credentials": {
+        "mauticOAuth2Api": {
+          "id": "9tLxJKyzjSjuR5Hn",
+          "name": "Mautic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "update",
+        "contactId": "={{ $json.id }}",
+        "updateFields": {
+          "tags": [
+            "seavannewsletter",
+            "SalonBdx2024"
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d378dab-5047-4db5-8813-e0d9a0313c4b",
+      "name": "Mautic3",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        320
+      ],
+      "credentials": {
+        "mauticOAuth2Api": {
+          "id": "9tLxJKyzjSjuR5Hn",
+          "name": "Mautic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "operation": "editContactPoint",
+        "contactId": "={{ $json.id }}",
+        "points": 21
+      },
+      "id": "da040466-d8e7-4890-b0fb-623d6cbc64c5",
+      "name": "Mautic6",
+      "type": "n8n-nodes-base.mautic",
+      "typeVersion": 1,
+      "position": [
+        1080,
+        160
+      ],
+      "credentials": {
+        "mauticOAuth2Api": {
+          "id": "9tLxJKyzjSjuR5Hn",
+          "name": "Mautic account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
+  },
+  "staticData": {
+    "node:Gmail Trigger": {
+      "lastTimeChecked": 1709571630,
+      "possibleDuplicates": [
+        "18e0a68e7fa0d89b"
+      ]
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2023-11-13T13:28:04.972Z",
+      "updatedAt": "2023-11-13T13:28:04.972Z",
+      "id": "JD3fTrw1NMj06zE2",
+      "name": "Leads Seavan"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-03-04T17:00:35.870Z",
+  "versionId": "09b1d466-2e20-4209-9130-b0eab83d2dc9"
+}
