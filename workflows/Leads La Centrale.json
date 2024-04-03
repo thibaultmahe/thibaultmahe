@@ -305,7 +305,7 @@
         "fromEmail": "ventes@groupepujol.com",
         "toEmail": "={{ $json.Email }}",
         "subject": "=Votre demande au sujet de la {{ $json.Marque }} {{ $json.Modele }}",
-        "text": "=Madame, Monsieur,\nVous nous avez contacté au sujet d'une {{ $json.Marque }} {{ $json.Modele }} il y a quelques jours.\nDans un souci de qualité, nous souhaitons nous assurer que nos équipes commerciales ont bien pris contact avec vous.\nSi tel est le cas, vous pouvez ignorer ce message.\nEn cas contraire nous tenons à nous en excuser. Vous pouvez me joindre directement au 0768016454, m'envoyer un email à :\nventes@groupepujol.com ou bien simplement répondre à cet e-mail.\n\nTrès cordialement,\nIkrame Jounahi\nResponsable commerciale Pujol Auto",
+        "text": "=Madame, Monsieur,\nVous nous avez contacté au sujet d'une {{ $json.Marque }} {{ $json.Modele }} il y a quelques jours.\nDans un souci de qualité, nous souhaitons nous assurer que nos équipes commerciales ont bien pris contact avec vous.\nSi tel est le cas, vous pouvez ignorer ce message.\nEn cas contraire nous tenons à nous en excuser. Vous pouvez me joindre directement au 0626954683, m'envoyer un email à :\nhugo.guerinault@groupepujol.com ou bien simplement répondre à cet e-mail.\n\nTrès cordialement,\nHugo Guérinault\nResponsable des ventes véhicules occasion Pujol Auto",
         "options": {}
       },
       "id": "073f4bd7-6872-4e51-8970-2b79104aed1a",
@@ -330,9 +330,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1712040452,
+      "lastTimeChecked": 1712150375,
       "possibleDuplicates": [
-        "18e9d901e5c81181"
+        "18ea41d6ae266407"
       ]
     }
   },
@@ -345,6 +345,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-04-02T06:50:35.713Z",
-  "versionId": "c9c52eec-9196-468d-b75d-1fd7ef4d494d"
+  "updatedAt": "2024-04-03T13:25:42.226Z",
+  "versionId": "a086ec31-1854-4087-9944-43617ba31ae3"
 }
