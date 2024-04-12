@@ -280,7 +280,7 @@
         "fromEmail": "ventes@groupepujol.com",
         "toEmail": "={{ $json.Email }}",
         "subject": "=Votre demande au sujet de la {{ $json.Marque }} {{ $json.Modele }}",
-        "text": "=Madame, Monsieur,\n\nNous avons pris connaissance de votre demande concernant la {{ $json.Marque }} {{ $json.Modele }}.\n\nSachez que tous nos véhicules peuvent être visibles sur nos 4 sites lot-et-garonnais :\n\n- Agen \n- Boé \n- Bias (Villeneuve-sur-Lot) \n- ou Marmande \n\nAfin de faciliter et d'organiser au mieux votre visite, pourriez-vous nous indiquer le site qui vous conviendrait le mieux ?\n\nEn attendant, nous vous invitons à parcourir la liste de nos véhicules disponibles sur notre site internet : pujolauto.com.\n\nAu plaisir de vous rencontrer prochainement dans nos locaux.\n\nTrès cordialement,\n\n\nPS : en cas d'urgence, vous pouvez me joindre directement au 0775218833, m'envoyer un email à :\nventes@groupepujol.com ou bien simplement répondre à cet e-mail.\n\n\nIkrame Jounahi, \nResponsable Commerciale Pujol Auto",
+        "text": "=Madame, Monsieur,\n\nNous avons pris connaissance de votre demande concernant la {{ $json.Marque }} {{ $json.Modele }}.\nNous mettons tout en oeuvre pour vous répondre dans les meilleurs délais.\n\nEn attendant, nous vous invitons à parcourir la liste de nos véhicules disponibles sur notre site internet : pujolauto.com.\n\nAu plaisir de vous rencontrer prochainement dans nos locaux.\n\nTrès cordialement,\n\nIkrame Jounahi, \nResponsable Commerciale Pujol Auto\n\nPS : en cas d'urgence, vous pouvez me joindre directement au 0775218833.\n",
         "options": {
           "bccEmail": ""
         }
@@ -330,9 +330,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1712748451,
+      "lastTimeChecked": 1712867670,
       "possibleDuplicates": [
-        "18ec7c355f4b56c1"
+        "18ecede77f4cdf87"
       ]
     }
   },
@@ -345,6 +345,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-04-10T21:04:52.744Z",
-  "versionId": "a086ec31-1854-4087-9944-43617ba31ae3"
+  "updatedAt": "2024-04-11T21:04:25.162Z",
+  "versionId": "ed99b8e8-c190-4339-8888-ecc2f6d1e294"
 }
