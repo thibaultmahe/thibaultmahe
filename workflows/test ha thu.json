@@ -1,0 +1,18 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2024-07-19T09:22:33.308Z",
+  "id": "8pFzi31pg4Q43GB8",
+  "meta": null,
+  "name": "test ha thu",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-07-19T09:22:33.308Z",
+  "versionId": "4a0f5703-60e9-41d2-b247-dfefcc3870e8"
+}
