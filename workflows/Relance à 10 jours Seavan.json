@@ -332,7 +332,8 @@
       "recurrencyRules": []
     },
     "node:Tous les jours à 15h": {
-      "recurrencyRules": []
+      "recurrencyRules": [],
+      "recurrenceRules": []
     }
   },
   "tags": [
