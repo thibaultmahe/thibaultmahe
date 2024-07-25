@@ -257,7 +257,8 @@
       "lastIndexChecked": 3
     },
     "node:Schedule Trigger": {
-      "recurrencyRules": []
+      "recurrencyRules": [],
+      "recurrenceRules": []
     }
   },
   "tags": [
