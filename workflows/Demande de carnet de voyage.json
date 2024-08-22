@@ -996,7 +996,7 @@
             {
               "id": "11bf3fca-8302-451e-bc38-63572944baba",
               "leftValue": "={{ $json.Carnet }}",
-              "rightValue": "Auvergne",
+              "rightValue": "L&amp;#039; Auvergne",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -2327,6 +2327,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-07-23T08:04:28.126Z",
-  "versionId": "50897de0-e08e-4a6b-9a15-4e9b4e06500f"
+  "updatedAt": "2024-08-22T08:59:43.260Z",
+  "versionId": "eb131b8d-3815-47c5-8dc5-6d3dfc03fe26"
 }
