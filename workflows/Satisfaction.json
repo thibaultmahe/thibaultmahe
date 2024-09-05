@@ -1,0 +1,246 @@
+{
+  "active": true,
+  "connections": {
+    "n8n Form Trigger": {
+      "main": [
+        [
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-05T14:04:32.344Z",
+  "id": "KY1UKbxDQOIMErEt",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Satisfaction",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "Pujol-Auto",
+        "formTitle": "Comment jugeriez-vous la prestation de Pujol Auto ?",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Merci de sélectionner une réponse",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "⭐ Médiocre"
+                  },
+                  {
+                    "option": "⭐⭐ Passable"
+                  },
+                  {
+                    "option": "⭐⭐⭐ Bonne"
+                  },
+                  {
+                    "option": "⭐⭐⭐⭐ Excellente"
+                  },
+                  {
+                    "option": "⭐⭐⭐⭐⭐ Exceptionnelle !"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Commentaires",
+              "fieldType": "textarea"
+            },
+            {
+              "fieldLabel": "Votre nom",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Votre adresse e-mail ?",
+              "fieldType": "email",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false,
+          "ignoreBots": true
+        }
+      },
+      "id": "84681198-75fc-49b1-b2a3-40d717c03726",
+      "name": "n8n Form Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.1,
+      "position": [
+        120,
+        200
+      ],
+      "webhookId": "1dcfa859-5230-40d3-a3ee-297009e1b0a2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1h86ntYDITdeMTZlXXoE4BhsiR92YgNbiSDXuYplUyVo",
+          "mode": "list",
+          "cachedResultName": "Avis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1h86ntYDITdeMTZlXXoE4BhsiR92YgNbiSDXuYplUyVo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "avis",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1h86ntYDITdeMTZlXXoE4BhsiR92YgNbiSDXuYplUyVo/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Avis": "={{ $json['Merci de sélectionner une réponse'] }}",
+            "Nom": "={{ $json['Votre nom'] }}",
+            "Email": "={{ $json['Votre adresse e-mail ?'] }}",
+            "Date": "={{ $json.Date }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nom",
+              "displayName": "Nom",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Avis",
+              "displayName": "Avis",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fd411713-1c29-4453-bc80-841565f5a02f",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        540,
+        200
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.submittedAt }}",
+        "format": "custom",
+        "customFormat": "dd/MM/yyyy",
+        "outputFieldName": "Date",
+        "options": {
+          "includeInputFields": true
+        }
+      },
+      "id": "7eee6660-3587-4c85-9981-3886c44a2b53",
+      "name": "Date & Time",
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        320,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "Hugo Guérinault <ventes@groupepujol.com>",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "Merci pour votre confiance 🤩 !",
+        "emailFormat": "text",
+        "text": "Bonjour\net merci pour votre commentaire ⭐⭐⭐⭐⭐ !\nPour nous être utile et valoriser notre concession vous pouvez aussi nous noter sur google :\n➡️ https://g.page/r/CUqldOrSw-hYEAE/review\n\nHugo Guérinault\nChef des ventes",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "d2706d4f-e5f0-4070-9b6c-0df7bd84a665",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        760,
+        200
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "jl6ioonyixzM4V8x",
+          "name": "SMTP groupepujol.com"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 2,
+  "updatedAt": "2024-09-05T14:55:20.380Z",
+  "versionId": "634b648a-1ab0-4014-abe0-2f5d39b7c160"
+}
