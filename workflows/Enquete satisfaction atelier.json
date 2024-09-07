@@ -1,0 +1,711 @@
+{
+  "active": true,
+  "connections": {
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Enquetes de satisfaction",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enquetes de satisfaction": {
+      "main": [
+        [
+          {
+            "node": "⭐⭐⭐⭐⭐",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⭐⭐⭐⭐⭐": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "⭐⭐⭐⭐",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⭐⭐⭐⭐": {
+      "main": [
+        [
+          {
+            "node": "Send Email3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "⭐⭐⭐",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⭐⭐⭐": {
+      "main": [
+        [
+          {
+            "node": "Send Email2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "⭐⭐",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⭐⭐": {
+      "main": [
+        [
+          {
+            "node": "Send Email1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "⭐",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Trigger (IMAP)": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⭐": {
+      "main": [
+        [
+          {
+            "node": "Send Email4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-07T12:04:09.776Z",
+  "id": "qRUG51Tijm7kJP6W",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Enquete satisfaction atelier",
+  "nodes": [
+    {
+      "parameters": {
+        "fields": {
+          "values": [
+            {
+              "name": "Date",
+              "stringValue": "={{ $today.format(\"dd/MM/yyyy\") }}"
+            },
+            {
+              "name": "Nom du client",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Nom du client : )(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Email",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Adresse email : )(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Niveau de satisfaction globale",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=\\n\\n)(.*?)(?=\\n\\n2)/g)[0] }}"
+            },
+            {
+              "name": "Accueil et courtoisie de l'atelier",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=équipe de l'atelier \\?\\n\\n)(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Explications sur les travaux effectués ",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=explications sur les travaux effectués \\?\\n\\n)(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Qualité des travaux",
+              "stringValue": "={{ $json[\"text\"].match(/(?<= Comment évaluez-vous la qualité des travaux effectués \\?\\n\\n)(.*?)(?=\\n)/g)[0] }}"
+            },
+            {
+              "name": "Commentaires et suggestions",
+              "stringValue": "cf. email reçu"
+            },
+            {
+              "name": "Recommandation",
+              "stringValue": "={{ $json[\"text\"].match(/(?<=de votre famille \\?\\n\\n)(.*?)(?=\\n)/g)[0] }}"
+            }
+          ]
+        },
+        "include": "selected",
+        "options": {}
+      },
+      "id": "44e64a1a-4f20-4520-bb63-91b9cddd5d23",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [
+        -60,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1oYN-XJaiZQHos1ycPdoJz6kq46LxrNatKkAGp4Hytgg",
+          "mode": "list",
+          "cachedResultName": "Enquêtes de satisfaction",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oYN-XJaiZQHos1ycPdoJz6kq46LxrNatKkAGp4Hytgg/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 2141690724,
+          "mode": "list",
+          "cachedResultName": "Atelier",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oYN-XJaiZQHos1ycPdoJz6kq46LxrNatKkAGp4Hytgg/edit#gid=2141690724"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ $json.Date }}",
+            "Niveau de satisfaction globale": "={{ $json['Niveau de satisfaction globale'] }}",
+            "Email": "={{ $json.Email }}",
+            "Nom du client": "={{ $json['Nom du client'] }}",
+            "Accueil et courtoisie de l'atelier": "={{ $json['Accueil et courtoisie de l\\'atelier'] }}",
+            "Explications sur les travaux effectués": "={{ $json['Explications sur les travaux effectués '] }}",
+            "Qualité des travaux": "={{ $json['Qualité des travaux'] }}",
+            "Recommandation": "={{ $json.Recommandation }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nom du client",
+              "displayName": "Nom du client",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Niveau de satisfaction globale",
+              "displayName": "Niveau de satisfaction globale",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Accueil et courtoisie de l'atelier",
+              "displayName": "Accueil et courtoisie de l'atelier",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Explications sur les travaux effectués",
+              "displayName": "Explications sur les travaux effectués",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Explications sur les travaux effectués",
+              "displayName": "Explications sur les travaux effectués",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Qualité des travaux",
+              "displayName": "Qualité des travaux",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Recommandation",
+              "displayName": "Recommandation",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "8d9d3e5b-49b8-48d7-be8a-2c702160bcd7",
+      "name": "Enquetes de satisfaction",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [
+        140,
+        440
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b831cf7f-1665-443a-89a1-287a1bc4a222",
+              "leftValue": "={{ $json['Niveau de satisfaction globale'] }}",
+              "rightValue": "⭐⭐⭐⭐⭐",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "b4f7772c-896d-4d42-878a-a9b81bebc783",
+      "name": "⭐⭐⭐⭐⭐",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        360,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b831cf7f-1665-443a-89a1-287a1bc4a222",
+              "leftValue": "={{ $json['Niveau de satisfaction globale'] }}",
+              "rightValue": "⭐⭐⭐⭐",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a37941bb-0f63-49e8-a29b-39a8d5a54cf1",
+      "name": "⭐⭐⭐⭐",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        360,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b831cf7f-1665-443a-89a1-287a1bc4a222",
+              "leftValue": "={{ $json['Niveau de satisfaction globale'] }}",
+              "rightValue": "⭐⭐⭐",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "f0be4af4-13e5-47c5-9949-da07bdaf8203",
+      "name": "⭐⭐⭐",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        360,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b831cf7f-1665-443a-89a1-287a1bc4a222",
+              "leftValue": "={{ $json['Niveau de satisfaction globale'] }}",
+              "rightValue": "⭐⭐",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9054c1e8-311b-4dd7-9591-ad2f5c014915",
+      "name": "⭐⭐",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        360,
+        640
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "b831cf7f-1665-443a-89a1-287a1bc4a222",
+              "leftValue": "={{ $json['Niveau de satisfaction globale'] }}",
+              "rightValue": "⭐",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "fef5e77a-50a5-44b9-a829-f1cd58dc230a",
+      "name": "⭐",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        360,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "Arnaud Luis <sav@groupepujol.com>",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "Merci pour votre confiance 🙏🏻",
+        "html": "<p>Madame, Monsieur,</p>\n<p>Nous tenons &agrave; vous remercier pour votre r&eacute;cent achat et pour votre retour positif.</p>\n<p>Votre satisfaction est notre priorit&eacute; absolue, et nous sommes ravis de savoir que vous &ecirc;tes&nbsp;convaincus de votre exp&eacute;rience avec nous.</p>\n<p>Pour nous aider &agrave; continuer &agrave; offrir un service de qualit&eacute; et &agrave; attirer de nouveaux clients, nous vous serions reconnaissants si vous pouviez prendre quelques&nbsp;instants pour laisser un commentaire et une note sur notre fiche Google. Votre avis est pr&eacute;cieux et nous aide &agrave; nous am&eacute;liorer.</p>\n<p>Voici comment vous pouvez nous aider :</p>\n<ul>\n<li>Acc&eacute;dez &agrave; notre <a href=\"https://g.page/r/CUqldOrSw-hYEAE/review\" target=\"_blank\">fiche Google</a></li>\n<li>Indiquer votre note, r&eacute;diger votre avis</li>\n<li>Partagez votre exp&eacute;rience !</li>\n</ul>\n<p>Nous sommes une <span style=\"text-decoration: underline;\">entreprise locale et familiale</span> et votre soutien a r&eacute;ellement un sens pour nous.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Si vous avez des questions ou des pr&eacute;occupations, n'h&eacute;sitez pas &agrave; nous contacter directement.</p>\n<p class=\"western\" align=\"left\">Encore une fois, merci pour votre confiance et votre fid&eacute;lit&eacute;.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Cordialement,</p>\n<table class=\"sh-src\" style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"border-collapse: separate; margin: 0px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 35px 0px 0px; vertical-align: middle;\" align=\"center\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<p style=\"margin: 1px;\"><a href=\"https://www.pujolauto.com/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 125px;\" title=\"Logo\" src=\"https://pujolauto.com/wp-content/uploads/2022/12/pujol-auto2transpbleu120.png\" alt=\"Pujol Auto\" width=\"125\" height=\"100\" /></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n<td style=\"padding: 1px 0px 0px; border-right: 2px solid #0a0c3e;\">&nbsp;</td>\n<td style=\"padding: 0px 1px 0px 35px; vertical-align: middle;\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 20px 0px; font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; font-weight: bold; color: #000000; white-space: nowrap; margin: 1px;\">Arnaud Luis</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\"><span style=\"color: #333333;\">Responsable Atelier</span></p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">&nbsp;</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">GROUPE PUJOL</p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse; width: 229px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/email/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"mailto:arnaud.luis@groupepujol.com\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">arnaud.luis@groupepujol.com</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/phone/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"tel:+33626954683\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">+ 33 7 76 31 42 28</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/map/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">Avenue du Midi, 47000 Agen</span></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/website/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000001 !important; font-weight: bold; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\" href=\"https://www.pujolauto.com/\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\">pujolauto.com</span></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.linkedin.com/company/groupe-pujol/mycompany/?viewAsMember=true\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linkedin/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.instagram.com/groupepujol/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/instagram/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://linktr.ee/groupepujol\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linktree/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"max-width: 600px; margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 30px 1px 0px 0px; font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888; margin: 1px;\">Ce message est confidentiel et destin&eacute; &agrave; l'usage du (des) seul(s) destinataire(s) concern&eacute;(s). Il peut &eacute;galement contenir des informations &agrave; usage restreint, soumises &agrave; droits d'auteur ou &agrave; d'autres dispositions l&eacute;gales. Si vous l'avez re&ccedil;u par erreur, nous vous prions de bien vouloir nous en informer par retour et de l'effacer de votre syst&egrave;me. La copie du message et la communication de son contenu &agrave; quelque personne que ce soit sont interdites. La transmission erron&eacute;e de ce message n'entra&icirc;ne ni la renonciation ni la lev&eacute;e de la confidentialit&eacute; et du secret professionnel.</p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n<p class=\"demoTitle\">&nbsp;&nbsp;&nbsp;&nbsp;</p>\n<p>&nbsp;</p>",
+        "options": {
+          "appendAttribution": false,
+          "bccEmail": "arnaud.luis@groupepujol.com"
+        }
+      },
+      "id": "7407f68d-8820-43e6-8920-28b9413b6d79",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        0
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "MHvTk1YRtUEqDHCN",
+          "name": "SMTP sav@groupepujol.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "postProcessAction": "nothing",
+        "format": "resolved",
+        "options": {
+          "forceReconnect": 60
+        }
+      },
+      "id": "e59acee5-0cd4-4ec7-8bf3-2ec00e5e6b26",
+      "name": "Email Trigger (IMAP)",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [
+        -500,
+        380
+      ],
+      "credentials": {
+        "imap": {
+          "id": "dvL3uEClkEgJ2gzN",
+          "name": "IMAP account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "556e2354-863e-4e1a-9288-bcfb97cd8821",
+              "leftValue": "={{ $json.subject }}",
+              "rightValue": "Résultat enquête de satisfaction atelier",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d04609f9-90cb-40ae-a7b7-ac76f125a5f2",
+      "name": "If1",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.1,
+      "position": [
+        -300,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "Arnaud Luis <sav@groupepujol.com>",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "Nous sommes désolés de ne pas avoir été à la hauteur",
+        "html": "<p>Madame, Monsieur,</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Nous tenons &agrave; vous remercier sinc&egrave;rement pour avoir pris le temps de r&eacute;pondre &agrave; notre questionnaire de satisfaction. Nous sommes d&eacute;sol&eacute;s d'apprendre que votre exp&eacute;rience n'a pas &eacute;t&eacute; &agrave; la hauteur de vos attentes.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Votre retour est extr&ecirc;mement important pour nous, car il nous permet de comprendre o&ugrave; nous pouvons nous am&eacute;liorer. Nous prenons vos commentaires tr&egrave;s au s&eacute;rieux et nous allons tout mettre en &oelig;uvre pour corriger les points que vous avez mentionn&eacute;s.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Nous aimerions avoir l'opportunit&eacute; de discuter plus en d&eacute;tail de votre exp&eacute;rience et de voir comment nous pouvons am&eacute;liorer notre service. Si vous avez quelques minutes &agrave; nous accorder, n'h&eacute;sitez pas &agrave; nous contacter directement au 07 76 31 42 28 ou par email &agrave; arnaud.luis@groupepujol;com.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Encore une fois, nous vous pr&eacute;sentons nos excuses pour tout inconv&eacute;nient caus&eacute; et nous vous remercions pour votre compr&eacute;hension et votre patience.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Cordialement,</p>\n<table class=\"sh-src\" style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"border-collapse: separate; margin: 0px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 35px 0px 0px; vertical-align: middle;\" align=\"center\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<p style=\"margin: 1px;\"><a href=\"https://www.pujolauto.com/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 125px;\" title=\"Logo\" src=\"https://pujolauto.com/wp-content/uploads/2022/12/pujol-auto2transpbleu120.png\" alt=\"Pujol Auto\" width=\"125\" height=\"100\" /></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n<td style=\"padding: 1px 0px 0px; border-right: 2px solid #0a0c3e;\">&nbsp;</td>\n<td style=\"padding: 0px 1px 0px 35px; vertical-align: middle;\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 20px 0px; font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; font-weight: bold; color: #000000; white-space: nowrap; margin: 1px;\">Arnaud Luis</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\"><span style=\"color: #333333;\">Responsable Atelier</span></p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">&nbsp;</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">GROUPE PUJOL</p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse; width: 229px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/email/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"mailto:arnaud.luis@groupepujol.com\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">arnaud.luis@groupepujol.com</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/phone/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"tel:+33626954683\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">+ 33 7 76 31 42 28</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/map/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">Avenue du Midi, 47000 Agen</span></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/website/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000001 !important; font-weight: bold; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\" href=\"https://www.pujolauto.com/\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\">pujolauto.com</span></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.linkedin.com/company/groupe-pujol/mycompany/?viewAsMember=true\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linkedin/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.instagram.com/groupepujol/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/instagram/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://linktr.ee/groupepujol\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linktree/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"max-width: 600px; margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 30px 1px 0px 0px; font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888; margin: 1px;\">Ce message est confidentiel et destin&eacute; &agrave; l'usage du (des) seul(s) destinataire(s) concern&eacute;(s). Il peut &eacute;galement contenir des informations &agrave; usage restreint, soumises &agrave; droits d'auteur ou &agrave; d'autres dispositions l&eacute;gales. Si vous l'avez re&ccedil;u par erreur, nous vous prions de bien vouloir nous en informer par retour et de l'effacer de votre syst&egrave;me. La copie du message et la communication de son contenu &agrave; quelque personne que ce soit sont interdites. La transmission erron&eacute;e de ce message n'entra&icirc;ne ni la renonciation ni la lev&eacute;e de la confidentialit&eacute; et du secret professionnel.</p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n<p class=\"demoTitle\">&nbsp;&nbsp;&nbsp;&nbsp;</p>\n<p>&nbsp;</p>",
+        "options": {
+          "appendAttribution": false,
+          "bccEmail": ""
+        }
+      },
+      "id": "18e5550c-74d9-41de-87b0-5e07b276d867",
+      "name": "Send Email1",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        580
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "MHvTk1YRtUEqDHCN",
+          "name": "SMTP sav@groupepujol.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "Arnaud Luis <sav@groupepujol.com>",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "Merci pour votre retour",
+        "html": "<p>Madame, Monsieur,</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Nous vous remercions sinc&egrave;rement pour avoir pris le temps de r&eacute;pondre &agrave; notre questionnaire de satisfaction. Nous sommes conscients que votre exp&eacute;rience n'a pas &eacute;t&eacute; enti&egrave;rement satisfaisante, et nous tenons &agrave; vous pr&eacute;senter nos excuses pour cela.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Votre retour est pr&eacute;cieux pour nous, car il nous aide &agrave; identifier les domaines o&ugrave; nous pouvons nous am&eacute;liorer.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Si vous avez quelques minutes &agrave; nous accorder, n'h&eacute;sitez pas &agrave; nous contacter directement au 07 76 31 42 28 ou par email &agrave; arnaud.luis@groupepujol.com</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Nous vous remercions pour votre compr&eacute;hension et votre patience. Nous esp&eacute;rons avoir l'opportunit&eacute; de vous prouver que nous pouvons faire mieux &agrave; l'avenir.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Cordialement,</p>\n<table class=\"sh-src\" style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"border-collapse: separate; margin: 0px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 35px 0px 0px; vertical-align: middle;\" align=\"center\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<p style=\"margin: 1px;\"><a href=\"https://www.pujolauto.com/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 125px;\" title=\"Logo\" src=\"https://pujolauto.com/wp-content/uploads/2022/12/pujol-auto2transpbleu120.png\" alt=\"Pujol Auto\" width=\"125\" height=\"100\" /></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n<td style=\"padding: 1px 0px 0px; border-right: 2px solid #0a0c3e;\">&nbsp;</td>\n<td style=\"padding: 0px 1px 0px 35px; vertical-align: middle;\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 20px 0px; font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; font-weight: bold; color: #000000; white-space: nowrap; margin: 1px;\">Arnaud Luis</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\"><span style=\"color: #333333;\">Responsable Atelier</span></p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">&nbsp;</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">GROUPE PUJOL</p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse; width: 229px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/email/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"mailto:arnaud.luis@groupepujol.com\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">arnaud.luis@groupepujol.com</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/phone/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"tel:+33626954683\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">+ 33 7 76 31 42 28</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/map/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">Avenue du Midi, 47000 Agen</span></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/website/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000001 !important; font-weight: bold; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\" href=\"https://www.pujolauto.com/\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\">pujolauto.com</span></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.linkedin.com/company/groupe-pujol/mycompany/?viewAsMember=true\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linkedin/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.instagram.com/groupepujol/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/instagram/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://linktr.ee/groupepujol\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linktree/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"max-width: 600px; margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 30px 1px 0px 0px; font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888; margin: 1px;\">Ce message est confidentiel et destin&eacute; &agrave; l'usage du (des) seul(s) destinataire(s) concern&eacute;(s). Il peut &eacute;galement contenir des informations &agrave; usage restreint, soumises &agrave; droits d'auteur ou &agrave; d'autres dispositions l&eacute;gales. Si vous l'avez re&ccedil;u par erreur, nous vous prions de bien vouloir nous en informer par retour et de l'effacer de votre syst&egrave;me. La copie du message et la communication de son contenu &agrave; quelque personne que ce soit sont interdites. La transmission erron&eacute;e de ce message n'entra&icirc;ne ni la renonciation ni la lev&eacute;e de la confidentialit&eacute; et du secret professionnel.</p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n<p class=\"demoTitle\">&nbsp;&nbsp;&nbsp;&nbsp;</p>\n<p>&nbsp;</p>",
+        "options": {
+          "appendAttribution": false,
+          "bccEmail": ""
+        }
+      },
+      "id": "a93a70cd-94a2-4239-bfc8-14cbe93dc939",
+      "name": "Send Email2",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        380
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "MHvTk1YRtUEqDHCN",
+          "name": "SMTP sav@groupepujol.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "Arnaud Luis <sav@groupepujol.com>",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "Merci pour votre retour encouragent 🙏",
+        "html": "<p>Madame, Monsieur,</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Nous tenons &agrave; vous remercier pour avoir pris le temps de r&eacute;pondre &agrave; notre questionnaire de satisfaction.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Nous sommes heureux de savoir que votre exp&eacute;rience a &eacute;t&eacute; globalement positive, m&ecirc;me si elle n'a pas &eacute;t&eacute; enti&egrave;rement &agrave; la hauteur de vos attentes.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Votre retour est tr&egrave;s important pour nous, car il nous permet de comprendre o&ugrave; nous pouvons nous am&eacute;liorer et nous prenons votre avis tr&egrave;s au s&eacute;rieux.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Encore une fois, merci pour votre confiance, nous mettrons tout en &oelig;uvre pour que votre exp&eacute;rience soit parfaite la prochaine fois.</p>\n<p class=\"western\" align=\"left\">Si vous souhaitez nous faire part de commentaires en particulier, n&rsquo;h&eacute;sitez pas &agrave; me contacter directement par email&nbsp;: <span style=\"color: #000080;\"><u><a href=\"mailto:arnaud.luis@groupepujol.com\">arnaud.luis@groupepujol.com</a></u></span> ou par t&eacute;l&eacute;phone au 07 76 31 42 28.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Cordialement,</p>\n<table class=\"sh-src\" style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"border-collapse: separate; margin: 0px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 35px 0px 0px; vertical-align: middle;\" align=\"center\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<p style=\"margin: 1px;\"><a href=\"https://www.pujolauto.com/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 125px;\" title=\"Logo\" src=\"https://pujolauto.com/wp-content/uploads/2022/12/pujol-auto2transpbleu120.png\" alt=\"Pujol Auto\" width=\"125\" height=\"100\" /></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n<td style=\"padding: 1px 0px 0px; border-right: 2px solid #0a0c3e;\">&nbsp;</td>\n<td style=\"padding: 0px 1px 0px 35px; vertical-align: middle;\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 20px 0px; font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; font-weight: bold; color: #000000; white-space: nowrap; margin: 1px;\">Arnaud Luis</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\"><span style=\"color: #333333;\">Responsable Atelier</span></p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">&nbsp;</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">GROUPE PUJOL</p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse; width: 229px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/email/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"mailto:arnaud.luis@groupepujol.com\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">arnaud.luis@groupepujol.com</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/phone/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"tel:+33626954683\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">+ 33 7 76 31 42 28</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/map/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">Avenue du Midi, 47000 Agen</span></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/website/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000001 !important; font-weight: bold; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\" href=\"https://www.pujolauto.com/\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\">pujolauto.com</span></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.linkedin.com/company/groupe-pujol/mycompany/?viewAsMember=true\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linkedin/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.instagram.com/groupepujol/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/instagram/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://linktr.ee/groupepujol\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linktree/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"max-width: 600px; margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 30px 1px 0px 0px; font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888; margin: 1px;\">Ce message est confidentiel et destin&eacute; &agrave; l'usage du (des) seul(s) destinataire(s) concern&eacute;(s). Il peut &eacute;galement contenir des informations &agrave; usage restreint, soumises &agrave; droits d'auteur ou &agrave; d'autres dispositions l&eacute;gales. Si vous l'avez re&ccedil;u par erreur, nous vous prions de bien vouloir nous en informer par retour et de l'effacer de votre syst&egrave;me. La copie du message et la communication de son contenu &agrave; quelque personne que ce soit sont interdites. La transmission erron&eacute;e de ce message n'entra&icirc;ne ni la renonciation ni la lev&eacute;e de la confidentialit&eacute; et du secret professionnel.</p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n<p class=\"demoTitle\">&nbsp;&nbsp;&nbsp;&nbsp;</p>\n<p>&nbsp;</p>",
+        "options": {
+          "appendAttribution": false,
+          "bccEmail": ""
+        }
+      },
+      "id": "91d9b384-a420-4fdd-b547-3330ce8b460f",
+      "name": "Send Email3",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        640,
+        200
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "MHvTk1YRtUEqDHCN",
+          "name": "SMTP sav@groupepujol.com"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "Arnaud Luis <sav@groupepujol.com>",
+        "toEmail": "={{ $json.Email }}",
+        "subject": "Nous sommes désolés de ne pas avoir été à la hauteur",
+        "html": "<p>Madame, Monsieur,</p>\n<p class=\"western\" align=\"left\">Nous tenons &agrave; vous remercier pour avoir pris le temps de r&eacute;pondre &agrave; notre questionnaire de satisfaction.</p>\n<p class=\"western\" align=\"left\">Nous sommes sinc&egrave;rement d&eacute;sol&eacute;s d'apprendre que votre exp&eacute;rience dans nos ateliers n'a pas &eacute;t&eacute; satisfaisante.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Votre retour est extr&ecirc;mement important pour nous, car il nous permet de comprendre o&ugrave; nous avons &eacute;chou&eacute; et comment nous pouvons nous am&eacute;liorer. Nous prenons vos commentaires tr&egrave;s au s&eacute;rieux et nous sommes d&eacute;termin&eacute;s &agrave; corriger les probl&egrave;mes que vous avez rencontr&eacute;s.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Nous aimerions avoir l'opportunit&eacute; de discuter plus en d&eacute;tail de votre exp&eacute;rience et de voir comment nous pouvons rem&eacute;dier &agrave; la situation, n'&eacute;hcitez pa s&agrave; nous contacter par mail ou directement au t&eacute;l&eacute;phone.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Nous comprenons que votre satisfaction est essentielle et nous ferons tout notre possible pour regagner votre confiance.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Encore une fois, nous vous pr&eacute;sentons nos excuses les plus sinc&egrave;res pour tout inconv&eacute;nient caus&eacute;.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Merci pour votre compr&eacute;hension et votre patience.</p>\n<p class=\"western\" style=\"line-height: 115%;\" align=\"left\">Cordialement,</p>\n<table class=\"sh-src\" style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"border-collapse: separate; margin: 0px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 35px 0px 0px; vertical-align: middle;\" align=\"center\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<p style=\"margin: 1px;\"><a href=\"https://www.pujolauto.com/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 125px;\" title=\"Logo\" src=\"https://pujolauto.com/wp-content/uploads/2022/12/pujol-auto2transpbleu120.png\" alt=\"Pujol Auto\" width=\"125\" height=\"100\" /></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n<td style=\"padding: 1px 0px 0px; border-right: 2px solid #0a0c3e;\">&nbsp;</td>\n<td style=\"padding: 0px 1px 0px 35px; vertical-align: middle;\" valign=\"middle\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 0px 1px 20px 0px; font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; font-weight: bold; color: #000000; white-space: nowrap; margin: 1px;\">Arnaud Luis</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\"><span style=\"color: #333333;\">Responsable Atelier</span></p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">&nbsp;</p>\n<p style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; margin: 1px;\">GROUPE PUJOL</p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse; width: 229px;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/email/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"mailto:arnaud.luis@groupepujol.com\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">arnaud.luis@groupepujol.com</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/phone/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\" href=\"tel:+33626954683\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">+ 33 7 76 31 42 28</span></a></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/map/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636261 !important; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #636262; text-decoration: none !important;\">Avenue du Midi, 47000 Agen</span></p>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 1px 5px 1px 0px; vertical-align: middle; width: 20.55px;\" valign=\"middle\">\n<p style=\"margin: 1px;\"><img style=\"display: block; border: 0px; max-width: 18px;\" src=\"https://signaturehound.com/api/v1/png/website/default/180b84.png\" alt=\"\" width=\"18\" height=\"18\" /></p>\n</td>\n<td style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000001 !important; font-weight: bold; padding: 1px 0px; vertical-align: middle; width: 200.45px;\">\n<p style=\"margin: 1px;\"><a style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\" href=\"https://www.pujolauto.com/\" target=\"_blank\"><span style=\"font-family: Arial, sans-serif; font-size: 13px; line-height: 17px; white-space: nowrap; color: #000000; font-weight: bold; text-decoration: none !important;\">pujolauto.com</span></a></p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.linkedin.com/company/groupe-pujol/mycompany/?viewAsMember=true\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linkedin/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://www.instagram.com/groupepujol/\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/instagram/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n<td style=\"font-size: 0px; line-height: 0px; padding: 25px 1px 0px 0px;\" width=\"30\">\n<p style=\"margin: 1px;\"><a href=\"https://linktr.ee/groupepujol\" target=\"_blank\"><img style=\"display: block; border: 0px; max-width: 30px;\" src=\"https://signaturehound.com/api/v1/png/linktree/default/180b84.png\" alt=\"\" width=\"30\" height=\"30\" /></a></p>\n</td>\n<td style=\"padding: 0px 0px 1px;\" width=\"3\">&nbsp;</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n<tr>\n<td style=\"padding: 0px 1px 0px 0px;\">\n<table style=\"max-width: 600px; margin: 0px; border-collapse: collapse;\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n<tbody>\n<tr>\n<td style=\"padding: 30px 1px 0px 0px; font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888;\">\n<p style=\"font-family: Arial, sans-serif; font-size: 10px; line-height: 13px; color: #888888; margin: 1px;\">Ce message est confidentiel et destin&eacute; &agrave; l'usage du (des) seul(s) destinataire(s) concern&eacute;(s). Il peut &eacute;galement contenir des informations &agrave; usage restreint, soumises &agrave; droits d'auteur ou &agrave; d'autres dispositions l&eacute;gales. Si vous l'avez re&ccedil;u par erreur, nous vous prions de bien vouloir nous en informer par retour et de l'effacer de votre syst&egrave;me. La copie du message et la communication de son contenu &agrave; quelque personne que ce soit sont interdites. La transmission erron&eacute;e de ce message n'entra&icirc;ne ni la renonciation ni la lev&eacute;e de la confidentialit&eacute; et du secret professionnel.</p>\n</td>\n</tr>\n</tbody>\n</table>\n</td>\n</tr>\n</tbody>\n</table>\n<p class=\"demoTitle\">&nbsp;&nbsp;&nbsp;&nbsp;</p>\n<p>&nbsp;</p>",
+        "options": {
+          "appendAttribution": false,
+          "bccEmail": ""
+        }
+      },
+      "id": "d56d8c57-b5f3-4780-aaea-deca54c3710a",
+      "name": "Send Email4",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        600,
+        780
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "MHvTk1YRtUEqDHCN",
+          "name": "SMTP sav@groupepujol.com"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "ur9uvHxf82lMBYWS"
+  },
+  "staticData": {
+    "node:Gmail Trigger": {
+      "lastTimeChecked": 1725701081,
+      "possibleDuplicates": [
+        "191cbcccb795556b"
+      ]
+    },
+    "node:Email Trigger (IMAP)": {
+      "lastMessageUid": 10955
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2024-09-07T07:48:47.079Z",
+      "updatedAt": "2024-09-07T07:48:47.079Z",
+      "id": "mcl4vIrjks0C4kbV",
+      "name": "Enquete Pujol Auto"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2024-09-07T15:22:28.433Z",
+  "versionId": "2e18bc21-83b6-4298-859e-c47f8be0d595"
+}
