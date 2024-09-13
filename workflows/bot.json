@@ -1,0 +1,89 @@
+{
+  "active": false,
+  "connections": {
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-13T16:15:41.381Z",
+  "id": "xjgS5HPwNEctpBZj",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "bot",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "a5fcfc95-8bf2-458a-946b-3ee460ce39b3",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        840,
+        400
+      ],
+      "webhookId": "e5429d2c-4946-4c11-a344-52c5892739cc"
+    },
+    {
+      "parameters": {},
+      "id": "48c9f4e1-34f9-4e14-81d9-6363ba6ee47f",
+      "name": "Basic LLM Chain",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [
+        1060,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "model": "open-mixtral-8x7b",
+        "options": {}
+      },
+      "id": "324c88ce-1a66-492b-aa34-0eba351e1ad6",
+      "name": "Mistral Cloud Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        1030,
+        550
+      ],
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "dmCKOiprX8AAX6f5",
+          "name": "Mistral Cloud account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-13T16:24:32.227Z",
+  "versionId": "bb3ee785-0642-46c1-b070-ea5e39aacbc9"
+}
