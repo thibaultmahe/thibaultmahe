@@ -1,0 +1,82 @@
+{
+  "active": false,
+  "connections": {
+    "Execute Workflow Trigger": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "createdAt": "2024-09-15T20:37:13.278Z",
+  "id": "MFiaN59VSS2cmRCU",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "test ai",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7c7d484f-76d3-4ac0-bff9-083e9b85aaef",
+      "name": "Execute Workflow Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        620,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1oPlpgSPmy6C6mL5Y8CwI9GXybi1E-_Fx7Dm-KV8eL0g",
+          "mode": "list",
+          "cachedResultName": "Leads Pujol Auto",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oPlpgSPmy6C6mL5Y8CwI9GXybi1E-_Fx7Dm-KV8eL0g/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1686646608,
+          "mode": "list",
+          "cachedResultName": "Avril",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1oPlpgSPmy6C6mL5Y8CwI9GXybi1E-_Fx7Dm-KV8eL0g/edit#gid=1686646608"
+        },
+        "options": {}
+      },
+      "id": "7f967c32-fd86-4df3-913b-88adbffef6a1",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        840,
+        240
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-15T20:48:42.408Z",
+  "versionId": "624b2ce3-7c29-4d32-96e9-e3e4a1620316"
+}
