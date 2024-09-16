@@ -80,7 +80,7 @@
           "item": [
             {
               "mode": "everyX",
-              "value": 15,
+              "value": 5,
               "unit": "minutes"
             }
           ]
@@ -403,9 +403,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1726175165,
+      "lastTimeChecked": 1726478280,
       "possibleDuplicates": [
-        "18fd327a5a2e5368"
+        "191fa1feaa782f00"
       ]
     }
   },
@@ -418,6 +418,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-06-26T21:04:40.880Z",
-  "versionId": "09b1d466-2e20-4209-9130-b0eab83d2dc9"
+  "updatedAt": "2024-09-16T09:23:45.311Z",
+  "versionId": "f65ffbc7-ec63-4bde-8e41-ec291b4802fa"
 }
