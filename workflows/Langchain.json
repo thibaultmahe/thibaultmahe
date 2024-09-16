@@ -1,0 +1,151 @@
+{
+  "active": false,
+  "connections": {
+    "Workflow Retriever": {
+      "ai_retriever": [
+        [
+          {
+            "node": "Retrieval QA Chain2",
+            "type": "ai_retriever",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Retrieval QA Chain2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Retrieval QA Chain2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-15T20:32:13.140Z",
+  "id": "Y4bHwY81PZdTos6W",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Langchain",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowId": "MFiaN59VSS2cmRCU"
+      },
+      "id": "066bd60e-a739-4306-809b-c7a1933941d2",
+      "name": "Workflow Retriever",
+      "type": "@n8n/n8n-nodes-langchain.retrieverWorkflow",
+      "position": [
+        720,
+        760
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "query": "={{ $json.chatInput }}"
+      },
+      "id": "d2b7f5d0-a6c4-428f-b677-0540cc452b6c",
+      "name": "Retrieval QA Chain2",
+      "type": "@n8n/n8n-nodes-langchain.chainRetrievalQa",
+      "position": [
+        500,
+        520
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### Q&A on data returned from a workflow",
+        "height": 211.90203341144422,
+        "width": 363
+      },
+      "id": "3bf0c355-5145-4049-b15a-fb7e916644de",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        460,
+        460
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReplace \"Workflow ID\" with the ID the Subworkflow got saved as",
+        "height": 255.8330939602389,
+        "width": 262.67019427016413
+      },
+      "id": "75b6f2f8-1de5-4a3d-9f78-8a759811968b",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        640,
+        720
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d7612e0a-aea5-48c9-9b8b-f2878b9ba314",
+      "name": "Mistral Cloud Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        500,
+        740
+      ],
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "dmCKOiprX8AAX6f5",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "ad0b8101-f6cf-45df-a943-b1a74996b90b",
+      "name": "When chat message received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        580
+      ],
+      "webhookId": "f248293b-3ca2-491e-8e9f-9ee96930856b"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-09-15T20:31:41.365Z",
+      "updatedAt": "2024-09-15T20:31:41.365Z",
+      "id": "ytDtFDzQZ07Ejbje",
+      "name": "LangChain - Example"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-15T20:47:01.936Z",
+  "versionId": "571a60c6-c5fb-47d4-ac89-96b8a8bb518b"
+}
