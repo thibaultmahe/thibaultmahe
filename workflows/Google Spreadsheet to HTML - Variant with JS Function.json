@@ -1,0 +1,142 @@
+{
+  "active": false,
+  "connections": {
+    "Build HTML": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Build HTML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-09-21T08:12:09.070Z",
+  "id": "rc5C02VNxWTtUKDm",
+  "meta": {
+    "templateId": "1757",
+    "templateCredsSetupCompleted": true
+  },
+  "name": "Google Spreadsheet to HTML - Variant with JS Function",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{$json[\"html\"]}}",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=UTF-8"
+              }
+            ]
+          }
+        }
+      },
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        1040,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "81f7299d-7ebc-4dcd-b938-f96a9f807828"
+    },
+    {
+      "parameters": {
+        "functionCode": "const columns = Object.keys(items[0].json);\n\nconst html = `\n<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>HTML Table Example</title>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx\" crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col\">\n          <h1>HTML Table Example</h1>\n          <table class=\"table\">\n            <thead>\n              <tr>\n                ${columns.map(e => '<th scope=\"col\">' + e + '</th>').join('\\n')}\n              </tr>\n            </thead>\n            <tbody>\n              ${items.map(e => '<tr>' + columns.map(ee => '<td>' + e.json[ee] + '</td>').join('\\n') + '</tr>').join('\\n')}\n            </tbody>\n          </table>\n        </div>\n      </div>\n    </div>\n    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa\" crossorigin=\"anonymous\"></script>\n  </body>\n</html>\n`;\n\nreturn [{\n  json: {\n    html: html\n  }\n}];"
+      },
+      "name": "Build HTML",
+      "type": "n8n-nodes-base.function",
+      "position": [
+        760,
+        120
+      ],
+      "typeVersion": 1,
+      "id": "956ee167-f200-433e-883b-b0f684e3147b"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU",
+          "mode": "list",
+          "cachedResultName": "RESA-SEAVAN-N8N",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Touteslesdemandes",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit#gid=0"
+        },
+        "options": {}
+      },
+      "id": "fa9bb4d1-d9b2-4073-8c1d-2317afb0631e",
+      "name": "Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        480,
+        160
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2WEM9Jn81BmJbW4o",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "path": "testa",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        260,
+        160
+      ],
+      "webhookId": "bbcd9487-54f9-449d-8246-49f3f61f44fc",
+      "typeVersion": 1,
+      "id": "a96350f8-a8d2-48d6-937a-e25954d73402"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2024-09-21T09:29:30.419Z",
+  "versionId": "99ff25e1-3351-4c4d-8789-e3aee688fb96"
+}
