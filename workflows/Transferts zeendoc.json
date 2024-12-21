@@ -1,0 +1,264 @@
+{
+  "active": false,
+  "connections": {
+    "Email Trigger (IMAP)": {
+      "main": [
+        [
+          {
+            "node": "Si objet contient factures ou factures",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Si objet contient factures ou factures": {
+      "main": [
+        [
+          {
+            "node": "Et objet ou corps de mail ne contient pas \"relance\" ou \"relances",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Email1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Et objet ou corps de mail ne contient pas \"relance\" ou \"relances": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2024-12-21T08:49:18.290Z",
+  "id": "ncrHoafvKYVyNzWX",
+  "meta": null,
+  "name": "Transferts zeendoc",
+  "nodes": [
+    {
+      "parameters": {
+        "postProcessAction": "nothing",
+        "downloadAttachments": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [
+        -520,
+        -60
+      ],
+      "id": "8973ab86-b855-4605-8583-c65caad02aa1",
+      "name": "Email Trigger (IMAP)",
+      "credentials": {
+        "imap": {
+          "id": "Pn8ui9yHW7EYfzJV",
+          "name": "Compta Carrosserie"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aa8692a0-d291-471a-b6b6-72660057e901",
+              "leftValue": "={{ $json.subject }}",
+              "rightValue": "facture",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            },
+            {
+              "id": "2079d329-b122-4127-b641-e7ba2ef07243",
+              "leftValue": "={{ $json.subject }}",
+              "rightValue": "factures",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -260,
+        -60
+      ],
+      "id": "66e2e2a0-6273-4c03-819e-b79624a0281e",
+      "name": "Si objet contient factures ou factures"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        120,
+        100
+      ],
+      "id": "47626a95-e529-4710-955f-da4ea8e0030c",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        300,
+        -60
+      ],
+      "id": "1fb61c5d-3f52-4080-97c4-1c32f09fefe9",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "315aebcf-21af-4255-abcc-1946e071b52e",
+              "leftValue": "{{ $json.subject }}",
+              "rightValue": "relance",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "7c27dc50-d731-4d0e-9477-380e9a8cec74",
+              "leftValue": "{{ $json.textHtml }}",
+              "rightValue": "relances",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "5f0ab5ab-86b8-4926-9435-806e50c3e2ed",
+              "leftValue": "{{ $json.subject }}",
+              "rightValue": "relance",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "111b9378-a21f-4798-aeea-a040206c027b",
+              "leftValue": "{{ $json.textHtml }}",
+              "rightValue": "relances",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        80,
+        -160
+      ],
+      "id": "1d31df0e-ebc4-4ae7-8ac8-53930b4e33c9",
+      "name": "Et objet ou corps de mail ne contient pas \"relance\" ou \"relances"
+    },
+    {
+      "parameters": {
+        "fromEmail": "comptabilite.carrosserie.pujol@groupepujol.com",
+        "toEmail": "mahe.thibault@gmail.com",
+        "options": {
+          "attachments": ""
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        300,
+        -260
+      ],
+      "id": "cfeade7b-7485-4a70-8738-0b9a40817e18",
+      "name": "Send Email",
+      "credentials": {
+        "smtp": {
+          "id": "UaixuUP1meuve6be",
+          "name": "SMTP Compta Carrosserie"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "comptabilite.carrosserie.pujol@groupepujol.com",
+        "toEmail": "mahe.thibault@gmail.com",
+        "subject": "={{ $json.subject }}",
+        "html": "={{ $json.textHtml }}",
+        "options": {
+          "attachments": ""
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        -60,
+        180
+      ],
+      "id": "6477f006-3622-460a-af8e-c0d079e6b1dc",
+      "name": "Send Email1",
+      "credentials": {
+        "smtp": {
+          "id": "UaixuUP1meuve6be",
+          "name": "SMTP Compta Carrosserie"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": {
+    "node:Email Trigger (IMAP)": {
+      "lastMessageUid": 445
+    }
+  },
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-12-21T09:32:40.406Z",
+  "versionId": "43bfea52-f771-4f94-af55-e66e325964e7"
+}
