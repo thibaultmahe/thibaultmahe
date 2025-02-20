@@ -272,6 +272,7 @@
         940,
         -200
       ],
+      "webhookId": "ee83a5b5-8566-449d-aba3-54eadb749281",
       "credentials": {
         "smtp": {
           "id": "3hH7au2xSqqRQuAo",
@@ -345,6 +346,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-10-03T13:12:42.320Z",
-  "versionId": "dd9d6586-e450-4396-9610-15fd1aee97ef"
+  "updatedAt": "2025-02-20T14:16:51.894Z",
+  "versionId": "7d0069d9-81fe-498e-8d54-0c6a150d1318"
 }
