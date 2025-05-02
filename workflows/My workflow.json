@@ -1,8 +1,8 @@
 {
   "active": false,
   "connections": {},
-  "createdAt": "2025-02-13T14:55:30.088Z",
-  "id": "eqhnXfzbQFhqV7zl",
+  "createdAt": "2025-05-02T08:24:29.040Z",
+  "id": "dOcLmRthfoGK4R8w",
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -10,29 +10,19 @@
   "nodes": [
     {
       "parameters": {
-        "pollTimes": {
-          "item": [
-            {
-              "mode": "everyMinute"
-            }
-          ]
-        },
-        "filters": {}
+        "httpMethod": "POST",
+        "path": "wildix",
+        "options": {}
       },
-      "type": "n8n-nodes-base.gmailTrigger",
-      "typeVersion": 1.2,
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
       "position": [
         0,
         0
       ],
-      "id": "4dd305da-dbf2-4c45-b43b-71b3170acf83",
-      "name": "Gmail Trigger",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "rAfdKJMN8l7vL9s2",
-          "name": "Gmail account"
-        }
-      }
+      "id": "326f92ac-a283-4c02-bfa8-16c24bd30cb2",
+      "name": "Webhook",
+      "webhookId": "df78ab73-8899-4fd4-8603-4094c52f38c9"
     }
   ],
   "pinData": {},
@@ -42,6 +32,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-02-13T14:55:30.088Z",
-  "versionId": "7b214cf6-de66-4a1a-b51d-f0448f90d429"
+  "updatedAt": "2025-05-02T09:31:22.148Z",
+  "versionId": "356be697-efd2-482a-9048-9de1b9e2c24b"
 }
