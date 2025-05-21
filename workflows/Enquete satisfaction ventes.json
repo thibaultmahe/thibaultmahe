@@ -146,6 +146,7 @@
   },
   "createdAt": "2024-09-07T07:48:51.038Z",
   "id": "cydTkASNb8h84Hgr",
+  "isArchived": false,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -668,7 +669,7 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1747646498,
+      "lastTimeChecked": 1747775258,
       "possibleDuplicates": [
         "19663f6430bdc6b8"
       ]
