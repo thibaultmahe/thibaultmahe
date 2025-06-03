@@ -164,7 +164,7 @@
             },
             {
               "name": "Tel",
-              "stringValue": "={{ $json[\"text\"].match(/(?<= Tél : )(.*)(?= E-mail :)/g)[0] }}"
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Tél : )(.*)(?= *)/g)[0] }}"
             },
             {
               "name": "Optin",
@@ -605,9 +605,9 @@
   },
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1748895717,
+      "lastTimeChecked": 1748957680,
       "possibleDuplicates": [
-        "197324eda027797d"
+        "197360054cb5918c"
       ]
     }
   },
@@ -620,6 +620,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2024-07-05T08:55:31.652Z",
-  "versionId": "687ba803-466e-4cbb-9a89-771971f9c7cf"
+  "updatedAt": "2025-06-03T15:06:58.957Z",
+  "versionId": "0d2e0ca7-1183-4f7d-87b2-7f036a7c36a8"
 }
