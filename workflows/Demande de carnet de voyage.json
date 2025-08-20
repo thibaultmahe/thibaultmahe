@@ -2311,6 +2311,15 @@
     "callerPolicy": "workflowsFromSameOwner",
     "errorWorkflow": "ur9uvHxf82lMBYWS"
   },
+  "shared": [
+    {
+      "createdAt": "2024-06-13T12:47:41.835Z",
+      "updatedAt": "2024-06-13T12:47:41.835Z",
+      "role": "workflow:owner",
+      "workflowId": "LCxzuxiJzzbyaPjf",
+      "projectId": "8nM2sM0qimdfJmkc"
+    }
+  ],
   "staticData": {
     "node:Gmail Trigger": {
       "lastTimeChecked": 1755188487,
