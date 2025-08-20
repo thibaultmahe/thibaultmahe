@@ -331,6 +331,15 @@
   "settings": {
     "executionOrder": "v1"
   },
+  "shared": [
+    {
+      "createdAt": "2023-11-13T13:25:05.784Z",
+      "updatedAt": "2023-11-13T13:25:05.784Z",
+      "role": "workflow:owner",
+      "workflowId": "lNgkfLSz809wgV2j",
+      "projectId": "8nM2sM0qimdfJmkc"
+    }
+  ],
   "staticData": {
     "node:Gmail Trigger": {
       "lastTimeChecked": 1755490770,
