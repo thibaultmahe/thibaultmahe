@@ -251,6 +251,15 @@
     "callerPolicy": "workflowsFromSameOwner",
     "errorWorkflow": "ur9uvHxf82lMBYWS"
   },
+  "shared": [
+    {
+      "createdAt": "2023-11-23T13:03:54.704Z",
+      "updatedAt": "2023-11-23T13:03:54.704Z",
+      "role": "workflow:owner",
+      "workflowId": "VWnrZtB20JJHd7iF",
+      "projectId": "8nM2sM0qimdfJmkc"
+    }
+  ],
   "staticData": {
     "node:Google Sheets Trigger": {
       "documentId": "1tUz1Z-G66V2U1x6VktpFOT-H76A1ukIU8bNowaB-GvA",
