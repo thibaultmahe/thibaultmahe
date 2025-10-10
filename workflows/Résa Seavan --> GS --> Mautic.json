@@ -136,8 +136,8 @@
       "type": "n8n-nodes-base.gmailTrigger",
       "typeVersion": 1,
       "position": [
-        180,
-        220
+        192,
+        224
       ],
       "credentials": {
         "gmailOAuth2": {
@@ -156,15 +156,15 @@
             },
             {
               "name": "Prenom",
-              "stringValue": "={{ $json[\"text\"].match(/(?<=Prénom : )(.*)(?= Nom : )/g)[0] }}"
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Prénom : )(.*)(?=)/g)[0] }}"
             },
             {
               "name": "Nom",
-              "stringValue": "={{ $json[\"text\"].match(/(?<=Nom : )(.*)(?= Tél )/g)[0] }}"
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Nom : )(.*)(?=)/g)[0] }}"
             },
             {
               "name": "Tel",
-              "stringValue": "={{ $json[\"text\"].match(/(?<=Tél : )(.*)(?= E *)/g)[0] }}"
+              "stringValue": "={{ $json[\"text\"].match(/(?<=Tél : )(.*)(?= *)/g)[0] }}"
             },
             {
               "name": "Optin",
@@ -188,8 +188,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3,
       "position": [
-        360,
-        220
+        368,
+        224
       ]
     },
     {
@@ -306,7 +306,7 @@
       "typeVersion": 4,
       "position": [
         640,
-        220
+        224
       ],
       "credentials": {
         "googleSheetsOAuth2Api": {
@@ -348,8 +348,8 @@
       "type": "n8n-nodes-text-manipulation.textManipulation",
       "typeVersion": 1,
       "position": [
-        500,
-        220
+        512,
+        224
       ]
     },
     {
@@ -369,8 +369,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 1,
       "position": [
-        780,
-        220
+        784,
+        224
       ]
     },
     {
@@ -402,8 +402,8 @@
       "type": "n8n-nodes-base.mautic",
       "typeVersion": 1,
       "position": [
-        900,
-        -20
+        912,
+        -16
       ],
       "credentials": {
         "mauticOAuth2Api": {
@@ -441,8 +441,8 @@
       "type": "n8n-nodes-base.mautic",
       "typeVersion": 1,
       "position": [
-        920,
-        500
+        928,
+        512
       ],
       "credentials": {
         "mauticOAuth2Api": {
@@ -463,8 +463,8 @@
       "type": "n8n-nodes-base.mautic",
       "typeVersion": 1,
       "position": [
-        1100,
-        140
+        1104,
+        144
       ],
       "credentials": {
         "mauticOAuth2Api": {
@@ -491,8 +491,8 @@
       "type": "n8n-nodes-base.mautic",
       "typeVersion": 1,
       "position": [
-        1080,
-        -20
+        1088,
+        -16
       ],
       "credentials": {
         "mauticOAuth2Api": {
@@ -514,7 +514,7 @@
       "typeVersion": 1,
       "position": [
         1120,
-        680
+        688
       ],
       "credentials": {
         "mauticOAuth2Api": {
@@ -541,7 +541,7 @@
       "typeVersion": 1,
       "position": [
         1120,
-        520
+        528
       ],
       "credentials": {
         "mauticOAuth2Api": {
@@ -562,8 +562,8 @@
       "type": "n8n-nodes-base.mautic",
       "typeVersion": 1,
       "position": [
-        1080,
-        -180
+        1088,
+        -176
       ],
       "credentials": {
         "mauticOAuth2Api": {
@@ -585,7 +585,7 @@
       "typeVersion": 1,
       "position": [
         1120,
-        360
+        368
       ],
       "credentials": {
         "mauticOAuth2Api": {
@@ -614,10 +614,10 @@
   ],
   "staticData": {
     "node:Gmail Trigger": {
-      "lastTimeChecked": 1760044174,
+      "lastTimeChecked": 1760110117,
       "possibleDuplicates": [
-        "199c9aadae02861e",
-        "199c44cf196d02a8"
+        "199cebd09905156f",
+        "199ce77fb0e20e30"
       ]
     }
   },
@@ -630,6 +630,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-06-10T12:02:18.840Z",
-  "versionId": "a93de91b-3282-440e-a928-48401ec5eb4f"
+  "updatedAt": "2025-10-10T14:49:00.390Z",
+  "versionId": "40d026e0-3547-4d9f-8c40-8a758b833c07"
 }
