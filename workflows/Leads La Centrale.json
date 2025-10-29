@@ -333,8 +333,8 @@
   },
   "shared": [
     {
-      "createdAt": "2023-11-13T13:25:05.784Z",
       "updatedAt": "2023-11-13T13:25:05.784Z",
+      "createdAt": "2023-11-13T13:25:05.784Z",
       "role": "workflow:owner",
       "workflowId": "lNgkfLSz809wgV2j",
       "projectId": "8nM2sM0qimdfJmkc"
@@ -344,15 +344,14 @@
     "node:Gmail Trigger": {
       "lastTimeChecked": 1761441030,
       "possibleDuplicates": [
-        "19a1e111f24a61f6",
-        "19a0440dda012ee6"
+        "19a1e111f24a61f6"
       ]
     }
   },
   "tags": [
     {
-      "createdAt": "2023-11-13T13:27:33.470Z",
       "updatedAt": "2023-11-13T13:27:33.470Z",
+      "createdAt": "2023-11-13T13:27:33.470Z",
       "id": "VQC9ChvKf4t2FX7S",
       "name": "Leads pujol Auto"
     }
