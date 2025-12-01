@@ -1,0 +1,201 @@
+{
+  "active": false,
+  "connections": {
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-12-01T15:59:16.112Z",
+  "id": "YECeO1UIZkc0Z6pg",
+  "isArchived": false,
+  "meta": null,
+  "name": "Imports stations italiennes",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://www.mimit.gov.it/images/exportCSV/prezzo_alle_8.csv",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "prix"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -384,
+        -208
+      ],
+      "id": "05893368-05a2-4a23-9da0-21ab042e92c8",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "binaryPropertyName": "prix",
+        "options": {
+          "delimiter": ";",
+          "encoding": "utf-8",
+          "relaxQuotes": true,
+          "headerRow": true,
+          "fromLine": 2,
+          "skipRecordsWithErrors": {
+            "value": {
+              "enabled": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -80,
+        -192
+      ],
+      "id": "6951a9ea-0bba-41fc-ad34-13f976021e00",
+      "name": "Extract from File1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "fe18b360-e165-408d-9471-763024db5ccc",
+              "leftValue": "={{ $json.descCarburante }}",
+              "rightValue": "Metano",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        160,
+        -176
+      ],
+      "id": "d2a25671-d9c8-44d5-a8d9-b9cdd600bacb",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5e9fba1d-9edd-40dd-849d-3904b29f39dd",
+              "name": "numero",
+              "value": "={{ $json.idImpianto }}",
+              "type": "string"
+            },
+            {
+              "id": "369cad7f-c1b1-4485-866f-4a7d37004ba4",
+              "name": "prixgnc",
+              "value": "={{ $json.prezzo }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        368,
+        -176
+      ],
+      "id": "967d48eb-2af9-4615-b22b-e5378ade5826",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -576,
+        -128
+      ],
+      "id": "2d3eff6f-e542-4d8b-9f7b-159e2845d74a",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-12-01T15:59:16.112Z",
+      "createdAt": "2025-12-01T15:59:16.112Z",
+      "role": "workflow:owner",
+      "workflowId": "YECeO1UIZkc0Z6pg",
+      "projectId": "8nM2sM0qimdfJmkc"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2023-12-11T09:06:36.362Z",
+      "createdAt": "2023-12-11T09:06:36.362Z",
+      "id": "pu1HKJmBOsnvJ7E5",
+      "name": "NG Maps"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-12-01T15:59:55.028Z",
+  "versionId": "ee227b23-ef36-445c-9602-baed36a67ebb"
+}
