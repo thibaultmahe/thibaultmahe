@@ -1,5 +1,279 @@
 {
   "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-11-26T22:08:06.720Z",
+    "createdAt": "2025-11-26T22:08:06.720Z",
+    "versionId": "72fcc88e-957a-4dd5-a6d3-cc3ea45d71ec",
+    "workflowId": "Ke5os2zvhy2Ah83s",
+    "nodes": [
+      {
+        "parameters": {
+          "fields": {
+            "values": [
+              {
+                "name": "Date",
+                "stringValue": "={{ $json.date }}"
+              },
+              {
+                "name": "Prenom",
+                "stringValue": "={{ $json[\"text\"].match(/(?<=Prénom : )(.*?)(?=\\nSociété)/g)[0] }}"
+              },
+              {
+                "name": "Nom",
+                "stringValue": "={{ $json[\"text\"].match(/(?<=Nom : )(.*?)(?=\\n)/g)[0] }}"
+              },
+              {
+                "name": "Atelier",
+                "stringValue": "={{ $json[\"text\"].match(/(?<=\\)\\n)(.*?)(?=\\n)/g)[0] }}"
+              },
+              {
+                "name": "Email",
+                "stringValue": "={{ $json[\"text\"].match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)/g)[0] }}"
+              },
+              {
+                "name": "Optin",
+                "stringValue": "={{ $json[\"text\"].match(/(?<=newsletter Groupe Pujol : )(.*?)(?=\\n)/g)[0] }}"
+              }
+            ]
+          },
+          "include": "selected",
+          "options": {}
+        },
+        "id": "ba3d474e-db6f-424e-b840-32c4b373d658",
+        "name": "Edit Fields",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3,
+        "position": [
+          -40,
+          500
+        ]
+      },
+      {
+        "parameters": {
+          "pollTimes": {
+            "item": [
+              {
+                "mode": "everyX",
+                "value": 15,
+                "unit": "minutes"
+              }
+            ]
+          },
+          "simple": false,
+          "filters": {
+            "labelIds": [
+              "Label_21"
+            ],
+            "q": "subject:Demande de RDV",
+            "sender": "anne-valerie@groupepujol.com"
+          },
+          "options": {}
+        },
+        "id": "0dcf375f-d816-4db5-852f-1024b2943036",
+        "name": "Gmail Trigger",
+        "type": "n8n-nodes-base.gmailTrigger",
+        "typeVersion": 1,
+        "position": [
+          -220,
+          500
+        ],
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "rAfdKJMN8l7vL9s2",
+            "name": "Gmail account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1vV8AiBGLkyQ7or3k_za1GbnfuCMozOXQbklbnZliyyg",
+            "mode": "list",
+            "cachedResultName": "Leads Atelier Pujol Auto",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vV8AiBGLkyQ7or3k_za1GbnfuCMozOXQbklbnZliyyg/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "TousLesLeads",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1vV8AiBGLkyQ7or3k_za1GbnfuCMozOXQbklbnZliyyg/edit#gid=0"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "Date": "={{ $json.Date }}",
+              "Prénom": "={{ $json.Prenom }}",
+              "Nom": "={{ $json.Nom }}",
+              "Atelier": "={{ $json.Atelier }}",
+              "Email": "={{ $json.Email }}",
+              "Optin": "={{ $json.Optin }}"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "Date",
+                "displayName": "Date",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Prénom",
+                "displayName": "Prénom",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Nom",
+                "displayName": "Nom",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Atelier",
+                "displayName": "Atelier",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Email",
+                "displayName": "Email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Optin",
+                "displayName": "Optin",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "8f2b587b-2f57-4bb6-a2b8-a58e5107d7e6",
+        "name": "Tous les leads",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4,
+        "position": [
+          440,
+          500
+        ],
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "2WEM9Jn81BmJbW4o",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "outputFieldName": "Date-de-la-demande",
+          "options": {
+            "includeInputFields": true
+          }
+        },
+        "id": "4a379a42-c402-4ad4-ad11-c9cb1a898010",
+        "name": "Date & Time",
+        "type": "n8n-nodes-base.dateTime",
+        "typeVersion": 2,
+        "position": [
+          120,
+          500
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "formatDate",
+          "date": "={{ $json['Date-de-la-demande'] }}",
+          "format": "custom",
+          "customFormat": "dd/MM/yyyy",
+          "outputFieldName": "Date",
+          "options": {
+            "includeInputFields": true
+          }
+        },
+        "id": "ad8dc3ae-09ac-46a1-acbf-0a34f925c600",
+        "name": "Date & Time1",
+        "type": "n8n-nodes-base.dateTime",
+        "typeVersion": 2,
+        "position": [
+          280,
+          500
+        ]
+      }
+    ],
+    "connections": {
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "Date & Time",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Gmail Trigger": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Date & Time": {
+        "main": [
+          [
+            {
+              "node": "Date & Time1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Date & Time1": {
+        "main": [
+          [
+            {
+              "node": "Tous les leads",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "72fcc88e-957a-4dd5-a6d3-cc3ea45d71ec",
   "connections": {
     "Edit Fields": {
       "main": [
