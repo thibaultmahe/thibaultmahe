@@ -1,5 +1,603 @@
 {
   "active": true,
+  "activeVersion": {
+    "updatedAt": "2025-11-26T22:08:06.720Z",
+    "createdAt": "2025-11-26T22:08:06.720Z",
+    "versionId": "40d026e0-3547-4d9f-8c40-8a758b833c07",
+    "workflowId": "XLm8ftKbss2JfzVY",
+    "nodes": [
+      {
+        "parameters": {
+          "pollTimes": {
+            "item": [
+              {
+                "mode": "everyX",
+                "value": 15,
+                "unit": "minutes"
+              }
+            ]
+          },
+          "simple": false,
+          "filters": {
+            "q": "subject:Nouvelle demande de devis"
+          },
+          "options": {}
+        },
+        "id": "9d9703bc-0dfc-4e47-a018-54f895c5d9e2",
+        "name": "Gmail Trigger",
+        "type": "n8n-nodes-base.gmailTrigger",
+        "typeVersion": 1,
+        "position": [
+          192,
+          224
+        ],
+        "credentials": {
+          "gmailOAuth2": {
+            "id": "rAfdKJMN8l7vL9s2",
+            "name": "Gmail account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "fields": {
+            "values": [
+              {
+                "name": "Date",
+                "stringValue": "={{ (new Date()).toLocaleDateString('fr-FR') }}"
+              },
+              {
+                "name": "Prenom",
+                "stringValue": "={{ $json[\"text\"].match(/(?<=Prénom : )(.*)(?=)/g)[0] }}"
+              },
+              {
+                "name": "Nom",
+                "stringValue": "={{ $json[\"text\"].match(/(?<=Nom : )(.*)(?=)/g)[0] }}"
+              },
+              {
+                "name": "Tel",
+                "stringValue": "={{ $json[\"text\"].match(/(?<=Tél : )(.*)(?= *)/g)[0] }}"
+              },
+              {
+                "name": "Optin",
+                "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=la newsletter :<br\\/>)(.*)(?=<\\/p><p>--)/g)[0] }}"
+              },
+              {
+                "name": "Email",
+                "stringValue": "={{ $json[\"textAsHtml\"].match(/([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9_-]+)/g)[0] }}"
+              },
+              {
+                "name": "Agence de depart",
+                "stringValue": "={{ $json[\"textAsHtml\"].match(/(?<=Agence de d&eacute;part :<br\\/>)(.*)(?=<\\/p><p>&gt;&gt; Dates de r&eacute;servation :)/g)[0] }}"
+              }
+            ]
+          },
+          "include": "selected",
+          "options": {}
+        },
+        "id": "fc955311-d6ef-437b-aedd-85169ebf961e",
+        "name": "Edit Fields",
+        "type": "n8n-nodes-base.set",
+        "typeVersion": 3,
+        "position": [
+          368,
+          224
+        ]
+      },
+      {
+        "parameters": {
+          "operation": "append",
+          "documentId": {
+            "__rl": true,
+            "value": "1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU",
+            "mode": "list",
+            "cachedResultName": "RESA-SEAVAN-N8N",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit?usp=drivesdk"
+          },
+          "sheetName": {
+            "__rl": true,
+            "value": "gid=0",
+            "mode": "list",
+            "cachedResultName": "Touteslesdemandes",
+            "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1YEUxA8-V4JXwZoabC3_wx9lqeMejPwVypAQ5AX7amnU/edit#gid=0"
+          },
+          "columns": {
+            "mappingMode": "defineBelow",
+            "value": {
+              "prenom": "={{ $json.Prenom }}",
+              "nom": "={{ $json.Nom }}",
+              "tel": "={{ $json.Tel }}",
+              "email": "={{ $json.Email }}",
+              "optin": "={{ $json.Optin }}",
+              "Agence de départ": "={{ $json['Agence de depart'] }}",
+              "received_at_date": "={{ $json.Date }}",
+              "Reservation": "x"
+            },
+            "matchingColumns": [],
+            "schema": [
+              {
+                "id": "prenom",
+                "displayName": "prenom",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "nom",
+                "displayName": "nom",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "tel",
+                "displayName": "tel",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "email",
+                "displayName": "email",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "optin",
+                "displayName": "optin",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Agence de départ",
+                "displayName": "Agence de départ",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "received_at_date",
+                "displayName": "received_at_date",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true
+              },
+              {
+                "id": "Reservation",
+                "displayName": "Reservation",
+                "required": false,
+                "defaultMatch": false,
+                "display": true,
+                "type": "string",
+                "canBeUsedToMatch": true,
+                "removed": false
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "c7f6a45c-8e8a-4d8a-8161-5626c110df66",
+        "name": "Google Sheets",
+        "type": "n8n-nodes-base.googleSheets",
+        "typeVersion": 4,
+        "position": [
+          640,
+          224
+        ],
+        "credentials": {
+          "googleSheetsOAuth2Api": {
+            "id": "2WEM9Jn81BmJbW4o",
+            "name": "Google Sheets account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "textsWithManipulations": {
+            "textsWithManipulationsValues": [
+              {
+                "dataSources": {
+                  "dataSource": [
+                    {
+                      "text": "={{ $json.Prenom }}",
+                      "destinationKey": "Prenom"
+                    },
+                    {
+                      "text": "={{ $json.Nom }}",
+                      "destinationKey": "Nom"
+                    }
+                  ]
+                },
+                "manipulations": {
+                  "manipulation": [
+                    {
+                      "caseType": "titlecase"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "id": "026053d2-d9a5-44dd-8615-5c20725880ee",
+        "name": "TextManipulation",
+        "type": "n8n-nodes-text-manipulation.textManipulation",
+        "typeVersion": 1,
+        "position": [
+          512,
+          224
+        ]
+      },
+      {
+        "parameters": {
+          "conditions": {
+            "string": [
+              {
+                "value1": "={{ $json.optin }}",
+                "value2": "Oui"
+              }
+            ]
+          },
+          "combineOperation": "any"
+        },
+        "id": "c2a49d0f-78dd-4ddb-8495-24a3c70766e1",
+        "name": "IF",
+        "type": "n8n-nodes-base.if",
+        "typeVersion": 1,
+        "position": [
+          784,
+          224
+        ]
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "email": "={{ $json.email }}",
+          "firstName": "={{ $json.prenom }}",
+          "lastName": "={{ $json.nom }}",
+          "company": "Particuliers",
+          "additionalFields": {
+            "customFieldsUi": {
+              "customFieldValues": [
+                {
+                  "fieldId": "optin",
+                  "fieldValue": "true"
+                },
+                {
+                  "fieldId": "agence_de_depart",
+                  "fieldValue": "={{ $json['Agence de départ'] }}"
+                }
+              ]
+            },
+            "mobile": "={{ $json.tel }}"
+          },
+          "options": {}
+        },
+        "id": "7ed23624-c73d-4b49-95d1-e9efda6d3ff6",
+        "name": "Mautic",
+        "type": "n8n-nodes-base.mautic",
+        "typeVersion": 1,
+        "position": [
+          912,
+          -16
+        ],
+        "credentials": {
+          "mauticOAuth2Api": {
+            "id": "9tLxJKyzjSjuR5Hn",
+            "name": "Mautic account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "email": "={{ $json.email }}",
+          "firstName": "={{ $json.prenom }}",
+          "lastName": "={{ $json.nom }}",
+          "company": "Particuliers",
+          "additionalFields": {
+            "customFieldsUi": {
+              "customFieldValues": [
+                {
+                  "fieldId": "optin",
+                  "fieldValue": "false"
+                },
+                {
+                  "fieldId": "agence_de_depart",
+                  "fieldValue": "={{ $json['Agence de départ'] }}"
+                }
+              ]
+            },
+            "mobile": "={{ $json.tel }}"
+          },
+          "options": {}
+        },
+        "id": "313411e4-b57e-479d-82a9-5bc3b40d3524",
+        "name": "Mautic1",
+        "type": "n8n-nodes-base.mautic",
+        "typeVersion": 1,
+        "position": [
+          928,
+          512
+        ],
+        "credentials": {
+          "mauticOAuth2Api": {
+            "id": "9tLxJKyzjSjuR5Hn",
+            "name": "Mautic account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "contactSegment",
+          "contactId": "={{ $json.id }}",
+          "segmentId": 3
+        },
+        "id": "542b6747-072a-4dd8-ba2b-d040f24220b6",
+        "name": "Mautic2",
+        "type": "n8n-nodes-base.mautic",
+        "typeVersion": 1,
+        "position": [
+          1104,
+          144
+        ],
+        "credentials": {
+          "mauticOAuth2Api": {
+            "id": "9tLxJKyzjSjuR5Hn",
+            "name": "Mautic account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "operation": "update",
+          "contactId": "={{ $json.id }}",
+          "updateFields": {
+            "tags": [
+              "seavannewsletter",
+              "demandedevis"
+            ]
+          },
+          "options": {}
+        },
+        "id": "0b7360e2-1f3b-471b-9eec-b44d3b8f631d",
+        "name": "Mautic3",
+        "type": "n8n-nodes-base.mautic",
+        "typeVersion": 1,
+        "position": [
+          1088,
+          -16
+        ],
+        "credentials": {
+          "mauticOAuth2Api": {
+            "id": "9tLxJKyzjSjuR5Hn",
+            "name": "Mautic account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "resource": "contactSegment",
+          "contactId": "={{ $json.id }}",
+          "segmentId": 3
+        },
+        "id": "752c45d0-c890-4a00-a2af-986de437edd9",
+        "name": "Mautic4",
+        "type": "n8n-nodes-base.mautic",
+        "typeVersion": 1,
+        "position": [
+          1120,
+          688
+        ],
+        "credentials": {
+          "mauticOAuth2Api": {
+            "id": "9tLxJKyzjSjuR5Hn",
+            "name": "Mautic account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "operation": "update",
+          "contactId": "={{ $json.id }}",
+          "updateFields": {
+            "tags": [
+              "demandedevis"
+            ]
+          },
+          "options": {}
+        },
+        "id": "02c2f25f-cdce-4758-9fd7-df682a5e3a7a",
+        "name": "Mautic5",
+        "type": "n8n-nodes-base.mautic",
+        "typeVersion": 1,
+        "position": [
+          1120,
+          528
+        ],
+        "credentials": {
+          "mauticOAuth2Api": {
+            "id": "9tLxJKyzjSjuR5Hn",
+            "name": "Mautic account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "operation": "editContactPoint",
+          "contactId": "={{ $json.id }}",
+          "points": 31
+        },
+        "id": "0a946195-1b7b-49ec-a408-3f0e00304e6e",
+        "name": "Mautic6",
+        "type": "n8n-nodes-base.mautic",
+        "typeVersion": 1,
+        "position": [
+          1088,
+          -176
+        ],
+        "credentials": {
+          "mauticOAuth2Api": {
+            "id": "9tLxJKyzjSjuR5Hn",
+            "name": "Mautic account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "authentication": "oAuth2",
+          "operation": "editContactPoint",
+          "contactId": "={{ $json.id }}",
+          "points": 31
+        },
+        "id": "b975d28a-2723-4c6e-9031-d48f8fe70644",
+        "name": "Mautic7",
+        "type": "n8n-nodes-base.mautic",
+        "typeVersion": 1,
+        "position": [
+          1120,
+          368
+        ],
+        "credentials": {
+          "mauticOAuth2Api": {
+            "id": "9tLxJKyzjSjuR5Hn",
+            "name": "Mautic account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Gmail Trigger": {
+        "main": [
+          [
+            {
+              "node": "Edit Fields",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Edit Fields": {
+        "main": [
+          [
+            {
+              "node": "TextManipulation",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "TextManipulation": {
+        "main": [
+          [
+            {
+              "node": "Google Sheets",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Sheets": {
+        "main": [
+          [
+            {
+              "node": "IF",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "IF": {
+        "main": [
+          [
+            {
+              "node": "Mautic",
+              "type": "main",
+              "index": 0
+            }
+          ],
+          [
+            {
+              "node": "Mautic1",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Mautic": {
+        "main": [
+          [
+            {
+              "node": "Mautic2",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Mautic3",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Mautic6",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Mautic1": {
+        "main": [
+          [
+            {
+              "node": "Mautic4",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Mautic5",
+              "type": "main",
+              "index": 0
+            },
+            {
+              "node": "Mautic7",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "authors": "system migration",
+    "name": null,
+    "description": null
+  },
+  "activeVersionId": "40d026e0-3547-4d9f-8c40-8a758b833c07",
   "connections": {
     "Gmail Trigger": {
       "main": [
